@@ -1,4 +1,9 @@
 package Client;
 
-public class ThermonuclearMissiles {
+public class ThermonuclearMissiles extends Weapon{
+
+    public ThermonuclearMissiles(int power) {
+        super(power);
+    }
+
 }
