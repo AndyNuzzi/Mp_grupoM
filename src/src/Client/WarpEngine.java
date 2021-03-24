@@ -1,4 +1,9 @@
 package Client;
 
-public class WarpEngine {
+public class WarpEngine extends Propulsion{
+
+    public WarpEngine(double speed) {
+        super(speed);
+    }
+
 }

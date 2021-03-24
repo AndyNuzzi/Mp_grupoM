@@ -1,4 +1,9 @@
 package Client;
 
-public class FTLEngine {
+public class FTLEngine extends Propulsion{
+
+    public FTLEngine(double speed) {
+        super(speed);
+    }
+
 }
