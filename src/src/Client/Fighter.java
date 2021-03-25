@@ -1,4 +1,4 @@
 package Client;
 
-public class Fighter {
+public class Fighter extends Starship{
 }

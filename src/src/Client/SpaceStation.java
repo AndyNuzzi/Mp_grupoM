@@ -1,4 +1,4 @@
 package Client;
 
-public class SpaceStation {
+public class SpaceStation extends Starship{
 }
