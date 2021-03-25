@@ -1,13 +1,21 @@
 package Storage;
 
 import java.io.*;
-import java.util.LinkedList;
 import java.util.List;
 
 public class FileOperations implements Serializable {
 
+    protected String directory;
 
     //Methods
+    public List readFile() {
+        return read(directory);
+    }
+
+    public boolean writeFile(List l){
+        return write(directory, l);
+    }
+
     public List read(String directory) {
         try {
             FileInputStream inputStream = new FileInputStream(directory);
