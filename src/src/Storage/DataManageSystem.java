@@ -19,7 +19,9 @@ public class DataManageSystem {
     private SwindlerFile swindlerFile;
     private UncheckedOffersFile uncheckedOffersFile;
 
-    //Methods
+    //methods
+
+    //singleton
     private DataManageSystem(){
         clientFile = new ClientFile();
         offerFile = new OfferFile();
@@ -37,6 +39,8 @@ public class DataManageSystem {
             dataManageSystem = new DataManageSystem();
         return dataManageSystem;
     }
+
+    //load methods
 
     private List loadClients(){
         return  clientFile.read(clientFile.getDirectory());
@@ -74,45 +78,7 @@ public class DataManageSystem {
         return  uncheckedOffersFile.read(uncheckedOffersFile.getDirectory());
     }
 
-    private User search(List<Object> list, String nick, String password){
-        int i = 0;
-        boolean found = false;
-        User u = null;
-        while (!found && i < list.size()){
-            u = (User) list.get(i);
-            String nick_search = u.getNick();
-            String password_search = u.getPassword();
-            if (nick.equals(nick_search) && password.equals(password_search))
-                found = true;
-            i++;
-        }
-        if (!found){
-            return null;
-        }
-        return u;
-    }
-
-    private boolean control(List l, String id){
-        return l.contains(id);
-    }
-
-    public User openSession(String nick, String password){
-        List clientList = loadClients();
-        User c = search(clientList, nick, password);
-        if (c==null){
-            List administratorList = loadAdministrators();
-            c = search(administratorList, nick, password);
-        }
-        else{
-            List swindlerList = loadSwindler();
-            boolean swindler = control(swindlerList, c.getIdNumber());
-            List piratesList = loadPirates();
-            if (swindler){
-                return null;
-            }
-        }
-        return c;
-    }
+    //add objects in files
 
     public boolean addNewClient(Client c){
         List l = loadClients();
@@ -138,4 +104,162 @@ public class DataManageSystem {
         administratorFile.write(administratorFile.getDirectory(), l);
         return true;
     }
+
+    public boolean addNewStarship(Starship starship){
+        List l = loadStarships();
+        if (l==null){
+            l = new LinkedList<Starship>();
+        }
+        else{
+            //Implementar logica de control de nave unica
+        }
+        l.add(starship);
+        starshipFile.write(starshipFile.getDirectory(), l);
+        return true;
+    }
+
+    public boolean addNewOffer(Offer offer){
+        List l = loadOffers();
+        if (l==null){
+            l = new LinkedList<Offer>();
+        }
+        else{
+            //Implementar logica de oferta con id unico
+        }
+        l.add(offer);
+        offerFile.write(offerFile.getDirectory(), l);
+        return true;
+    }
+
+    public boolean addNewSale (Sale sale){
+        List l = loadSales();
+        if (l==null){
+            l = new LinkedList<Sale>();
+        }
+        else{
+            //Implementar logica de venta con id unico
+        }
+        l.add(sale);
+        saleFile.write(saleFile.getDirectory(), l);
+        return true;
+    }
+
+    public boolean addNewPirate (Client c){
+        List l = loadPirates();
+        if (l==null){
+            l = new LinkedList<String>();
+        }
+        else{
+            //Lógica de que es unico
+        }
+        l.add(c.getIdNumber());
+        piratesFile.write(piratesFile.getDirectory(), l);
+        return true;
+    }
+
+    public boolean addNewSwindler (Client c){
+        List l = loadSwindler();
+        if (l==null){
+            l = new LinkedList<String>();
+        }
+        else{
+            //Lógica de que es unico
+        }
+        l.add(c.getIdNumber());
+        swindlerFile.write(swindlerFile.getDirectory(), l);
+        return true;
+    }
+
+    //public boolean addNewComment(Comment)
+
+    //public boolean addNewUncheckedOffer(UncheckedOffers)
+
+    //delete objects in files
+
+    public boolean deleteOffer(Offer offer) {
+        List l = loadOffers();
+        l.remove(offer);
+        offerFile.write(offerFile.getDirectory(), l);
+    }
+
+    public boolean deletePirate(String id){
+        List l = loadPirates();
+        l.remove(id);
+        piratesFile.write(piratesFile.getDirectory(), l);
+        return true;
+    }
+
+    public boolean deleteSwindler(String id){
+        List l = loadSwindler();
+        l.remove(id);
+        swindlerFile.write(swindlerFile.getDirectory(), l);
+        return true;
+    }
+
+    //query methods
+
+    public List<Offer> searchOffers (String offerType){
+        List l = loadOffers();
+        List <Offer> sol = new LinkedList<>();
+        for (Object obj: l){
+            Offer o = (Offer) obj;
+            if (compareTypes(o, offerType)){
+                sol.add(o);
+            }
+        }
+        return sol;
+    }
+
+    public User openSession(String nick, String password){
+        List clientList = loadClients();
+        User c = search(clientList, nick, password);
+        if (c==null){
+            List administratorList = loadAdministrators();
+            c = search(administratorList, nick, password);
+        }
+        else{
+            List swindlerList = loadSwindler();
+            boolean swindler = control(swindlerList, c.getIdNumber());
+            List piratesList = loadPirates();
+            if (swindler){
+                return null;
+            }
+        }
+        return c;
+    }
+
+
+    //private functionality
+
+    private User search(List<Object> list, String nick, String password){
+        int i = 0;
+        boolean found = false;
+        User u = null;
+        while (!found && i < list.size()){
+            u = (User) list.get(i);
+            String nick_search = u.getNick();
+            String password_search = u.getPassword();
+            if (nick.equals(nick_search) && password.equals(password_search))
+                found = true;
+            i++;
+        }
+        if (!found){
+            return null;
+        }
+        return u;
+    }
+
+    private boolean control(List l, String id){
+        return l.contains(id);
+    }
+
+    private boolean compareTypes(Offer o, String offerType) {
+        //Pensar en implementar como son las ofertas por dentro para indicar tipos de nave
+        return o.getTypes()==offerType;
+    }
+
+
+
+
+
 }
