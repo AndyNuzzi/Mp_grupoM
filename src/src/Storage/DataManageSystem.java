@@ -74,40 +74,43 @@ public class DataManageSystem {
         return  uncheckedOffersFile.read(uncheckedOffersFile.getDirectory());
     }
 
-    private Client search(List<Object> list, String nick, String password){
+    private User search(List<Object> list, String nick, String password){
         int i = 0;
         boolean found = false;
-        Client c = null;
+        User u = null;
         while (!found && i < list.size()){
-            c = (Client) list.get(i);
-            String nick_search = c.getNick();
-            String password_search = c.getPassword();
+            u = (User) list.get(i);
+            String nick_search = u.getNick();
+            String password_search = u.getPassword();
             if (nick.equals(nick_search) && password.equals(password_search))
                 found = true;
             i++;
         }
-        return c;
+        if (!found){
+            return null;
+        }
+        return u;
     }
 
     private boolean control(List l, String id){
         return l.contains(id);
     }
 
-    public Client openSession(String nick, String password){
+    public User openSession(String nick, String password){
         List clientList = loadClients();
-        Client c = search(clientList, nick, password);
-        List swindlerList = loadSwindler();
-        boolean swindler = control(swindlerList, c.getIdNumber());
-        List piratesList = loadPirates();
-        boolean pirate = control(piratesList, c.getIdNumber());
-        if (swindler){
-            return null;
+        User c = search(clientList, nick, password);
+        if (c==null){
+            List administratorList = loadAdministrators();
+            c = search(administratorList, nick, password);
         }
-        else if (pirate){
-            c.setPirate(true);
+        else{
+            List swindlerList = loadSwindler();
+            boolean swindler = control(swindlerList, c.getIdNumber());
+            List piratesList = loadPirates();
+            if (swindler){
+                return null;
+            }
         }
-        else
-            c.setPirate(false);
         return c;
     }
 
@@ -115,8 +118,24 @@ public class DataManageSystem {
         List l = loadClients();
         if (l == null)
             l = new LinkedList<Client>();
+        else{
+            //Implementar logica de control de identificador y nick unicos
+        }
         l.add(c);
         clientFile.write(clientFile.getDirectory(), l);
+        return true;
+    }
+
+    public boolean addNewAdministrator(Administrator administrator){
+        List l = loadAdministrators();
+        if (l == null){
+            l = new LinkedList<Administrator>();
+        }
+        else{
+            //Implementar logica de control de identificador y nick unicos
+        }
+        l.add(administrator);
+        administratorFile.write(administratorFile.getDirectory(), l);
         return true;
     }
 }
