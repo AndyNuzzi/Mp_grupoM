@@ -1,5 +1,7 @@
 package Storage;
 
+import Client.Client;
+
 import java.io.*;
 import java.util.List;
 
@@ -8,13 +10,6 @@ public class FileOperations implements Serializable {
     protected String directory;
 
     //Methods
-    public List readFile() {
-        return read(directory);
-    }
-
-    public boolean writeFile(List l){
-        return write(directory, l);
-    }
 
     public List read(String directory) {
         try {
@@ -34,6 +29,7 @@ public class FileOperations implements Serializable {
             return true;
         }
         catch (IOException e) {
+            System.out.println("Not serializable");
             return false;
         }
     }
