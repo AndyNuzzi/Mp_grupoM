@@ -73,16 +73,46 @@ public class DataManageSystemQueries extends DataManageSystem{
         else{
             List swindlerList = loadSwindler();
             boolean swindler = false;
-            if (swindlerList != null)
-                swindler = control(swindlerList, c.getIdNumber());
+            if (swindlerList != null){
+                swindler = check(swindlerList, c.getIdNumber());
+                if (swindler)
+                    return null;
+            }
             List piratesList = loadPirates();
             boolean pirate = false;
-            if (piratesList != null)
-                pirate = control(piratesList, c.getIdNumber());
-            if (swindler){
-                return null;
+            if (piratesList != null){
+                pirate = check(piratesList, c.getIdNumber());
+                if (pirate) {
+                    c.setPirate();
+                    return c;
+                }
             }
         }
         return c;
     }
+
+    private boolean check(List<String> l, String idNumber) {
+        Iterator<String> it = l.iterator();
+        boolean found = false;
+        while (it.hasNext()&&!false){
+            String str = it.next();
+            found = str.equals(idNumber);
+        }
+        return found;
+    }
+
+    private User search(List<User> list, String nick, String password){
+        Iterator<User> it = list.listIterator();
+        boolean found = false;
+        User u = null;
+        while (it.hasNext()&&!found){
+            u = (User) it.next();
+            found = u.getNick().equals(nick) && u.getPassword().equals(password);
+        }
+        if (!found){
+            return null;
+        }
+        return u;
+    }
+
 }

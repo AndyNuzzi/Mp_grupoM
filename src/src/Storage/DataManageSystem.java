@@ -63,29 +63,6 @@ public abstract class DataManageSystem {
 
     //private functionality
 
-    private User search(List<Object> list, String nick, String password){
-        int i = 0;
-        boolean found = false;
-        User u = null;
-        while (!found && i < list.size()){
-            u = (User) list.get(i);
-            //Comparator
-            String nick_search = u.getNick();
-            String password_search = u.getPassword();
-            if (nick.equals(nick_search) && password.equals(password_search))
-                found = true;
-            i++;
-        }
-        if (!found){
-            return null;
-        }
-        return u;
-    }
-
-    private boolean control(List l, String id){
-        return l.contains(id);
-    }
-
     private boolean compareTypes(Offer o, String offerType) {
         //Pensar en implementar como son las ofertas por dentro para indicar tipos de nave
         return true;//o.getTypes()==offerType;
