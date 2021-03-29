@@ -17,4 +17,7 @@ public class Client extends User implements Serializable {
         return pirate;
     }
 
+    public void doOperation(){
+        System.out.println("Soy un cliente");
+    }
 }

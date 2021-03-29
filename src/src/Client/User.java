@@ -77,4 +77,6 @@ public abstract class User implements Serializable {
     public void setNick(String nick) {
         this.nick = nick;
     }
+
+    public abstract void doOperation();
 }
