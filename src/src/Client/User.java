@@ -25,17 +25,11 @@ public abstract class User implements Serializable {
         this.email = email;
     }
 
-    // OPCION 1:
+    public abstract void setOption();
 
-    // CLASE PADRE OPERATION
-
-    // TODAS LAS OPERACIONES DERIVAN DE AHI
-
-    // ASI EL PEDIR OPERACION SERIA IGUAL EN TODAS
-
-    public abstract void setOption ();
-
-    public abstract void doOperation();
+    public void doOperation() {
+        // ahora vaciamos la lista
+    }
 
     // crear clase operation
 

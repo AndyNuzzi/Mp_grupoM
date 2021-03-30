@@ -1,4 +1,7 @@
 package Client;
 
-public abstract class ClientOperation {
+import Controller.Controller;
+
+public class ClientOperation {
+
 }

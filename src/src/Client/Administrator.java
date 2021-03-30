@@ -13,13 +13,11 @@ public class Administrator extends User{
 
     @Override
     public void setOption() {
-        // creacion de las operaciones y lo metemos en la lista
+        // suponemos que tenemos en la clase User List <Operations>
+        // creamos todas las operaciones
+        // y las añadimos
     }
 
-    @Override
-    public void doOperation() {
-        this.setOption();
-    }
 
     //OPCION:
 

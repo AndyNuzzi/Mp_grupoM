@@ -18,17 +18,12 @@ public class Client extends User{
         super(name, planet, species, idNumber, nick, password, email);
     }
 
-    // añadido pirates
-    // quitar el observer collection
-
     @Override
     public void setOption() {
-        // creacion de las operaciones y lo metemos en la lista
+        // suponemos que tenemos en la clase User List <Operations>
+        // creamos todas las operaciones
+        // y las añadimos
     }
 
-    @Override
-    public void doOperation() {
-        this.setOption();
-    }
 
 }
