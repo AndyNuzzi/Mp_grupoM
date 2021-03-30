@@ -21,7 +21,7 @@ public class LoginManage {
         Scanner scanner = new Scanner(System.in);
         int loginOption = scanner.nextInt();
         switch (loginOption) {
-            case 1: LogIn logIn = new LogIn();
+            case 1: LogIn logIn;
                 break;
             case 2: RegisterAsClient signIn = new RegisterAsClient();
                 break;

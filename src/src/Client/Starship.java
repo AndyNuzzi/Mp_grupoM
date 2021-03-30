@@ -16,8 +16,36 @@ public abstract class Starship {
         this.registerNumber = registerNumber;
     }
 
+    protected boolean checkRegisterNumber(String registerNumber){
+            return this.registerNumber.equals(registerNumber);
 
-    // Falta seguir con esta clase
 
+    }
+    protected void setOwner(Client owner){
+        this.owner=owner;
 
+            }
+
+    public Client getOwner() {
+        return owner;
+    }
+
+    public Propulsion[] getPropulsion() {
+        return propulsion;
+    }
+
+    public void setPropulsion(Propulsion[] propulsion) {
+        this.propulsion = propulsion;
+    }
+
+    public int getCrew() {
+        return crew;
+    }
+
+    public void setCrew(int crew) {
+        this.crew = crew;
+    }
 }
+
+
+

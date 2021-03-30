@@ -8,6 +8,8 @@ public abstract class Weapon {
         this.power = power;
     }
 
+
+
     public String getName (){
         return this.getClass().getSimpleName();
     }
