@@ -56,7 +56,7 @@ public class DataManageSystemQueries extends DataManageSystem{
         List <Offer> sol = new LinkedList<>();
         for (Object obj: l){
             Offer o = (Offer) obj;
-            if (compareTypes(o, offerType)){
+            if (true){//(compareTypes(o, offerType)){
                 sol.add(o);
             }
         }
@@ -83,7 +83,7 @@ public class DataManageSystemQueries extends DataManageSystem{
             if (piratesList != null){
                 pirate = check(piratesList, c.getIdNumber());
                 if (pirate) {
-                    c.setPirate();
+                    //c.setPirate();
                     return c;
                 }
             }

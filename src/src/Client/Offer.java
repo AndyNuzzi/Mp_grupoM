@@ -18,4 +18,44 @@ public class Offer implements Serializable {
         this.creator = creator;
         this.id = id;
     }
+
+    public List<Starship> getStarships() {
+        return starships;
+    }
+
+    public void setStarships(List<Starship> starships) {
+        this.starships = starships;
+    }
+
+    public Date getEnd() {
+        return end;
+    }
+
+    public void setEnd(Date end) {
+        this.end = end;
+    }
+
+    public long getPrice() {
+        return price;
+    }
+
+    public void setPrice(long price) {
+        this.price = price;
+    }
+
+    public String getCreator() {
+        return creator;
+    }
+
+    public void setCreator(String creator) {
+        this.creator = creator;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 }

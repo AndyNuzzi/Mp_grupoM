@@ -2,6 +2,7 @@ package Storage;
 
 import Client.*;
 
+import java.util.Iterator;
 import java.util.List;
 
 public class DataManageSystemDelete extends DataManageSystem{
@@ -31,7 +32,15 @@ public class DataManageSystemDelete extends DataManageSystem{
     //Methods
     public boolean deleteOffer(Offer offer){
         List l = loadOffers();
-        l.remove(offer);
+        Iterator <Offer> it = l.iterator();
+        boolean found = false;
+        while (it.hasNext()&&!found){
+            Offer o = it.next();
+            if (o.getId().equals(offer.getId())){
+                found = true;
+                l.remove(o);
+            }
+        }
         offerFile.write(offerFile.getDirectory(), l);
         return true;
     }
