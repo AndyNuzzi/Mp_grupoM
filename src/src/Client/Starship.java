@@ -1,41 +1,51 @@
 package Client;
 
+
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class Starship {
 
     protected String registerNumber;
     protected Client owner;
-    protected Propulsion[] propulsion = new Propulsion [2];
+    protected List<Propulsion> propulsion = new ArrayList<Propulsion>();
     protected int crew;
 
 
-    protected String getRegisterNumber(){
+    protected String getRegisterNumber() {
         return this.registerNumber;
     }
 
-    protected void setRegisterNumber(String registerNumber){
-        this.registerNumber = registerNumber;
+    protected void setRegisterNumber(String registerNumber) {
+        // se lo pedimos a la base de datos
     }
 
-    protected boolean checkRegisterNumber(String registerNumber){
-            return this.registerNumber.equals(registerNumber);
-
-
+    protected boolean checkRegisterNumber(String registerNumber) {
+        return this.registerNumber.equals(registerNumber);
     }
-    protected void setOwner(Client owner){
-        this.owner=owner;
 
-            }
+    protected void setOwner(Client owner) {
+        this.owner = owner;
+    }
 
     public Client getOwner() {
         return owner;
     }
 
-    public Propulsion[] getPropulsion() {
+    public List<Propulsion> getPropulsion() {
         return propulsion;
     }
 
-    public void setPropulsion(Propulsion[] propulsion) {
-        this.propulsion = propulsion;
+    public void addPropulsion(Propulsion propulsion) {
+        if (this.checkPropulsionNumber()){
+            this.propulsion.add(propulsion);
+        } else {
+            System.out.println(" No more Propulsion can be added ");
+        }
+    }
+
+    private boolean checkPropulsionNumber (){
+        return this.propulsion.size() < 3;
     }
 
     public int getCrew() {
@@ -45,6 +55,7 @@ public abstract class Starship {
     public void setCrew(int crew) {
         this.crew = crew;
     }
+
 }
 
 

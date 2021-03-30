@@ -4,6 +4,8 @@ public class Feighter extends Starship{
     private int capacity;
     private Defense defense;
 
+    // falta constructor
+
     public int getCapacity() {
         return capacity;
     }
@@ -19,6 +21,5 @@ public class Feighter extends Starship{
     public void setDefense(Defense defense)  {
         this.defense = defense;
     }
-    public Feighter(int capacity,Defense defense){
-    }
+
 }

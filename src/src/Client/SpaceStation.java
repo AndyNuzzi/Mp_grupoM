@@ -1,38 +1,44 @@
 package Client;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SpaceStation extends Starship{
     private int passengers;
-    private Starship[] starships ;
-    private Defense[] defenses= new Defense[3];
+    private List<Starship> starships = new ArrayList<Starship>();
+    private List<Defense> defense = new ArrayList<Defense>();
 
-    public SpaceStation(int passengers, Starship[] starships, Defense[] defenses){
-        this.passengers=passengers;
-        this.defenses=defenses;
-        this.starships=starships;
-    }
+    // falta constructor
+
     public void setPassengers(int passengers) {
         this.passengers = passengers;
     }
 
-    public void addStarShip(Starship[] starship){
-    //logica añadir nave espacial
+    public void addStarShip(List <Starship> starships){
+        this.starships = starships;
     }
-    public void addDefense(Defense[] defense){
-    //logica añadir defensas
+
+    public void addDefense(Defense defense){
+        if (checkDefenseNumber()){
+            this.defense.add(defense);
+        } else {
+            System.out.println(" No more Defenses can be added ");
+        }
     }
+
     private boolean checkDefenseNumber(){
-      return   this.defenses==defenses;
+      return this.defense.size() < 4;
     }
 
     public int getPassengers() {
         return passengers;
     }
 
-    public Starship[] getStarships() {
-        return starships;
+    public List<Starship> getStarships() {
+        return this.starships;
     }
 
-    public Defense[] getDefenses() {
-        return defenses;
+    public List<Defense> getDefenses() {
+        return this.defense;
     }
 }

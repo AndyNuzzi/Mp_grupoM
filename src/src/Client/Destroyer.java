@@ -1,28 +1,36 @@
 package Client;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Destroyer extends Starship{
-    private Weapon[] weapon= new Weapon[1];
-    private Defense[] defenses = new Defense[2];
 
+    private List<Weapon> weapon = new ArrayList<Weapon>();
+    private List<Defense> defense = new ArrayList<Defense>();
 
-    public Destroyer(Weapon[] weapon, Defense[] defenses){
+    // falta constructor
 
-    }
-    public void addWeapon(){
-    //añadir logicca de addWeapon
-    }
-    public void adddDefense(){
-    //añadir logica de addDefense
-    }
-    public boolean checkDefenseNumber(){
-        return this.defenses==defenses;
+    public void addWeapon(Weapon weapon){
+        this.weapon.add(weapon);
     }
 
-    public Weapon[] getWeapon() {
-        return weapon;
+    public void addDefense(Defense defense){
+        if (this.checkDefenseNumber()){
+            this.defense.add(defense);
+        } else {
+            System.out.println(" No more Defenses can be added ");
+        }
     }
 
-    public Defense[] getDefenses() {
-        return defenses;
+    private boolean checkDefenseNumber(){
+        return this.defense.size() < 3;
+    }
+
+    public List <Weapon> getWeapon() {
+        return this.weapon;
+    }
+
+    public List<Defense> getDefenses() {
+        return this.defense;
     }
 }
