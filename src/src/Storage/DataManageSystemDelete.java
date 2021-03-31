@@ -41,8 +41,29 @@ public class DataManageSystemDelete extends DataManageSystem{
                 l.remove(o);
             }
         }
-        offerFile.write(offerFile.getDirectory(), l);
-        return true;
+        if (found) {
+            offerFile.write(offerFile.getDirectory(), l);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean deleteUncheckedOffer(Offer offer){
+        List l= loadUncheckedOfferFile();
+        Iterator<Offer> it = l.iterator();
+        boolean found = false;
+        while (it.hasNext()&&!found){
+            Offer o = it.next();
+            if (o.getId().equals(offer.getId())){
+                found = true;
+                l.remove(o);
+            }
+        }
+        if (found){
+            uncheckedOffersFile.write((uncheckedOffersFile.getDirectory()),l);
+            return true;
+        }
+        return false;
     }
 
     public boolean deletePirate(String id){

@@ -55,9 +55,6 @@ public class DataManageSystemAdders extends DataManageSystem {
         if (l==null){
             l = new LinkedList<Starship>();
         }
-        else{
-            //Implementar logica de control de nave unica
-        }
         l.add(starship);
         starshipFile.write(starshipFile.getDirectory(), l);
         return true;
