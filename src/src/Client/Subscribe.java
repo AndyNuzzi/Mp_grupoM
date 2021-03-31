@@ -8,6 +8,9 @@ public class Subscribe extends ClientOperation{
 
     @Override
     public boolean doOperation() {
+        // le pido un tipo de nave, llama al controler y guarda que esta subscrito a eso
+
+        // pido un switch con los tipos de naves
         return false;
     }
 }

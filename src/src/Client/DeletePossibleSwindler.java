@@ -3,7 +3,8 @@ package Client;
 public class DeletePossibleSwindler extends AdministratorOperation{
     @Override
     public boolean doOperation() {
-        // llamar al metodo del controller?
+        // pasar la lista de swindlers
+        // llamar al controlador pasandole el id del swindler que se quiere eliminar
         return true;
     }
 }

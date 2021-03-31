@@ -1,7 +1,9 @@
 package Client;
 
+import Controller.*;
+
 public abstract class ClientOperation {
-    Controller.Controller controller;
+    protected Controller controller;
     // intanciar el controller
 
     public abstract boolean doOperation();

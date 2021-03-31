@@ -1,7 +1,10 @@
 package Client;
 
+import Controller.*;
+
 public abstract class AdministratorOperation {
-    Controller.Controller controller;
+
+    protected Controller controller;
     // intanciar el controller
 
     public abstract boolean doOperation();

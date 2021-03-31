@@ -8,7 +8,11 @@ public class CheckNotifications extends ClientOperation{
 
     @Override
     public boolean doOperation() {
-        // llamar al controller
+        // llamar al controller y que pasen las nuevas notificaciones
+
+        // mostrar la lista de notificaciones
+
+        //
         return false;
     }
 }

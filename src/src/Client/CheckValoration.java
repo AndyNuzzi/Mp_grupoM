@@ -1,14 +1,21 @@
 package Client;
 
 public class CheckValoration extends ClientOperation{
-    public CheckValoration (Client client, Controller.Controller controller){
+    public CheckValoration (Client client){
         super ();
         // me traigo los datos del cliente
     }
 
     @Override
     public boolean doOperation() {
-        // llamar al controller
+        // llamar al controller y que pase las valoraciones nuevas
+
+        // y mostrar la valoracion media
+
+
+        System.out.println(controller.getAverageValoration());
+
+
         return false;
     }
 }

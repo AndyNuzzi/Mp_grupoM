@@ -8,9 +8,23 @@ public class SearchOffer extends ClientOperation{
 
     @Override
     public boolean doOperation() {
-        Sale sale = new Sale ();
-        // instanciar de la clase sale que guarda las compras
+        // mostrar por pantalla que pueda elegir un tipo de nave
+        // recoger la eleccion
+        // llamar al controlador con el tipo de nave que se quiere buscar
+        // guardar la lista que viene
+        // mostrar la lista que viene del controller
+
+        // preguntar si desea comprar --> BUY
+            // mostrar el id de las ofertas
+            // y si quiere comprar introducir el id por teclado
+            // instanciar de la clase sale que guarda las compras --> SALE
+            // settear las propiedades de SALE
+            // almacenar la compra (controller)
 
         return true;
+    }
+
+    private boolean buy(){
+        return false;
     }
 }

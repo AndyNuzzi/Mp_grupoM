@@ -3,7 +3,8 @@ package Client;
 public class DeletePossiblePirate extends AdministratorOperation{
     @Override
     public boolean doOperation() {
-        // llamar al metodo del controller?
+        // pasar la lista de pirates
+        // llamar al controlador pasandole el id del del pirate que se quiere eliminar
         return true;
     }
 }
