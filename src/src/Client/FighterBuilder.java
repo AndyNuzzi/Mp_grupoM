@@ -1,5 +1,6 @@
 package Client;
 
+import java.util.Locale;
 import java.util.Scanner;
 
 public class FighterBuilder extends StarshipBuilder {
@@ -67,7 +68,7 @@ public class FighterBuilder extends StarshipBuilder {
 
     public void propulsion(){
 
-        // falta propulsion
+
 
     }
 

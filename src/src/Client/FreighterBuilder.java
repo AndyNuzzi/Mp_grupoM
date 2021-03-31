@@ -1,5 +1,6 @@
 package Client;
 
+import java.util.Locale;
 import java.util.Scanner;
 
 public class FreighterBuilder extends StarshipBuilder{
@@ -41,9 +42,7 @@ public class FreighterBuilder extends StarshipBuilder{
         freighter.setDefense(defense);
     }
 
-    public void propulsion(){
-
-        // falta propulsion
+    public void propulsion() {
 
     }
 
