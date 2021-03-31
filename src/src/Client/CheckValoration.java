@@ -9,12 +9,11 @@ public class CheckValoration extends ClientOperation{
     @Override
     public boolean doOperation() {
         // llamar al controller y que pase las valoraciones nuevas
-
         // y mostrar la valoracion media
 
 
         System.out.println(controller.getAverageValoration());
-
+        // muestra por pantalla la valoración media calculada
 
         return false;
     }

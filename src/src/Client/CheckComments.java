@@ -1,5 +1,7 @@
 package Client;
 
+import java.util.List;
+
 public class CheckComments extends ClientOperation{
     public CheckComments (Client client){
         super ();
@@ -7,12 +9,14 @@ public class CheckComments extends ClientOperation{
     }
 
     public boolean doOperation() {
-        // llamar al controller y que pase los comentarios nuevos
+        // se encarga de mostrar la lista con los comentarios de un cliente
 
-        // recibir una lista de comentarios y mostrarlos en pantalla
+        List<Comment> comments = controller.getCommentsList();
 
-        // pasar los comentarios asociados a un cliente
-
+        for (int i = 0; i < comments.size(); i++){
+            Comment commentInfo = comments.get(i);
+            comments.add(commentInfo);
+        }
         return false;
     }
 }
