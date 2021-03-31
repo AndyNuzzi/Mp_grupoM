@@ -7,7 +7,7 @@ public class Armor extends Defense{
 
 
     public Armor(int resistance, String material, int weigth) {
-        super(resistance);
+        this.resistance = resistance;
         this.material = material;
         this.weigth = weigth;
     }

@@ -14,15 +14,17 @@ public class SpaceStation extends Starship{
         this.passengers = passengers;
     }
 
-    public void addStarShip(List <Starship> starships){
-        this.starships = starships;
+    public void addStarShip(Starship starship){
+        this.starships.add(starship);
     }
 
-    public void addDefense(Defense defense){
+    public boolean addDefense(Defense defense){
         if (checkDefenseNumber()){
             this.defense.add(defense);
+            return true;
         } else {
             System.out.println(" No more Defenses can be added ");
+            return false;
         }
     }
 

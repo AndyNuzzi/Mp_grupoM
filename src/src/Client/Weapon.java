@@ -2,13 +2,7 @@ package Client;
 
 public abstract class Weapon {
 
-    private int power;
-
-    public Weapon (int power){
-        this.power = power;
-    }
-
-
+    protected int power;
 
     public String getName (){
         return this.getClass().getSimpleName();

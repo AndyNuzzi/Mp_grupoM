@@ -17,7 +17,7 @@ public abstract class Starship {
     }
 
     protected void setRegisterNumber(String registerNumber) {
-        // se lo pedimos a la base de datos
+        this.registerNumber = registerNumber;
     }
 
     protected boolean checkRegisterNumber(String registerNumber) {
@@ -36,11 +36,13 @@ public abstract class Starship {
         return propulsion;
     }
 
-    public void addPropulsion(Propulsion propulsion) {
+    public boolean addPropulsion(Propulsion propulsion) {
         if (this.checkPropulsionNumber()){
             this.propulsion.add(propulsion);
+            return true;
         } else {
             System.out.println(" No more Propulsion can be added ");
+            return false;
         }
     }
 

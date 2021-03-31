@@ -1,27 +1,26 @@
 package Client;
 
 public class Director {
-    public Director(){
 
-    }
-    public Starship makeSpaceStation(){
-      SpaceStationBuilder starshipBuilder= new SpaceStationBuilder();
-
-        return starshipBuilder.getResult();
-    }
-    public Starship makeDestroyer(){
-        StarshipBuilder starshipBuilder= new DestroyerBuilder();
-        return starshipBuilder.getResult();
-    }
-    public Starship makeFrieghter(){
-        StarshipBuilder starshipBuilder= new FreighterBuilder();
-        return starshipBuilder.getResult();
-    }
-    public Starship makeFighter(){
-        StarshipBuilder starshipBuilder= new FighterBuilder();
-        return starshipBuilder.getResult();
+    public Starship makeSpaceStation(Client owner) {
+        SpaceStationBuilder starshipBuilder = new SpaceStationBuilder();
+        return starshipBuilder.getResult(owner);
     }
 
+    public Starship makeDestroyer(Client owner) {
+        StarshipBuilder starshipBuilder = new DestroyerBuilder();
+        return starshipBuilder.getResult(owner);
+    }
+
+    public Starship makeFrieghter(Client owner) {
+        StarshipBuilder starshipBuilder = new FreighterBuilder();
+        return starshipBuilder.getResult(owner);
+    }
+
+    public Starship makeFighter(Client owner) {
+        StarshipBuilder starshipBuilder = new FighterBuilder();
+        return starshipBuilder.getResult(owner);
+    }
 
 
 }

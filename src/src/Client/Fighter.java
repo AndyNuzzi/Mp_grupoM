@@ -5,8 +5,6 @@ public class Fighter extends Starship{
    private Weapon weapon2;
    private Defense defense;
 
-   // falta constructor
-
     public Weapon getWeapon1() {
         return weapon1;
     }

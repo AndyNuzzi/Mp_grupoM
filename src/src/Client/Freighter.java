@@ -1,10 +1,8 @@
 package Client;
 
-public class Feighter extends Starship{
+public class Freighter extends Starship{
     private int capacity;
     private Defense defense;
-
-    // falta constructor
 
     public int getCapacity() {
         return capacity;

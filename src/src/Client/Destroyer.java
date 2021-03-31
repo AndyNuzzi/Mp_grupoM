@@ -8,17 +8,17 @@ public class Destroyer extends Starship{
     private List<Weapon> weapon = new ArrayList<Weapon>();
     private List<Defense> defense = new ArrayList<Defense>();
 
-    // falta constructor
-
     public void addWeapon(Weapon weapon){
         this.weapon.add(weapon);
     }
 
-    public void addDefense(Defense defense){
+    public boolean addDefense(Defense defense){
         if (this.checkDefenseNumber()){
             this.defense.add(defense);
+            return true;
         } else {
             System.out.println(" No more Defenses can be added ");
+            return false;
         }
     }
 
