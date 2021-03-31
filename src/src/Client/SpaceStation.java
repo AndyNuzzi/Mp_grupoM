@@ -8,7 +8,7 @@ public class SpaceStation extends Starship{
     private List<Starship> starships = new ArrayList<Starship>();
     private List<Defense> defense = new ArrayList<Defense>();
 
-    // falta constructor
+
 
     public void setPassengers(int passengers) {
         this.passengers = passengers;
