@@ -7,6 +7,8 @@ import java.util.List;
 
 public class FileOperations implements Serializable {
 
+    //Properties
+
     protected String directory;
 
     //Methods
@@ -50,7 +52,7 @@ public class FileOperations implements Serializable {
     }
 
     public boolean writeId(String directory,Identificators id){
-        try{
+        try {
             FileOutputStream outputStream = new FileOutputStream(directory);
             ObjectOutputStream output = new ObjectOutputStream(outputStream);
             output.writeObject(id);

@@ -2,6 +2,7 @@ package Storage;
 
 import Client.*;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -89,6 +90,18 @@ public class DataManageSystemQueries extends DataManageSystem{
             }
         }
         return c;
+    }
+
+    public List<Comment> getComments(String idClient){
+        List<Comment> l = loadComments();
+        List<Comment> output = new ArrayList<Comment>();
+        Iterator <Comment> it = l.iterator();
+        while (it.hasNext()){
+            Comment c = it.next();
+            if (c.getIdSeller().equals(idClient))
+                output.add(c);
+        }
+        return output;
     }
 
     private boolean check(List<String> l, String idNumber) {

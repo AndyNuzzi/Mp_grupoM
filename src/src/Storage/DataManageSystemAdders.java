@@ -100,7 +100,7 @@ public class DataManageSystemAdders extends DataManageSystem {
         return true;
     }
 
-    public boolean addNewComment(String comment){
+    public boolean addNewComment(Comment comment){
         List l = loadComments();
         if (l == null){
             l = new LinkedList<>();

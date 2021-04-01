@@ -44,7 +44,7 @@ public abstract class DataManageSystem {
         return  starshipFile.read(starshipFile.getDirectory());
     }
 
-    protected List<String> loadComments(){
+    protected List<Comment> loadComments(){
         return  commentFile.read(commentFile.getDirectory());
     }
 
