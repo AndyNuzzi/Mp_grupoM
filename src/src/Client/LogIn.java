@@ -11,7 +11,7 @@ public class LogIn extends Access{
         User user = null;
         while (tries < 3 && user == null) {
             String nick = super.askForData(" Introduce your nick ");
-            String password = super.askForData(" Introduce your password");
+            String password = super.askForData(" Introduce your password");;
             user = super.validate(nick, password);
             if (user == null) {
                 System.out.println("Wrong user");

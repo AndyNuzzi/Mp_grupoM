@@ -4,6 +4,9 @@ import java.util.Scanner;
 
 public class LoginManage {
 
+    /**
+     * Muestra el menu de log in
+     */
     private void showLoginMenu() {
         System.out.println("");
         System.out.println(" Welcome ");
@@ -15,12 +18,14 @@ public class LoginManage {
         System.out.println("");
     }
 
+    /**
+     * Gestiona el pedir la opción de log in, y ejecuta el log in elegido
+     */
     public void doOperation() {
         int loginOption;
-        boolean exit = true;
         Access access;
         do {
-            showLoginMenu();
+            this.showLoginMenu();
             Scanner scanner = new Scanner(System.in);
             loginOption = scanner.nextInt();
             switch (loginOption) {
@@ -41,6 +46,5 @@ public class LoginManage {
         }
         while (loginOption != 3);
         System.out.println(" See you soon ");
-
     }
 }
