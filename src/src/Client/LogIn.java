@@ -4,6 +4,10 @@ import java.util.Scanner;
 
 public class LogIn extends Access{
 
+
+    /**
+     * Gestiona el log in en caso de que sea para usuarios ya registrados
+     */
     @Override
     public void doOperation() {
         System.out.println(" Log In: ");
@@ -18,8 +22,8 @@ public class LogIn extends Access{
                 tries += 1;
             }
         }
-        if (tries < 3){
-            System.out.println( " va bien ");
+        if (user != null){
+            System.out.println(" Log in successful ");
             user.doOperation();
         }
     }

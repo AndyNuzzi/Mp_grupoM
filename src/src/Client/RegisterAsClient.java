@@ -49,6 +49,29 @@ public class RegisterAsClient extends Access {
         // le pasamos el cliente para que lo cree
     }
 
+    /**
+     * Se encarga de pedir las dos contraseñas y comprobar que son iguales
+     *
+     * @return
+     */
+    private String askForPassword() {
+        int tries = 0;
+        String password = null;
+        while (tries < 3 && password == null) {
+            String oldPassword = super.askForData(" Introduce your password ");
+            String newPassword = super.askForData(" Introduce your password again ");
+            password = this.verifyPassword(oldPassword, newPassword);
+            if (password == null) {
+                System.out.println(" Wrong password ");
+                tries += 1;
+            }
+        }
+        return password;
+    }
+
+    /**
+     * Gestiona el registro de usuarios nuevos
+     */
     @Override
     public void doOperation() {
         System.out.println(" Register as client ");
@@ -57,23 +80,19 @@ public class RegisterAsClient extends Access {
         String planet = super.askForData(" Introduce your planet").toLowerCase();
         String species = super.askForData("Introduce your species").toLowerCase();
         String idNumber = null;
-        int tries = 0;
         String nick = null;
+        int tries = 0;
         while (tries < 3 && idNumber == null) {
             nick = super.askForData(" Introduce your nick ");
             idNumber = this.validateNick(nick);
-            tries += 1;
-        }
-        if (tries < 3) {
-            tries = 0;
-            String password = null;
-            while (tries < 3 && password == null) {
-                String oldPassword = super.askForData(" Introduce your password ");
-                String newPassword = super.askForData(" Introduce your password again ");
-                password = this.verifyPassword(oldPassword, newPassword);
+            if (idNumber == null) {
+                System.out.println(" Wrong nick ");
                 tries += 1;
             }
-            if (tries < 3) {
+        }
+        if (idNumber != null) {
+            String password = this.askForPassword();
+            if (password != null) {
                 String email = super.askForData(" Introduce your email ");
                 if (species.equals("kromagg")) {
                     boolean license = this.verifyLicense(species);
@@ -82,7 +101,9 @@ public class RegisterAsClient extends Access {
                     client = new Client(name, planet, species, idNumber, nick, password, email);
                 }
                 this.createUser(client);
+                System.out.println(" New User created successfully ");
                 User user = super.validate(nick, password);
+                System.out.println(" Log in successful ");
                 user.doOperation();
             }
         }
