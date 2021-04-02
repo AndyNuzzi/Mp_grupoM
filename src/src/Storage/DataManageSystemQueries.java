@@ -128,5 +128,15 @@ public class DataManageSystemQueries extends DataManageSystem{
         return u;
     }
 
+    public List<Client> loadClients(){
+        return loadClients();
+    }
 
+    public List<String> loadPirates(){
+        return loadPirates();
+    }
+
+    public List<String> loadSwindlers(){
+        return loadSwindler();
+    }
 }

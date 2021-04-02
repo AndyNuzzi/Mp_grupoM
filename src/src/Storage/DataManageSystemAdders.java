@@ -80,22 +80,22 @@ public class DataManageSystemAdders extends DataManageSystem {
         return true;
     }
 
-    public boolean addNewPirate (Client c){
+    public boolean addNewPirate (String s){
         List l = loadPirates();
         if (l==null){
             l = new LinkedList<String>();
         }
-        l.add(c.getIdNumber());
+        l.add(s);
         piratesFile.write(piratesFile.getDirectory(), l);
         return true;
     }
 
-    public boolean addNewSwindler (Client c){
+    public boolean addNewSwindler (String s){
         List l = loadSwindler();
         if (l==null){
             l = new LinkedList<String>();
         }
-        l.add(c.getIdNumber());
+        l.add(s);
         swindlerFile.write(swindlerFile.getDirectory(), l);
         return true;
     }

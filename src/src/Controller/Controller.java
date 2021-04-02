@@ -50,17 +50,14 @@ public class Controller {
         return adders.addNewSale(sale);
     }
 
-        //Crear consulta en queries
     public List<Client> getClientList(){
         return queries.loadClients();
     }
 
-        //Cambiar addNewPirate para string
     public void addPossiblePirate(String id){
         adders.addNewPirate(id);
     }
 
-        //Cambiar addNewSwindler para string
     public void addPossibleSwindler(String id){
         adders.addNewSwindler(id);
     }
