@@ -8,7 +8,7 @@ public class SpaceStationBuilder extends StarshipBuilder {
 
 
     public SpaceStationBuilder() {
-        starship= spaceStation;
+        starship = spaceStation;
 
     }
 
@@ -19,21 +19,75 @@ public class SpaceStationBuilder extends StarshipBuilder {
     }
 
     public void defense() {
-
+        System.out.println(" Select a Defense ");
+        System.out.println(" 1 Shield ");
+        System.out.println(" 2 Armor ");
+        System.out.println("");
+        Scanner scanner = new Scanner(System.in);
+        int defenseOption = scanner.nextInt();
+        Defense defense = null;
+        switch (defenseOption) {
+            case 1:
+                System.out.println(" Introduce the resistance of your Defense ");
+                int resistance = scanner.nextInt();
+                System.out.println(" Introduce the enegy amount of your Defense ");
+                double energyAmount = scanner.nextDouble();
+                defense = new Shield(resistance, energyAmount);
+                break;
+            case 2:
+                System.out.println(" Introduce the resistance of your Defense ");
+                resistance = scanner.nextInt();
+                System.out.println(" Introduce the material ");
+                String material = scanner.nextLine().toLowerCase();
+                System.out.println(" Introduce the weight of your Defense ");
+                int weight = scanner.nextInt();
+                defense = new Armor(resistance, material, weight);
+                break;
+        }
+        spaceStation.addDefense(defense);
     }
 
-    public void starship() {
+
+    public void starship(Client owner) {
+        Scanner sc = new Scanner(System.in);
+        Starship starship = null;
+        int selection;
 
 
+        do {
+            System.out.println("Select a Starship");
+            System.out.println("1.Destroyer");
+            System.out.println("2.Fighter");
+            System.out.println("3.Freighter");
+            System.out.println("4.Exit");
+            selection = sc.nextInt();
+
+            Director director = new Director();
 
 
+            switch (selection) {
+                case 1:
+                    System.out.println("Introducing Destroyer");
+                    spaceStation.addStarShip(director.makeDestroyer(owner));
+
+                case 2:
+                    System.out.println("Introducing Fighter");
+                    spaceStation.addStarShip(director.makeFighter(owner));
+
+                case 3:
+                    System.out.println("Introducing Freighter");
+                    spaceStation.addStarShip(director.makeFrieghter(owner));
+            }
+
+
+        } while (selection != 4);
     }
 
 
-    public  void propulsion(){
+    public void propulsion() {
         Propulsion prop = null;
         Scanner sc = new Scanner(System.in);
-        int name=0;
+        int name = 0;
         do {
             System.out.println(" Select Propulsion");
             System.out.println("1.FTL Engine");
@@ -71,13 +125,10 @@ public class SpaceStationBuilder extends StarshipBuilder {
 
 
             }
-        }while (name!=6);
+        } while (name != 6);
 
         this.spaceStation.addPropulsion(prop);
     }
-
-
-
 
 
     @Override
@@ -89,7 +140,7 @@ public class SpaceStationBuilder extends StarshipBuilder {
         this.propulsion();
 
         this.passengers();
-        this.starship();
+        this.starship(owner);
         this.defense();
 
         return spaceStation;

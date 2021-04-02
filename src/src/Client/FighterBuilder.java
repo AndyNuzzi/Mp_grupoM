@@ -5,15 +5,15 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class FighterBuilder extends StarshipBuilder {
-    Fighter fighter= new Fighter() ;
+    Fighter fighter = new Fighter();
 
     public FighterBuilder() {
-        starship= fighter;
+        starship = fighter;
 
     }
 
 
-    public Weapon weapon(){
+    public Weapon weapon() {
         System.out.println(" Select a Weapon ");
         System.out.println(" 1 PEM ");
         System.out.println(" 2 Laser Beam ");
@@ -25,9 +25,9 @@ public class FighterBuilder extends StarshipBuilder {
         System.out.println(" Introduce the power of the weapon ");
         int power = scanner.nextInt();
         Weapon weapon = null;
-        switch (weaponOption){
+        switch (weaponOption) {
             case 1:
-                weapon = new PEM (power);
+                weapon = new PEM(power);
                 break;
             case 2:
                 weapon = new LaserBeam(power);
@@ -42,7 +42,7 @@ public class FighterBuilder extends StarshipBuilder {
         return weapon;
     }
 
-    public void defense(){
+    public void defense() {
         System.out.println(" Select a Defense ");
         System.out.println(" 1 Shield ");
         System.out.println(" 2 Armor ");
@@ -50,7 +50,7 @@ public class FighterBuilder extends StarshipBuilder {
         Scanner scanner = new Scanner(System.in);
         int defenseOption = scanner.nextInt();
         Defense defense = null;
-        switch (defenseOption){
+        switch (defenseOption) {
             case 1:
                 System.out.println(" Introduce the resistance of your Defense ");
                 int resistance = scanner.nextInt();
@@ -65,15 +65,16 @@ public class FighterBuilder extends StarshipBuilder {
                 String material = scanner.nextLine().toLowerCase();
                 System.out.println(" Introduce the weight of your Defense ");
                 int weight = scanner.nextInt();
-                defense = new Armor (resistance, material, weight);
-                   break;
+                defense = new Armor(resistance, material, weight);
+                break;
         }
         fighter.setDefense(defense);
     }
-    public  void propulsion(){
+
+    public void propulsion() {
         Propulsion prop = null;
         Scanner sc = new Scanner(System.in);
-        int name=0;
+        int name = 0;
         do {
             System.out.println(" Select Propulsion");
             System.out.println("1.FTL Engine");
@@ -111,9 +112,9 @@ public class FighterBuilder extends StarshipBuilder {
 
 
             }
-        }while (name!=6);
+        } while (name != 6);
 
-      fighter.addPropulsion(prop);
+        fighter.addPropulsion(prop);
     }
 
 

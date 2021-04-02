@@ -9,8 +9,35 @@ public abstract class StarshipBuilder {
 
 
     protected String registerNumber(){
-        // le pedimos el registerNumber a la base de datos
-        return null;
+        Scanner sc = new Scanner(System.in);
+        boolean validate= false;
+        boolean format = false;
+        int range=0;
+        String number = null;
+        String pattern = "[A-Z]{1}[0-9]{4}[A-Z]{3}";
+        
+        while (!validate && !format){
+            System.out.println("Insert register Number");
+             number = sc.next();
+
+            if(range!=number.length()){
+                System.out.println("Length doesn't match");
+                format= false;
+
+            }else if(number.matches(pattern)){
+                format= true;
+                validate= true;
+                System.out.println("Validating Number");
+            }else if(!number.matches(pattern)){
+                format= false;
+                validate=false;
+                System.out.println("Format Error");
+            }
+            //validar numero con metodo que me tienen que pasar
+
+
+        }
+       return number;
     }
 
     protected int crew(){
