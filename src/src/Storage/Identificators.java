@@ -9,7 +9,6 @@ public class Identificators  implements Serializable {
 
     //Methods
 
-
     public String getId(int i){
         // Si i = 0, devuelve el identificador para el siguiente cliente
         // Si i = 1, devuelve el identificador para el siguiente administrador
