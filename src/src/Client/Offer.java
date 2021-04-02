@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 import Controller.*;
 
+
 public class Offer {
 
     private List<String> starshipIdList;

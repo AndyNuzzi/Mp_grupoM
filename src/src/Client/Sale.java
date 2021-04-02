@@ -3,6 +3,7 @@ package Client;
 import java.util.Date;
 import Controller.*;
 
+
 public class Sale {
 
     private Date date;
