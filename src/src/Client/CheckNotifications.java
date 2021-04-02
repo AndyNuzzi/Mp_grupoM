@@ -9,6 +9,7 @@ public class CheckNotifications extends ClientOperation{
     }
 
     @Override
+    // VER QUE ES UNA NOTIFICACION
     public boolean doOperation() {
         // muestra todas las notificaciones de un cliente
 

@@ -25,8 +25,8 @@ public class DeletePossiblePirate extends AdministratorOperation{
             String deleteConfirm = scanner.nextLine();
             if (deleteConfirm == "y") {
                 System.out.println("Introduce Pirate id:");
-                String idSwindler = scanner.nextLine();
-                controller.deletePossbilePirate(idSwindler);
+                String idPirate = scanner.nextLine();
+                controller.deletePossbilePirate(idPirate);
                 // llamar al controlador pasandole el id del pirata que se quiere eliminar
             }
             System.out.println("Do you want to continue deleting? y/n");

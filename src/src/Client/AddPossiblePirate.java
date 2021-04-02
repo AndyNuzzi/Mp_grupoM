@@ -24,8 +24,8 @@ public class AddPossiblePirate extends AdministratorOperation{
             String addConfirm = scanner.nextLine();
             if (addConfirm == "y") {
                 System.out.println("Introduce Pirate id:");
-                String idSwindler = scanner.nextLine();
-                controller.addPossbilePirate(idSwindler);
+                String idPirate= scanner.nextLine();
+                controller.addPossbilePirate(idPirate);
                 // llamar al controlador pasandole el id del pirata que se quiere añadir
             }
             System.out.println("Do you want to continue adding? y/n");

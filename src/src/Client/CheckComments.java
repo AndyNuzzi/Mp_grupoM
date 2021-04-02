@@ -8,6 +8,7 @@ public class CheckComments extends ClientOperation{
         // me traigo los datos del cliente
     }
 
+    @Override
     public boolean doOperation() {
         // se encarga de mostrar la lista con los comentarios de un cliente
 

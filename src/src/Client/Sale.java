@@ -1,9 +1,10 @@
 package Client;
 
+import java.io.Serializable;
 import java.util.Date;
 import Controller.*;
 
-public class Sale {
+public class Sale implements Serializable {
 
     private Date date;
     private Client seller;
@@ -42,7 +43,7 @@ public class Sale {
         this.cost = cost;
     }
 
-    public boolean buy(){
-        return storeBuy();
+    public Sale buy(){
+        return this;
     }
 }

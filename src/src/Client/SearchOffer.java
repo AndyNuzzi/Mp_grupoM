@@ -24,7 +24,8 @@ public class SearchOffer extends ClientOperation{
         return true;
     }
 
-    private boolean buy(){
+    private boolean buy(Sale sale){
+        controller.storeSale(sale.buy());
         return false;
     }
 }
