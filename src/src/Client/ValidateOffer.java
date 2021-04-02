@@ -1,4 +1,4 @@
 package Client;
 
-public class ValidateOffer {
+public class ValidateOffer extends AdministratorOperation{
 }

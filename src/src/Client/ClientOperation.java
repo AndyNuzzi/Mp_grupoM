@@ -1,7 +1,8 @@
 package Client;
 
-import Controller.Controller;
+import Controller.*;
 
-public class ClientOperation {
-
+public abstract class ClientOperation {
+    protected Controller controller;
+    // intanciar el controller
 }

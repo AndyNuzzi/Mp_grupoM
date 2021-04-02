@@ -1,5 +1,6 @@
 package Client;
 
+import java.util.Locale;
 import java.util.Scanner;
 
 public class LogIn extends Access{
@@ -22,9 +23,13 @@ public class LogIn extends Access{
                 tries += 1;
             }
         }
-        if (user != null){
-            System.out.println(" Log in successful ");
-            user.doOperation();
+        System.out.println(" Log in successful ");
+        if (user.getClass().getSimpleName().equals("Client")){
+            Client client = (Client) user;
+            client.doOperation();
+        } else {
+            Administrator administrator = (Administrator) user;
+            administrator.doOperation();
         }
     }
 

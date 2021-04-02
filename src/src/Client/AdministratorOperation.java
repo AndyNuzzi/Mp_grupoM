@@ -2,6 +2,6 @@ package Client;
 
 import Controller.Controller;
 
-public class AdministratorOperation {
+public abstract class AdministratorOperation {
 
 }

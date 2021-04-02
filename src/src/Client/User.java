@@ -1,6 +1,8 @@
 package Client;
 
 import java.io.Serializable;
+import java.util.LinkedList;
+import java.util.List;
 
 public abstract class User implements Serializable {
 
@@ -11,6 +13,8 @@ public abstract class User implements Serializable {
     protected String nick;
     protected String password;
     protected String email;
+
+    private List<Operation> operations = new LinkedList<Operation>();
 
     // mirar comparator
     // ya hecha serializable
@@ -25,13 +29,11 @@ public abstract class User implements Serializable {
         this.email = email;
     }
 
-    public abstract void setOption();
+    public abstract void doOperation();
 
-    public void doOperation() {
+    public void getOperation() {
         // ahora vaciamos la lista
     }
-
-    // crear clase operation
 
 
 }

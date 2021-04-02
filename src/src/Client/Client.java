@@ -12,18 +12,24 @@ public class Client extends User{
     // preguntar de donde es el import si de sql o de java util
     private Date banned;
     private boolean warning;
-    private List <ClientOperation> operations = new LinkedList<ClientOperation>();
 
     public Client(String name, String planet, String species, String idNumber, String nick, String password, String email) {
         super(name, planet, species, idNumber, nick, password, email);
     }
 
     @Override
-    public void setOption() {
-        // suponemos que tenemos en la clase User List <Operations>
-        // creamos todas las operaciones
-        // y las añadimos
-    }
+    public void doOperation() {
+        ClientOperation op1 = new CreateOffer();
+        ClientOperation op2 = new SearchOffer();
+        ClientOperation op3 = new Subscribe();
+        ClientOperation op4 = new CheckNotifications();
+        ClientOperation op5 = new CheckComments();
+        ClientOperation op6 = new CheckValoration();
 
+
+        super.getOperation();
+
+
+    }
 
 }
