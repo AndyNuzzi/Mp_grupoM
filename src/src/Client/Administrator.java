@@ -17,10 +17,13 @@ public class Administrator extends User{
         AdministratorOperation op4 = new AddPossibleSwindler();
         AdministratorOperation op5 = new DeletePossibleSwindler();
         AdministratorOperation op6 = new AddPossiblePirate();
-
+        super.operations.add(op1);
+        super.operations.add(op2);
+        super.operations.add(op3);
+        super.operations.add(op4);
+        super.operations.add(op5);
+        super.operations.add(op6);
         super.getOperation();
-
-
     }
 
 }

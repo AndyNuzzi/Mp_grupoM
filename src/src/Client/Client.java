@@ -25,11 +25,13 @@ public class Client extends User{
         ClientOperation op4 = new CheckNotifications();
         ClientOperation op5 = new CheckComments();
         ClientOperation op6 = new CheckValoration();
-
-
+        super.operations.add(op1);
+        super.operations.add(op2);
+        super.operations.add(op3);
+        super.operations.add(op4);
+        super.operations.add(op5);
+        super.operations.add(op6);
         super.getOperation();
-
-
     }
 
 }

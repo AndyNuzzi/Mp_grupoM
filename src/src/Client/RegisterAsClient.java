@@ -104,9 +104,6 @@ public class RegisterAsClient extends Access {
                 System.out.println(" New User created successfully ");
                 User user = super.validate(nick, password);
                 System.out.println(" Log in successful ");
-
-                // Si en user haces esto, this.getClass().getSimpleName() Client???
-
                 if (user.getClass().getSimpleName().equals("Client")){
                     client = (Client) user;
                     client.doOperation();
