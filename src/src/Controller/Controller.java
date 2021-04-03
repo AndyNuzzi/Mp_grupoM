@@ -18,12 +18,9 @@ public class Controller {
         return queries.openSession(nick, password);
     }
 
-        //Modificar identificators, idFile y validate nick
-            public String validateNick(String nick){
-        if (queries.validateNick(nick)){
+    public String validateNick(String nick){
+        if (!queries.validateNick(nick)){
             String output = identificators.getId(0);
-            IdentificatorsFile id = new IdentificatorsFile();
-            id.writeId(id.getDirectory(),identificators);
             return output;
         }
         return null;
@@ -37,9 +34,8 @@ public class Controller {
         adders.addNewStarship(s);
     }
 
-        //Crear consulta
-            public boolean validateRegisterNumber(String s){
-        return true;//Crear metodo de comprobacion;
+    public boolean validateRegisterNumber(String s){
+        return queries.checkRegisterNumber(s);
     }
 
     public boolean addToUncheckedOffers(Offer offer){
@@ -51,7 +47,7 @@ public class Controller {
     }
 
     public List<Client> getClientList(){
-        return queries.loadClients();
+        return queries.loadClientsFile();
     }
 
     public void addPossiblePirate(String id){
@@ -63,7 +59,7 @@ public class Controller {
     }
 
     public List<String> getPirateList(){
-        return queries.loadPirates();
+        return queries.loadPiratesFile();
     }
 
     public void deletePossiblePirate(String id){
@@ -80,10 +76,10 @@ public class Controller {
 
 
         //No terminadas
-            public void addSubscription(String ){
+        /*    public void addSubscription(String s){
                 actualization.clientActualization(c);
             }
             public List<Comment> getCommentsList(){}
             public String getNotificationsList(){}
-            public float getAverageValoration(){}
+            public float getAverageValoration(){}*/
 }

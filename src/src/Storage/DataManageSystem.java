@@ -24,35 +24,35 @@ public abstract class DataManageSystem {
 
     //load methods
 
-    protected List loadClients(){
+    protected List loadClientsFile(){
         return  clientFile.read(clientFile.getDirectory());
     }
 
-    protected List loadOffers(){
+    protected List loadOffersFile(){
         return  offerFile.read(offerFile.getDirectory());
     }
 
-    protected List loadSales(){
+    protected List loadSalesFile(){
         return  saleFile.read(saleFile.getDirectory());
     }
 
-    protected List loadAdministrators(){
+    protected List loadAdministratorsFile(){
         return  administratorFile.read(administratorFile.getDirectory());
     }
 
-    protected List loadStarships(){
+    protected List loadStarshipsFile(){
         return  starshipFile.read(starshipFile.getDirectory());
     }
 
-    protected List<Comment> loadComments(){
+    protected List<Comment> loadCommentsFile(){
         return  commentFile.read(commentFile.getDirectory());
     }
 
-    protected List<String> loadPirates(){
+    protected List<String> loadPiratesFile(){
         return  piratesFile.read(piratesFile.getDirectory());
     }
 
-    protected List<String> loadSwindler(){
+    protected List<String> loadSwindlerFile(){
         return  swindlerFile.read(swindlerFile.getDirectory());
     }
 

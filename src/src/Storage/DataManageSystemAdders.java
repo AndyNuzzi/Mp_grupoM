@@ -32,7 +32,7 @@ public class DataManageSystemAdders extends DataManageSystem {
     //Methods
 
     public boolean addNewClient(Client c){
-        List l = loadClients();
+        List l = loadClientsFile();
         if (l == null)
             l = new LinkedList<Client>();
         l.add(c);
@@ -41,7 +41,7 @@ public class DataManageSystemAdders extends DataManageSystem {
     }
 
     public boolean addNewAdministrator(Administrator administrator){
-        List l = loadAdministrators();
+        List l = loadAdministratorsFile();
         if (l == null){
             l = new LinkedList<Administrator>();
         }
@@ -51,7 +51,7 @@ public class DataManageSystemAdders extends DataManageSystem {
     }
 
     public boolean addNewStarship(Starship starship){
-        List l = loadStarships();
+        List l = loadStarshipsFile();
         if (l==null){
             l = new LinkedList<Starship>();
         }
@@ -61,7 +61,7 @@ public class DataManageSystemAdders extends DataManageSystem {
     }
 
     public boolean addNewOffer(Offer offer){
-        List l = loadOffers();
+        List l = loadOffersFile();
         if (l==null){
             l = new LinkedList<Offer>();
         }
@@ -71,7 +71,7 @@ public class DataManageSystemAdders extends DataManageSystem {
     }
 
     public boolean addNewSale (Sale sale){
-        List l = loadSales();
+        List l = loadSalesFile();
         if (l==null){
             l = new LinkedList<Sale>();
         }
@@ -81,7 +81,7 @@ public class DataManageSystemAdders extends DataManageSystem {
     }
 
     public boolean addNewPirate (String s){
-        List l = loadPirates();
+        List l = loadPiratesFile();
         if (l==null){
             l = new LinkedList<String>();
         }
@@ -91,7 +91,7 @@ public class DataManageSystemAdders extends DataManageSystem {
     }
 
     public boolean addNewSwindler (String s){
-        List l = loadSwindler();
+        List l = loadSwindlerFile();
         if (l==null){
             l = new LinkedList<String>();
         }
@@ -101,7 +101,7 @@ public class DataManageSystemAdders extends DataManageSystem {
     }
 
     public boolean addNewComment(Comment comment){
-        List l = loadComments();
+        List l = loadCommentsFile();
         if (l == null){
             l = new LinkedList<>();
         }

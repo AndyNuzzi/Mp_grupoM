@@ -31,7 +31,7 @@ public class DataManageSystemDelete extends DataManageSystem{
 
     //Methods
     public boolean deleteOffer(Offer offer){
-        List l = loadOffers();
+        List l = loadOffersFile();
         Iterator <Offer> it = l.iterator();
         boolean found = false;
         while (it.hasNext()&&!found){
@@ -67,14 +67,14 @@ public class DataManageSystemDelete extends DataManageSystem{
     }
 
     public boolean deletePirate(String id){
-        List l = loadPirates();
+        List l = loadPiratesFile();
         l.remove(id);
         piratesFile.write(piratesFile.getDirectory(), l);
         return true;
     }
 
     public boolean deleteSwindler(String id){
-        List l = loadSwindler();
+        List l = loadSwindlerFile();
         l.remove(id);
         swindlerFile.write(swindlerFile.getDirectory(), l);
         return true;

@@ -27,6 +27,8 @@ public class Identificators  implements Serializable {
             break;
         }
         id[i] = c + Long.toString(Long.parseLong(id[i].substring(1,id[i].length())) + 1);
+        IdentificatorsFile idFile = new IdentificatorsFile();
+        idFile.writeId(idFile.getDirectory(), this);
         return result;
     }
 }

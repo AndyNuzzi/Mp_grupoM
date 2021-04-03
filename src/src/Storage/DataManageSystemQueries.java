@@ -34,26 +34,21 @@ public class DataManageSystemQueries extends DataManageSystem{
 
 
     //Methods
-    public String validateNick(String nick){
+    public boolean validateNick(String nick){
         //Checks if nick is used and provides de Id for the new client.
-        List<Client> l = loadClients();
+        List<Client> l = loadClientsFile();
         Iterator<Client> it = l.iterator();
         boolean chosen = false;
         String id ="";
         while (it.hasNext()&&!chosen){
             Client c = it.next();
-            id = c.getIdNumber();
             chosen = nick.equals(c.getNick());
         }
-        if (!chosen){
-            int i = Integer.parseInt(id) + 1;
-            return Integer.toString(i);
-        }
-        return null;
+        return chosen;
     }
 
     public List<Offer> searchOffers (String offerType){
-        List l = loadOffers();
+        List l = loadOffersFile();
         List <Offer> sol = new LinkedList<>();
         for (Object obj: l){
             Offer o = (Offer) obj;
@@ -65,21 +60,21 @@ public class DataManageSystemQueries extends DataManageSystem{
     }
 
     public User openSession(String nick, String password){
-        List clientList = loadClients();
+        List clientList = loadClientsFile();
         User c = search(clientList, nick, password);
         if (c==null){
-            List administratorList = loadAdministrators();
+            List administratorList = loadAdministratorsFile();
             c = search(administratorList, nick, password);
         }
         else{
-            List swindlerList = loadSwindler();
+            List swindlerList = loadSwindlerFile();
             boolean swindler = false;
             if (swindlerList != null){
                 swindler = check(swindlerList, c.getIdNumber());
                 if (swindler)
                     return null;
             }
-            List piratesList = loadPirates();
+            List piratesList = loadPiratesFile();
             boolean pirate = false;
             if (piratesList != null){
                 pirate = check(piratesList, c.getIdNumber());
@@ -93,7 +88,7 @@ public class DataManageSystemQueries extends DataManageSystem{
     }
 
     public List<Comment> getComments(String idClient){
-        List<Comment> l = loadComments();
+        List<Comment> l = loadCommentsFile();
         List<Comment> output = new ArrayList<Comment>();
         Iterator <Comment> it = l.iterator();
         while (it.hasNext()){
@@ -128,15 +123,27 @@ public class DataManageSystemQueries extends DataManageSystem{
         return u;
     }
 
-    public List<Client> loadClients(){
-        return loadClients();
+    public List<Client> loadClientsFile(){
+        return loadClientsFile();
     }
 
-    public List<String> loadPirates(){
-        return loadPirates();
+    public List<String> loadPiratesFile(){
+        return loadPiratesFile();
     }
 
     public List<String> loadSwindlers(){
-        return loadSwindler();
+        return loadSwindlerFile();
+    }
+
+    public boolean checkRegisterNumber(String id){
+        List<Starship> l = loadStarshipsFile();
+        Iterator<Starship> it = l.iterator();
+        boolean found = false;
+        while(it.hasNext()&&!found){
+            Starship starship = it.next();
+            if (starship.getRegisterNumber().equals(id))
+                found = true;
+        }
+        return true;
     }
 }

@@ -10,7 +10,7 @@ public abstract class Starship implements Serializable {
     protected int crew;
 
 
-    protected String getRegisterNumber(){
+    public String getRegisterNumber(){
         return this.registerNumber;
     }
 

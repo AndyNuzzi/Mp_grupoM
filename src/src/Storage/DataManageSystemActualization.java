@@ -33,7 +33,7 @@ public class DataManageSystemActualization extends DataManageSystem{
     public boolean clientActualization(Client c){
         //Actualiza los datos del cliente. Devuelve true si se ha actualizado.
         //Devuelve false si no se ha podido realizar la operacion
-        List l = loadClients();
+        List l = loadClientsFile();
         Iterator<Client> it = l.iterator();
         boolean found = false;
         while (it.hasNext()&&!found){
