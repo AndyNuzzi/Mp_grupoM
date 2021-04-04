@@ -6,12 +6,13 @@ import Storage.*;
 import java.util.List;
 
 public class Controller {
+
     //Properties
-    private DataManageSystemAdders adders;
-    private DataManageSystemQueries queries;
-    private DataManageSystemDelete delete;
-    private DataManageSystemActualization actualization;
-    private Identificators identificators;
+    private DataManageSystemAdders adders = DataManageSystemAdders.getInstance();
+    private DataManageSystemQueries queries = DataManageSystemQueries.getInstance();
+    private DataManageSystemDelete delete = DataManageSystemDelete.getInstance();
+    private DataManageSystemActualization actualization = DataManageSystemActualization.getInstance();
+    private Identificators identificators = new Identificators();
 
     //Methods
     public User validate(String nick, String password){
@@ -47,7 +48,7 @@ public class Controller {
     }
 
     public List<Client> getClientList(){
-        return queries.loadClientsFile();
+        return queries.loadClients();
     }
 
     public void addPossiblePirate(String id){
@@ -59,7 +60,7 @@ public class Controller {
     }
 
     public List<String> getPirateList(){
-        return queries.loadPiratesFile();
+        return queries.loadPirates();
     }
 
     public void deletePossiblePirate(String id){
@@ -74,12 +75,20 @@ public class Controller {
         delete.deleteSwindler(id);
     }
 
+    public List<Comment> getCommentsList(String id){
+        return queries.getComments(id);
+    }
+
+    public float getAverageValoration(String id){
+        return queries.getValoration(id);
+    }
 
         //No terminadas
         /*    public void addSubscription(String s){
                 actualization.clientActualization(c);
             }
-            public List<Comment> getCommentsList(){}
-            public String getNotificationsList(){}
-            public float getAverageValoration(){}*/
+            public String getNotificationsList(){}*/
+
+
+
 }

@@ -99,6 +99,17 @@ public class DataManageSystemQueries extends DataManageSystem{
         return output;
     }
 
+    public float getValoration(String id){
+        List<Comment> commentList = getComments(id);
+        int val = 0;
+        int i = 0;
+        for (Comment c: commentList){
+            val += c.getValoration();
+            i++;
+        }
+        return val/i;
+    }
+
     private boolean check(List<String> l, String idNumber) {
         Iterator<String> it = l.iterator();
         boolean found = false;
@@ -123,11 +134,11 @@ public class DataManageSystemQueries extends DataManageSystem{
         return u;
     }
 
-    public List<Client> loadClientsFile(){
+    public List<Client> loadClients(){
         return loadClientsFile();
     }
 
-    public List<String> loadPiratesFile(){
+    public List<String> loadPirates(){
         return loadPiratesFile();
     }
 
