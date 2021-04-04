@@ -157,4 +157,24 @@ public class DataManageSystemQueries extends DataManageSystem{
         }
         return true;
     }
+
+    public List<Offer> loadUncheckedOffers(){
+        return loadUncheckedOfferFile();
+    }
+
+    public Client getClient(String id) {
+        List clientList = loadClientsFile();
+        return search(clientList, id);
+    }
+
+    private Client search(List clientList, String id) {
+        Iterator<User> it = clientList.iterator();
+        boolean found = false;
+        Client c = null;
+        while (it.hasNext()&&!found){
+            c = (Client) it.next();
+            found = c.getIdNumber().equals(id);
+        }
+        return c;
+    }
 }

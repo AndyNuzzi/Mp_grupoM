@@ -19,10 +19,8 @@ public abstract class DataManageSystem {
     protected SwindlerFile swindlerFile;
     protected UncheckedOffersFile uncheckedOffersFile;
 
-    //methods
 
-
-    //load methods
+    //Methods
 
     protected List loadClientsFile(){
         return  clientFile.read(clientFile.getDirectory());
@@ -59,25 +57,5 @@ public abstract class DataManageSystem {
     protected List loadUncheckedOfferFile(){
         return  uncheckedOffersFile.read(uncheckedOffersFile.getDirectory());
     }
-
-
-    //private functionality
-
-    private boolean compareTypes(Offer o, String offerType) {
-        //Pensar en implementar como son las ofertas por dentro para indicar tipos de nave
-        return true;//o.getTypes()==offerType;
-    }
-
-    private boolean controlUsers(User c, List l){
-        Iterator <User> it = l.iterator();
-        boolean found = false;
-        while (it.hasNext()&&!found){
-            User u = it.next();
-            found = (u.getNick().equals(c.getNick())) && (u.getIdNumber().equals(c.getIdNumber()));
-            //Comparator
-        }
-        return found;
-    }
-
 
 }

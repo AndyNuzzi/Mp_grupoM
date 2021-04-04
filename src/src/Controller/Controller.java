@@ -43,12 +43,24 @@ public class Controller {
         return adders.addNewUncheckedOffer(offer);
     }
 
+    public boolean deleteFromUncheckedOffers(Offer offer){
+        return delete.deleteUncheckedOffer(offer);
+    }
+
+    public boolean addOffer(Offer offer){
+        return adders.addNewOffer(offer);
+    }
+
     public boolean storeSale(Sale sale){
         return adders.addNewSale(sale);
     }
 
     public List<Client> getClientList(){
         return queries.loadClients();
+    }
+
+    public Client getClient(String id){
+        return queries.getClient(id);
     }
 
     public void addPossiblePirate(String id){
@@ -83,6 +95,13 @@ public class Controller {
         return queries.getValoration(id);
     }
 
+    public List<Offer> getUncheckedOffersList(){
+        return queries.loadUncheckedOffers();
+    }
+
+    public boolean createNewAdministrator(Administrator admin){
+        return adders.addNewAdministrator(admin);
+    }
         //No terminadas
         /*    public void addSubscription(String s){
                 actualization.clientActualization(c);

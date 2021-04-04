@@ -2,6 +2,7 @@ package Storage;
 
 import Client.*;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -9,6 +10,7 @@ public class DataManageSystemAdders extends DataManageSystem {
 
     //Properties
     private static DataManageSystemAdders dataManageSystem;
+
 
     //Singleton
     private DataManageSystemAdders(){
@@ -28,6 +30,7 @@ public class DataManageSystemAdders extends DataManageSystem {
             dataManageSystem = new DataManageSystemAdders();
         return dataManageSystem;
     }
+
 
     //Methods
 
@@ -84,19 +87,37 @@ public class DataManageSystemAdders extends DataManageSystem {
         List l = loadPiratesFile();
         if (l==null){
             l = new LinkedList<String>();
+            l.add(s);
+            piratesFile.write(piratesFile.getDirectory(), l);
         }
-        l.add(s);
-        piratesFile.write(piratesFile.getDirectory(), l);
+        else if (!contains(l, s)) {
+            l.add(s);
+            piratesFile.write(piratesFile.getDirectory(), l);
+        }
         return true;
+    }
+
+    private boolean contains(List l, String s) {
+        Iterator<String> it = l.iterator();
+        boolean found = false;
+        while (!found&&it.hasNext()){
+            String c = it.next();
+            found = c.equals(s);
+        }
+        return found;
     }
 
     public boolean addNewSwindler (String s){
         List l = loadSwindlerFile();
         if (l==null){
             l = new LinkedList<String>();
+            l.add(s);
+            swindlerFile.write(swindlerFile.getDirectory(), l);
         }
-        l.add(s);
-        swindlerFile.write(swindlerFile.getDirectory(), l);
+        else if (!contains(l, s)) {
+            l.add(s);
+            swindlerFile.write(swindlerFile.getDirectory(), l);
+        }
         return true;
     }
 

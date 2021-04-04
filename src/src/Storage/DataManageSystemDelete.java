@@ -10,6 +10,7 @@ public class DataManageSystemDelete extends DataManageSystem{
     //Properties
     private static DataManageSystemDelete dataManageSystem;
 
+
     //Singleton
     private DataManageSystemDelete(){
         clientFile = ClientFile.getInstance();
@@ -28,6 +29,7 @@ public class DataManageSystemDelete extends DataManageSystem{
             dataManageSystem = new DataManageSystemDelete();
         return dataManageSystem;
     }
+
 
     //Methods
     public boolean deleteOffer(Offer offer){

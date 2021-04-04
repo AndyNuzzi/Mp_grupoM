@@ -10,6 +10,7 @@ public class DataManageSystemActualization extends DataManageSystem{
     //Properties
     private static DataManageSystemActualization dataManageSystem;
 
+
     //Singleton
     private DataManageSystemActualization(){
         clientFile = ClientFile.getInstance();
@@ -28,6 +29,7 @@ public class DataManageSystemActualization extends DataManageSystem{
             dataManageSystem = new DataManageSystemActualization();
         return dataManageSystem;
     }
+
 
     //Methods
     public boolean clientActualization(Client c){
