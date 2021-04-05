@@ -1,4 +1,7 @@
 package Client;
 
-public class AdministratorOperation {
+import Controller.Controller;
+
+public abstract class AdministratorOperation implements Operation{
+
 }
