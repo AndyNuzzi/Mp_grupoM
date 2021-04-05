@@ -2,11 +2,8 @@ package Client;
 
 public abstract class Propulsion {
 
-    private double speed;
+    protected double speed;
 
-    public Propulsion(double speed){
-        this.speed = speed;
-    }
 
     public String getName (){
         return this.getClass().getSimpleName();

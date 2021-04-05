@@ -1,8 +1,9 @@
 package Client;
 
 import java.util.*;
+import java.io.Serializable;
 
-public class Client extends User{
+public class Client extends User implements Serializable{
 
     private List<Offer> onSale = new ArrayList<Offer>();
     private boolean pirate;
@@ -15,6 +16,13 @@ public class Client extends User{
 
     public Client(String name, String planet, String species, String idNumber, String nick, String password, String email) {
         super(name, planet, species, idNumber, nick, password, email);
+
+    public void setPirate(boolean pirate) {
+        this.pirate = pirate;
+    }
+
+    public boolean getPirate() {
+        return pirate;
     }
 
     @Override

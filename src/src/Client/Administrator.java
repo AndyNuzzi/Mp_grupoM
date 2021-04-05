@@ -2,8 +2,9 @@ package Client;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.io.Serializable;
 
-public class Administrator extends User{
+public class Administrator extends User implements Serializable{
 
     public Administrator(String name, String planet, String species, String idNumber, String nick, String password, String email) {
         super(name, planet, species, idNumber, nick, password, email);

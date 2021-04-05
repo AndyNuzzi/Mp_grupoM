@@ -1,6 +1,8 @@
 package Client;
 
-public abstract class Weapon {
+import java.io.Serializable;
+
+public abstract class Weapon implements Serializable {
 
     private int power;
 

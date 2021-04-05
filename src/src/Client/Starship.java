@@ -1,14 +1,16 @@
 package Client;
 
-public abstract class Starship {
+import java.io.Serializable;
+
+public abstract class Starship implements Serializable {
 
     protected String registerNumber;
-    protected Client owner;
+    protected String owner;
     protected Propulsion[] propulsion = new Propulsion [2];
     protected int crew;
 
 
-    protected String getRegisterNumber(){
+    public String getRegisterNumber(){
         return this.registerNumber;
     }
 
@@ -16,8 +18,13 @@ public abstract class Starship {
         this.registerNumber = registerNumber;
     }
 
-
-    // Falta seguir con esta clase
+    public Starship(String registerNumber, String owner, Propulsion[] propulsion, int crew) {
+        this.registerNumber = registerNumber;
+        this.owner = owner;
+        this.propulsion = propulsion;
+        this.crew = crew;
+    }
+// Falta seguir con esta clase
 
 
 }
