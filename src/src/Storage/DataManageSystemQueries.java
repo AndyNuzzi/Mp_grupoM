@@ -44,6 +44,14 @@ public class DataManageSystemQueries extends DataManageSystem{
             Client c = it.next();
             chosen = nick.equals(c.getNick());
         }
+        if (!chosen){
+            List<Administrator> lAdm = loadAdministratorsFile();
+            Iterator<Administrator> itAd = lAdm.iterator();
+            while (itAd.hasNext()&&!chosen){
+                Administrator admin = itAd.next();
+                chosen = nick.equals(admin.getNick());
+            }
+        }
         return chosen;
     }
 
@@ -59,7 +67,6 @@ public class DataManageSystemQueries extends DataManageSystem{
         return sol;
     }
 
-    //Falta controlar que nick no sea igual al de un admin
     public User openSession(String nick, String password){
         //Opens a session of a User
         List clientList = loadClientsFile();
