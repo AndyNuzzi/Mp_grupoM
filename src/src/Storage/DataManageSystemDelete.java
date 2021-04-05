@@ -33,6 +33,7 @@ public class DataManageSystemDelete extends DataManageSystem{
 
     //Methods
     public boolean deleteOffer(Offer offer){
+        //Deletes an offer from offers' file
         List l = loadOffersFile();
         Iterator <Offer> it = l.iterator();
         boolean found = false;
@@ -51,6 +52,7 @@ public class DataManageSystemDelete extends DataManageSystem{
     }
 
     public boolean deleteUncheckedOffer(Offer offer){
+        //Deletes an offer from unchecked offers' file
         List l= loadUncheckedOfferFile();
         Iterator<Offer> it = l.iterator();
         boolean found = false;
@@ -69,6 +71,7 @@ public class DataManageSystemDelete extends DataManageSystem{
     }
 
     public boolean deletePirate(String id){
+        //Deletes a pirate from pirates' file
         List l = loadPiratesFile();
         l.remove(id);
         piratesFile.write(piratesFile.getDirectory(), l);
@@ -76,6 +79,7 @@ public class DataManageSystemDelete extends DataManageSystem{
     }
 
     public boolean deleteSwindler(String id){
+        //Deletes a  swindler from swindlers' file
         List l = loadSwindlerFile();
         l.remove(id);
         swindlerFile.write(swindlerFile.getDirectory(), l);

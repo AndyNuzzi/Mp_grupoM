@@ -35,6 +35,7 @@ public class DataManageSystemAdders extends DataManageSystem {
     //Methods
 
     public boolean addNewClient(Client c){
+        //Adds a client in clients' file
         List l = loadClientsFile();
         if (l == null)
             l = new LinkedList<Client>();
@@ -44,6 +45,7 @@ public class DataManageSystemAdders extends DataManageSystem {
     }
 
     public boolean addNewAdministrator(Administrator administrator){
+        //Adds an administrator in administrators' file
         List l = loadAdministratorsFile();
         if (l == null){
             l = new LinkedList<Administrator>();
@@ -54,6 +56,7 @@ public class DataManageSystemAdders extends DataManageSystem {
     }
 
     public boolean addNewStarship(Starship starship){
+        //Adds a Starship in satrships' file
         List l = loadStarshipsFile();
         if (l==null){
             l = new LinkedList<Starship>();
@@ -64,6 +67,7 @@ public class DataManageSystemAdders extends DataManageSystem {
     }
 
     public boolean addNewOffer(Offer offer){
+        //Adds an offer in offers' file
         List l = loadOffersFile();
         if (l==null){
             l = new LinkedList<Offer>();
@@ -74,6 +78,7 @@ public class DataManageSystemAdders extends DataManageSystem {
     }
 
     public boolean addNewSale (Sale sale){
+        //Adds a sale in sales' file
         List l = loadSalesFile();
         if (l==null){
             l = new LinkedList<Sale>();
@@ -84,6 +89,7 @@ public class DataManageSystemAdders extends DataManageSystem {
     }
 
     public boolean addNewPirate (String s){
+        //Adds a pirate in pirates' file
         List l = loadPiratesFile();
         if (l==null){
             l = new LinkedList<String>();
@@ -97,7 +103,8 @@ public class DataManageSystemAdders extends DataManageSystem {
         return true;
     }
 
-    private boolean contains(List l, String s) {
+    private boolean contains(List<String> l, String s) {
+        //Checks if a string is in the list given
         Iterator<String> it = l.iterator();
         boolean found = false;
         while (!found&&it.hasNext()){
@@ -108,6 +115,7 @@ public class DataManageSystemAdders extends DataManageSystem {
     }
 
     public boolean addNewSwindler (String s){
+        //Adds a swindler to swindlers' file
         List l = loadSwindlerFile();
         if (l==null){
             l = new LinkedList<String>();
@@ -122,6 +130,7 @@ public class DataManageSystemAdders extends DataManageSystem {
     }
 
     public boolean addNewComment(Comment comment){
+        //Adds a comment to comments' file
         List l = loadCommentsFile();
         if (l == null){
             l = new LinkedList<>();
@@ -132,6 +141,7 @@ public class DataManageSystemAdders extends DataManageSystem {
     }
 
     public boolean addNewUncheckedOffer(Offer uncheckedOffer){
+        //Adds an offer to unchecked offers' file
         List l = loadUncheckedOfferFile();
         if (l==null){
             l = new LinkedList<Offer>();

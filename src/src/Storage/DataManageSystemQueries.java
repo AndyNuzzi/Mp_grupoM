@@ -35,7 +35,7 @@ public class DataManageSystemQueries extends DataManageSystem{
 
     //Methods
     public boolean validateNick(String nick){
-        //Checks if nick is used and provides de Id for the new client.
+        //Checks if nick is used
         List<Client> l = loadClientsFile();
         Iterator<Client> it = l.iterator();
         boolean chosen = false;
@@ -59,7 +59,9 @@ public class DataManageSystemQueries extends DataManageSystem{
         return sol;
     }
 
+    //Falta controlar que nick no sea igual al de un admin
     public User openSession(String nick, String password){
+        //Opens a session of a User
         List clientList = loadClientsFile();
         User c = search(clientList, nick, password);
         if (c==null){
@@ -88,6 +90,7 @@ public class DataManageSystemQueries extends DataManageSystem{
     }
 
     public List<Comment> getComments(String idClient){
+        //Returns a comments' list of a specific client
         List<Comment> l = loadCommentsFile();
         List<Comment> output = new ArrayList<Comment>();
         Iterator <Comment> it = l.iterator();
@@ -100,6 +103,7 @@ public class DataManageSystemQueries extends DataManageSystem{
     }
 
     public float getValoration(String id){
+        //Calculates the average valoration of a client
         List<Comment> commentList = getComments(id);
         int val = 0;
         int i = 0;
@@ -111,6 +115,7 @@ public class DataManageSystemQueries extends DataManageSystem{
     }
 
     private boolean check(List<String> l, String idNumber) {
+        //Checks if a string is in the list passed
         Iterator<String> it = l.iterator();
         boolean found = false;
         while (it.hasNext()&&!false){
@@ -121,6 +126,7 @@ public class DataManageSystemQueries extends DataManageSystem{
     }
 
     private User search(List<User> list, String nick, String password){
+        //Returns the User logged
         Iterator<User> it = list.listIterator();
         boolean found = false;
         User u = null;
@@ -135,18 +141,22 @@ public class DataManageSystemQueries extends DataManageSystem{
     }
 
     public List<Client> loadClients(){
+        //Returns clients' list
         return loadClientsFile();
     }
 
     public List<String> loadPirates(){
+        //Returns pirates' list
         return loadPiratesFile();
     }
 
     public List<String> loadSwindlers(){
+        //Returns swindlers' list
         return loadSwindlerFile();
     }
 
     public boolean checkRegisterNumber(String id){
+        //Checks if a register number has been used before
         List<Starship> l = loadStarshipsFile();
         Iterator<Starship> it = l.iterator();
         boolean found = false;
@@ -159,15 +169,18 @@ public class DataManageSystemQueries extends DataManageSystem{
     }
 
     public List<Offer> loadUncheckedOffers(){
+        //Returns a list of unchecked offers
         return loadUncheckedOfferFile();
     }
 
     public Client getClient(String id) {
+        //Returns a client with IdNumber = id
         List clientList = loadClientsFile();
         return search(clientList, id);
     }
 
     private Client search(List clientList, String id) {
+        //Returns a client searched by its id
         Iterator<User> it = clientList.iterator();
         boolean found = false;
         Client c = null;
