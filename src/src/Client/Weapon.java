@@ -4,11 +4,7 @@ import java.io.Serializable;
 
 public abstract class Weapon implements Serializable {
 
-    private int power;
-
-    public Weapon (int power){
-        this.power = power;
-    }
+    protected int power;
 
     public String getName (){
         return this.getClass().getSimpleName();

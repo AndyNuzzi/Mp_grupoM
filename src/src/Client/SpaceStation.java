@@ -1,18 +1,47 @@
 package Client;
 
-import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+import java.io.Serializable;
 
-public class SpaceStation extends Starship implements Serializable {
-
+public class SpaceStation extends Starship implements Serializable{
     private int passengers;
-    private List<Starship> starships;
-    private Defense [] defense = new Defense[3];
+    private List<Starship> starships = new ArrayList<Starship>();
+    private List<Defense> defense = new ArrayList<Defense>();
 
-    public SpaceStation(String registerNumber, String owner, Propulsion[] propulsion, int crew, int passengers, List<Starship> starships, Defense[] defense) {
-        super(registerNumber, owner, propulsion, crew);
+
+
+    public void setPassengers(int passengers) {
         this.passengers = passengers;
-        this.starships = starships;
-        this.defense = defense;
+    }
+
+    public void addStarShip(Starship starship){
+        this.starships.add(starship);
+    }
+
+    public boolean addDefense(Defense defense){
+        if (checkDefenseNumber()){
+            this.defense.add(defense);
+            return true;
+        } else {
+            System.out.println(" No more Defenses can be added ");
+            return false;
+        }
+    }
+
+    private boolean checkDefenseNumber(){
+      return this.defense.size() < 4;
+    }
+
+    public int getPassengers() {
+        return passengers;
+    }
+
+    public List<Starship> getStarships() {
+        return this.starships;
+    }
+
+    public List<Defense> getDefenses() {
+        return this.defense;
     }
 }

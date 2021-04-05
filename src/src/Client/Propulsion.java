@@ -4,7 +4,6 @@ public abstract class Propulsion {
 
     protected double speed;
 
-
     public String getName (){
         return this.getClass().getSimpleName();
     }

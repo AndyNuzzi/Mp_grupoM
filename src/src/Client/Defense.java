@@ -4,12 +4,7 @@ import java.io.Serializable;
 
 public abstract class Defense implements Serializable {
 
-    private int resistance;
-
-
-    public Defense (int resistance){
-        this.resistance = resistance;
-    }
+    protected int resistance;
 
     public String getName (){
         return this.getClass().getSimpleName();
