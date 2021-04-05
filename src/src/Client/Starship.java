@@ -1,23 +1,61 @@
 package Client;
 
-public abstract class Starship {
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+import java.io.Serializable;
+
+public abstract class Starship implements Serializable{
 
     protected String registerNumber;
-    protected Client owner;
-    protected Propulsion[] propulsion = new Propulsion [2];
+    protected String owner;
+    protected List<Propulsion> propulsion = new ArrayList<Propulsion>();
     protected int crew;
 
-
-    protected String getRegisterNumber(){
+    protected String getRegisterNumber() {
         return this.registerNumber;
     }
 
-    protected void setRegisterNumber(String registerNumber){
+    protected void setRegisterNumber(String registerNumber) {
         this.registerNumber = registerNumber;
     }
 
+    protected boolean checkRegisterNumber(String registerNumber) {
+        return this.registerNumber.equals(registerNumber);
+    }
 
-    // Falta seguir con esta clase
+    protected void setOwner(Client owner) {
+        this.owner = owner;
+    }
 
+    public Client getOwner() {
+        return owner;
+    }
+
+    public List<Propulsion> getPropulsion() {
+        return propulsion;
+    }
+
+    public boolean addPropulsion(Propulsion propulsion) {
+        if (this.checkPropulsionNumber()){
+            this.propulsion.add(propulsion);
+            return true;
+        } else {
+            System.out.println(" No more Propulsion can be added ");
+            return false;
+        }
+    }
+
+    private boolean checkPropulsionNumber () {
+            return this.propulsion.size() < 3;
+        }
+
+    public int getCrew () {
+        return crew;
+    }
+
+    public void setCrew ( int crew){
+        this.crew = crew;
+    }
 
 }

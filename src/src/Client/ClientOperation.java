@@ -3,6 +3,7 @@ package Client;
 import Controller.*;
 
 public abstract class ClientOperation implements Operation{
+
     protected Controller controller;
     // instanciar el controller
 
@@ -10,4 +11,5 @@ public abstract class ClientOperation implements Operation{
 
     public abstract boolean doOperation();
     //clase abstracta
+
 }

@@ -3,6 +3,7 @@ package Client;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+
 import Controller.*;
 
 public class Offer implements Serializable {
@@ -18,9 +19,7 @@ public class Offer implements Serializable {
     // type[2] = Freighter
     // type[3] = Fighter
 
-    public Offer() {
-        // hacer el contructor
-    }
+    public Offer() {}
 
     public boolean[] getType() {
         return type;
@@ -89,5 +88,4 @@ public class Offer implements Serializable {
     public Offer finish(){
         return this;
     }
-
 }

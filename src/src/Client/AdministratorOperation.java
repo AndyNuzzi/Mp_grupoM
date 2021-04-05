@@ -10,4 +10,5 @@ public abstract class AdministratorOperation implements Operation{
 
     public abstract boolean doOperation();
     //clase abstracta
+
 }

@@ -34,7 +34,6 @@ public class ValidateOffer extends AdministratorOperation{
             Scanner scanner = new Scanner(System.in);
             String validation = scanner.nextLine();
 
-
         }
         //----------------------------------------------------------------------------------------
         // HAY QUE REVISAR ESTE METODO EN PROFUNDIDAD

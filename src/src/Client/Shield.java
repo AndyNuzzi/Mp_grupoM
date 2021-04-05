@@ -1,11 +1,13 @@
 package Client;
 
-public class Shield extends Defense{
+import java.io.Serializable;
+
+public class Shield extends Defense implements Serializable {
 
     private double energyAmount;
 
     public Shield(int resistance, double energyAmount) {
-        super(resistance);
+        this.resistance = resistance;
         this.energyAmount = energyAmount;
     }
 
