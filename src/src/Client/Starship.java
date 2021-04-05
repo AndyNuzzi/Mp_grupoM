@@ -12,7 +12,7 @@ public abstract class Starship implements Serializable{
     protected List<Propulsion> propulsion = new ArrayList<Propulsion>();
     protected int crew;
 
-    protected String getRegisterNumber() {
+    public String getRegisterNumber() {
         return this.registerNumber;
     }
 
