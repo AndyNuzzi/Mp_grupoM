@@ -1,54 +1,59 @@
 package Client;
 
 import java.util.Scanner;
+import Controller.*;
+
+
+
 
 public abstract class StarshipBuilder {
-     protected Starship starship;
+    protected Starship starship;
 
 
-
-
-    protected String registerNumber(){
+    protected String registerNumber() {
         Scanner sc = new Scanner(System.in);
-        boolean validate= false;
+        boolean validate = false;
         boolean format = false;
-        int range=0;
+        int range = 0;
         String number = null;
         String pattern = "[A-Z]{1}[0-9]{4}[A-Z]{3}";
-        
-        while (!validate && !format){
+
+        while (!validate && !format) {
             System.out.println("Insert register Number");
-             number = sc.next();
+            number = sc.next();
 
-            if(range!=number.length()){
+            if (range != number.length()) {
                 System.out.println("Length doesn't match");
-                format= false;
+                format = false;
 
-            }else if(number.matches(pattern)){
-                format= true;
-                validate= true;
-                System.out.println("Validating Number");
-            }else if(!number.matches(pattern)){
-                format= false;
-                validate=false;
+            } else if (number.matches(pattern)) {
+                if (validateRegisterNumber(number)) {
+                    format = true;
+                    validate = true;
+                    System.out.println("Validating Number");
+                }
+
+            } else if (!number.matches(pattern)) {
+                format = false;
+                validate = false;
                 System.out.println("Format Error");
             }
-            //validar numero con metodo que me tienen que pasar
 
 
         }
-       return number;
+        return number;
     }
 
-    protected int crew(){
+    protected int crew() {
         System.out.println(" Introduce the crew ");
         Scanner scanner = new Scanner(System.in);
         return scanner.nextInt();
     }
-    public  void propulsion(){
+
+    public void propulsion() {
         Propulsion prop = null;
         Scanner sc = new Scanner(System.in);
-        int name=0;
+        int name = 0;
         do {
             System.out.println(" Select Propulsion");
             System.out.println("1.FTL Engine");
@@ -86,12 +91,13 @@ public abstract class StarshipBuilder {
 
 
             }
-        }while (name!=6);
+        } while (name != 6);
 
         this.starship.addPropulsion(prop);
     }
 
-    public abstract Starship getResult (Client owner);
+
+    public abstract Starship getResult(Client owner);
 
 
 }

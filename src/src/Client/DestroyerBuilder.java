@@ -122,6 +122,9 @@ public class DestroyerBuilder extends StarshipBuilder{
 
     }
 
+
+
+
     @Override
     public Starship getResult(Client owner){
         destroyer.setRegisterNumber(super.registerNumber());
@@ -132,7 +135,7 @@ public class DestroyerBuilder extends StarshipBuilder{
 
         this.defense();
         this.weapon();
-
+        createStarship((Starship) destroyer);
         return destroyer;
     }
 

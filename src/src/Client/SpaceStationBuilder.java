@@ -142,7 +142,7 @@ public class SpaceStationBuilder extends StarshipBuilder {
         this.passengers();
         this.starship(owner);
         this.defense();
-
+        createStarship((Starship) spaceStation);
         return spaceStation;
     }
 
