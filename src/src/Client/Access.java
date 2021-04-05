@@ -1,8 +1,12 @@
 package Client;
 
+import Controller.Controller;
+
 import java.util.Scanner;
 
 public abstract class Access {
+
+    protected Controller controller = new Controller();
 
     /**
      * Cada log in sobreescribira esta clase, se ecargará de llevar a cabo el log in del usuario
@@ -33,9 +37,7 @@ public abstract class Access {
      * @return
      */
     protected User validate(String nick, String password) {
-        // Le pasamos al controller el nick y la password y nos devuelve el user si es correcto, null si no
-        // el controller nos devolvera el user
-        return null;
+        return controller.validate(nick,password);
     }
 
 }
