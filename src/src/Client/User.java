@@ -62,7 +62,9 @@ public abstract class User implements Serializable {
                     AdministratorOperation administratorOperation = (AdministratorOperation) operation;
                     administratorOperation.doOperation();
                 }
-            } else {
+            } else if (option == 6){
+                System.out.println(" Session closed ");
+            } else{
                 System.out.println(" Wrong option ");
             }
         } while (option != 6);

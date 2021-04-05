@@ -1,6 +1,8 @@
 package Client;
 
-public class Kromagg extends Client{
+import java.io.Serializable;
+
+public class Kromagg extends Client implements Serializable {
 
     private boolean license = false;
 

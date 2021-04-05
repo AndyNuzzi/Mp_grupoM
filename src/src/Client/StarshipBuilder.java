@@ -12,7 +12,7 @@ public abstract class StarshipBuilder {
         Scanner sc = new Scanner(System.in);
         boolean validate = false;
         boolean format = false;
-        int range = 0;
+        int range = 8;
         String number = null;
         String pattern = "[A-Z]{1}[0-9]{4}[A-Z]{3}";
 
