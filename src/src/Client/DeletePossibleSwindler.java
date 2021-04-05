@@ -5,6 +5,11 @@ import java.util.Scanner;
 import Controller.*;
 
 public class DeletePossibleSwindler extends AdministratorOperation{
+
+    public DeletePossibleSwindler(Administrator admin){
+        super(admin);
+    }
+
     @Override
     public boolean doOperation() {
         // esta operacion se encarga de:

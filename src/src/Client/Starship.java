@@ -24,11 +24,11 @@ public abstract class Starship implements Serializable{
         return this.registerNumber.equals(registerNumber);
     }
 
-    protected void setOwner(Client owner) {
-        this.owner = owner;
+    protected void setOwner(String ownerId) {
+        this.owner = ownerId;
     }
 
-    public Client getOwner() {
+    public String getOwner() {
         return owner;
     }
 

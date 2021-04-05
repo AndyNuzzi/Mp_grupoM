@@ -122,7 +122,7 @@ public class FighterBuilder extends StarshipBuilder {
     public Starship getResult(Client owner) {
         fighter.setRegisterNumber(super.registerNumber());
         fighter.setCrew(super.crew());
-        fighter.setOwner(owner);
+        fighter.setOwner(owner.getIdNumber());
 
         this.propulsion();
 

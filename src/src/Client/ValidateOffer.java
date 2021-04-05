@@ -6,6 +6,11 @@ import java.util.Scanner;
 import Controller.*;
 
 public class ValidateOffer extends AdministratorOperation{
+
+    public ValidateOffer (Administrator administrator){
+        super (administrator);
+    }
+
     @Override
     public boolean doOperation() {
         // llamar al metodo del controller?

@@ -98,7 +98,7 @@ public class FreighterBuilder extends StarshipBuilder{
     public Starship getResult(Client owner) {
         freighter.setRegisterNumber(super.registerNumber());
         freighter.setCrew(super.crew());
-        freighter.setOwner(owner);
+        freighter.setOwner(owner.getIdNumber());
 
         freighter.getPropulsion();
 

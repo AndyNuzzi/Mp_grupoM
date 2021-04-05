@@ -3,8 +3,9 @@ package Client;
 import java.util.Scanner;
 
 public class Subscribe extends ClientOperation{
+
     public Subscribe (Client client){
-        super ();
+        super (client);
         // me traigo los datos del cliente
     }
 

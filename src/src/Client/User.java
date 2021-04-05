@@ -14,7 +14,6 @@ public abstract class User implements Serializable {
     protected String species;
     protected String nick;
     protected String idNumber;
-    protected String nick;
     protected String password;
     protected String email;
 
@@ -61,7 +60,7 @@ public abstract class User implements Serializable {
                     clientOperation.doOperation();
                 } else {
                     AdministratorOperation administratorOperation = (AdministratorOperation) operation;
-                    operation.doOperation();
+                    administratorOperation.doOperation();
                 }
             } else {
                 System.out.println(" Wrong option ");

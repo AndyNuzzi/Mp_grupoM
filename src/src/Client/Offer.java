@@ -88,4 +88,5 @@ public class Offer implements Serializable {
     public Offer finish(){
         return this;
     }
+
 }

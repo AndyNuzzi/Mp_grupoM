@@ -125,6 +125,33 @@ public class Controller {
         return adders.addNewAdministrator(admin);
     }
 
+    public String getIdAdmin(){
+        return identificators.getId(1);
+    }
+
+    public List<String> getNotificationsList() {
+        System.out.println("Falta");
+        return null;
+    }
+
+    public List<Offer> getOffer(String shipElection) {
+        return null;
+    }
+
+    public void deleteOffer(String id) {
+        System.out.println("Falta");
+    }
+
+    public String getIdSale() {
+        System.out.println("Falta");
+        return null;
+    }
+
+    public void addSubscription(String typeOfShip) {
+        System.out.println("Falta");
+    }
+
+
     //No terminadas
         /*    public void addSubscription(Client c){
                 actualization.clientActualization(c);

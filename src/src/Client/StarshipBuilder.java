@@ -3,9 +3,6 @@ package Client;
 import java.util.Scanner;
 import Controller.*;
 
-
-
-
 public abstract class StarshipBuilder {
     protected Starship starship;
     protected Controller controller = new Controller();
