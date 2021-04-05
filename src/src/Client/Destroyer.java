@@ -2,8 +2,9 @@ package Client;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.io.Serializable;
 
-public class Destroyer extends Starship{
+public class Destroyer extends Starship implements Serializable{
 
     private List<Weapon> weapon = new ArrayList<Weapon>();
     private List<Defense> defense = new ArrayList<Defense>();

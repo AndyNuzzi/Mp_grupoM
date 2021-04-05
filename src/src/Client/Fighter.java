@@ -1,6 +1,8 @@
 package Client;
 
-public class Fighter extends Starship{
+import java.io.Serializable;
+
+public class Fighter extends Starship implements Serializable{
    private Weapon weapon1;
    private Weapon weapon2;
    private Defense defense;
@@ -28,9 +30,4 @@ public class Fighter extends Starship{
     public void setDefense(Defense defense) {
         this.defense = defense;
     }
-
-
-
-
-
 }

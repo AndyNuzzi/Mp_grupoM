@@ -2,8 +2,9 @@ package Client;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.io.Serializable;
 
-public class SpaceStation extends Starship{
+public class SpaceStation extends Starship implements Serializable{
     private int passengers;
     private List<Starship> starships = new ArrayList<Starship>();
     private List<Defense> defense = new ArrayList<Defense>();

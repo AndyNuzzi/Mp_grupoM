@@ -1,17 +1,16 @@
 package Client;
 
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.io.Serializable;
 
-public abstract class Starship {
+public abstract class Starship implements Serializable{
 
     protected String registerNumber;
-    protected Client owner;
+    protected String owner;
     protected List<Propulsion> propulsion = new ArrayList<Propulsion>();
     protected int crew;
-
 
     protected String getRegisterNumber() {
         return this.registerNumber;
@@ -47,20 +46,16 @@ public abstract class Starship {
         }
     }
 
-
     private boolean checkPropulsionNumber () {
             return this.propulsion.size() < 3;
         }
 
-        public int getCrew () {
-            return crew;
-        }
-
-        public void setCrew ( int crew){
-            this.crew = crew;
-        }
-
+    public int getCrew () {
+        return crew;
     }
 
+    public void setCrew ( int crew){
+        this.crew = crew;
+    }
 
-
+}
