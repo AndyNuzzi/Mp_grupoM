@@ -1,9 +1,11 @@
 package Client;
 
-public class TraceCompressor extends Propulsion{
+import java.io.Serializable;
+
+public class TraceCompressor extends Propulsion implements Serializable {
 
     public TraceCompressor(double speed) {
-        super(speed);
+        this.speed = speed;
     }
 
 }
