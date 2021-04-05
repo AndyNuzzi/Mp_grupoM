@@ -3,8 +3,8 @@ package Client;
 import java.util.List;
 
 public class CheckNotifications extends ClientOperation{
-    public CheckNotifications (Client client, Controller.Controller controller){
-        super ();
+    public CheckNotifications (Client client){
+        super (client);
         // me traigo los datos del cliente
     }
 

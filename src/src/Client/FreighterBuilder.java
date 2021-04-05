@@ -104,7 +104,7 @@ public class FreighterBuilder extends StarshipBuilder{
 
         this.capacity();
         this.defense();
-        createStarship((Starship) freighter);
+        controller.createStarship((Starship) freighter);
         return freighter;
     }
 

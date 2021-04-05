@@ -21,7 +21,7 @@ public class ValidateOffer extends AdministratorOperation{
 
         // tiene que poder salir antes de seguir validando el resto de ofertas
 
-        List <Offer> unCheckedOffers = controller.getUnCheckedOffersList();
+        List <Offer> unCheckedOffers = controller.getUncheckedOffersList();
         //----------------------------------------------------------------------------------------
         for (int i = 0; i < unCheckedOffers.size(); i++){
             Offer unchecked = unCheckedOffers.get(i);

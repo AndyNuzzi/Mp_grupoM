@@ -32,7 +32,11 @@ public abstract class User implements Serializable {
         this.nick = nick;
         this.password = password;
         this.email = email;
-    }    
+    }
+
+    public User() {
+
+    }
 
     private boolean isClientOperation (Operation operation){
         String operationClass = operation.getClass().getSimpleName();

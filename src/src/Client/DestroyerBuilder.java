@@ -135,7 +135,7 @@ public class DestroyerBuilder extends StarshipBuilder{
 
         this.defense();
         this.weapon();
-        createStarship((Starship) destroyer);
+        controller.createStarship((Starship) destroyer);
         return destroyer;
     }
 

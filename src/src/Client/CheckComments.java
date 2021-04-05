@@ -4,7 +4,7 @@ import java.util.List;
 
 public class CheckComments extends ClientOperation{
     public CheckComments (Client client){
-        super ();
+        super (client);
         // me traigo los datos del cliente
     }
 
@@ -12,7 +12,7 @@ public class CheckComments extends ClientOperation{
     public boolean doOperation() {
         // se encarga de mostrar la lista con los comentarios de un cliente
 
-        List<Comment> comments = controller.getCommentsList();
+        List<Comment> comments = controller.getCommentsList(client.getIdNumber());
 
         for (int i = 0; i < comments.size(); i++){
             Comment commentInfo = comments.get(i);

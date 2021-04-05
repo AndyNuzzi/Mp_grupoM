@@ -129,7 +129,7 @@ public class FighterBuilder extends StarshipBuilder {
         this.defense();
         fighter.setWeapon1(this.weapon());
         fighter.setWeapon2(this.weapon());
-        createStarship((Starship) fighter);
+        controller.createStarship((Starship) fighter);
         return   fighter;
     }
 

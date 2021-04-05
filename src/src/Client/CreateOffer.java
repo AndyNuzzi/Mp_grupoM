@@ -7,9 +7,9 @@ import Controller.*;
 
 // eliminar los controllers de las clases
 
-public class CreateOffer extends ClientOperation{
-    public CreateOffer (Client client){
-        super ();
+public class CreateOffer extends ClientOperation {
+    public CreateOffer(Client client) {
+        super(client);
         // me traigo los datos del cliente
     }
 
@@ -23,7 +23,7 @@ public class CreateOffer extends ClientOperation{
         // instanciar la clase director que es la que se encarga de introducir naves en las ofertas
 
         boolean addShip = false;
-        List<Starship> starshipList = new ArrayList<>();
+        Starship starship = null;
 
         while (! addShip) {
             System.out.println("Which starship do you want to include? 1-4");
@@ -47,19 +47,8 @@ public class CreateOffer extends ClientOperation{
             }
 
             System.out.println("Do you want to continue adding starships? y/n");
-            String addContinue = scanner.nextLine();
-            if (addContinue == "n") {
-                addShip = true;
-            } else{
-                addShip = false;
-            }
-        }
-
-        Offer offer = new Offer();
-        // creo el objeto tipo oferta
-
-        offer.addStarshipToOffer(starshipList);
-        controller.addToUncheckedOffers(offer.finish());
+            addShip = scanner.nextLine().toLowerCase().equals("n");
+            controller.addToUncheckedOffers(offer.finish());
 
         return addShip;
     }

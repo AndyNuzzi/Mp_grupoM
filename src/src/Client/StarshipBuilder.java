@@ -8,6 +8,7 @@ import Controller.*;
 
 public abstract class StarshipBuilder {
     protected Starship starship;
+    protected Controller controller = new Controller();
 
 
     protected String registerNumber() {
@@ -27,7 +28,7 @@ public abstract class StarshipBuilder {
                 format = false;
 
             } else if (number.matches(pattern)) {
-                if (validateRegisterNumber(number)) {
+                if (controller.validateRegisterNumber(number)) {
                     format = true;
                     validate = true;
                     System.out.println("Validating Number");

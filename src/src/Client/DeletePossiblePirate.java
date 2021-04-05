@@ -5,6 +5,10 @@ import java.util.Scanner;
 import Controller.*;
 
 public class DeletePossiblePirate extends AdministratorOperation{
+
+    public DeletePossiblePirate(Administrator admin){
+        super(admin);
+    }
     @Override
     public boolean doOperation() {
         // esta operacion se encarga de:
@@ -27,7 +31,7 @@ public class DeletePossiblePirate extends AdministratorOperation{
             if (deleteConfirm == "y") {
                 System.out.println("Introduce Pirate id:");
                 String idPirate = scanner.nextLine();
-                controller.deletePossbilePirate(idPirate);
+                controller.deletePossiblePirate(idPirate);
                 // llamar al controlador pasandole el id del pirata que se quiere eliminar
             }
             System.out.println("Do you want to continue deleting? y/n");

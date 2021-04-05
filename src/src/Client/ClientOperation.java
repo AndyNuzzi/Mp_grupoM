@@ -9,6 +9,11 @@ public abstract class ClientOperation implements Operation{
 
     protected Client client;
 
+    public ClientOperation(Client client){
+        this.client = client;
+        this.controller = new Controller();
+    }
+
     public abstract boolean doOperation();
     //clase abstracta
 
