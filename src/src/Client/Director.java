@@ -21,6 +21,4 @@ public class Director {
         StarshipBuilder starshipBuilder = new FighterBuilder();
         return starshipBuilder.getResult(owner);
     }
-
-
 }
