@@ -2,6 +2,7 @@ package Client;
 
 import java.util.List;
 import java.util.Scanner;
+import Controller.*;
 
 public class AddPossibleSwindler extends AdministratorOperation{
     @Override
@@ -12,7 +13,7 @@ public class AddPossibleSwindler extends AdministratorOperation{
 
         for (int i = 0; i < client.size(); i++){
             Client idInfo = client.get(i);
-            client.add(idInfo);
+            System.out.println(idInfo.getIdNumber());
         }
         // imprimo la lista con los clientes
 
@@ -30,9 +31,9 @@ public class AddPossibleSwindler extends AdministratorOperation{
             System.out.println("Do you want to continue adding? y/n");
             String deleteContinue = scanner.nextLine();
             if (deleteContinue == "n") {
-                delete = false;
-            } else{
                 delete = true;
+            } else{
+                delete = false;
             }
         }
         return delete;

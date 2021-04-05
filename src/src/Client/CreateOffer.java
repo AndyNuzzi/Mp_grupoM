@@ -23,35 +23,35 @@ public class CreateOffer extends ClientOperation{
         // instanciar la clase director que es la que se encarga de introducir naves en las ofertas
 
         boolean addShip = false;
-        List<Starship> starshipList = new ArrayList<Starship>();
+        List<Starship> starshipList = new ArrayList<>();
 
         while (! addShip) {
-            System.out.println("Which starship do you want to include?");
-            System.out.println("*********** space station ************");
-            System.out.println("***********   destroyer   ************");
-            System.out.println("***********   freighter   ************");
-            System.out.println("***********    feighter   ************");
+            System.out.println("Which starship do you want to include? 1-4");
+            System.out.println("*********** -1- space station ************");
+            System.out.println("*********** -2- destroyer     ************");
+            System.out.println("*********** -3- freighter     ************");
+            System.out.println("*********** -4- fighter       ************");
 
             Scanner scanner = new Scanner(System.in);
             String typeOfShip = scanner.nextLine();
 
             switch (typeOfShip) {
-                case "space station": starshipList.add(director.makeSpaceStation());
-                                      break;
-                case "destroyer":     starshipList.add(director.makeDestroyer());
-                                      break;
-                case "freighter":     starshipList.add(director.makeFreighter());
-                                      break;
-                case "feighter":      starshipList.add(director.makeFeighter());
-                                      break;
+                case "1": starshipList.add(director.makeSpaceStation());
+                          break;
+                case "2": starshipList.add(director.makeDestroyer());
+                          break;
+                case "3": starshipList.add(director.makeFreighter());
+                          break;
+                case "4": starshipList.add(director.makeFeighter());
+                          break;
             }
 
             System.out.println("Do you want to continue adding starships? y/n");
             String addContinue = scanner.nextLine();
             if (addContinue == "n") {
-                addShip = false;
-            } else{
                 addShip = true;
+            } else{
+                addShip = false;
             }
         }
 

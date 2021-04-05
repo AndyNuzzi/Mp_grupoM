@@ -1,5 +1,7 @@
 package Client;
 
+import Controller.*;
+
 public class CheckValoration extends ClientOperation{
     public CheckValoration (Client client){
         super ();
@@ -12,7 +14,7 @@ public class CheckValoration extends ClientOperation{
         // y mostrar la valoracion media
 
 
-        System.out.println(controller.getAverageValoration());
+        System.out.println(controller.getAverageValoration(client.getIdNumber()));
         // muestra por pantalla la valoración media calculada
 
         return false;

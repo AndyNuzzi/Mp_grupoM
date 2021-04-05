@@ -17,7 +17,7 @@ public class CheckNotifications extends ClientOperation{
 
         for (int i = 0; i < notifications.size(); i++){
             String notifInfo = notifications.get(i);
-            notifications.add(notifInfo);
+            System.out.println(notifInfo);
         }
         // imprimo la lista con las notificaciones
 

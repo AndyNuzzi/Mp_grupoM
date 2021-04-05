@@ -2,6 +2,7 @@ package Client;
 
 import java.util.List;
 import java.util.Scanner;
+import Controller.*;
 
 public class AddPossiblePirate extends AdministratorOperation{
     @Override
@@ -11,11 +12,10 @@ public class AddPossiblePirate extends AdministratorOperation{
 
         List<Client> client = controller.getClientList();
 
-        for (int i = 0; i < client.size(); i++){
+        for (int i = 0; i < client.size(); i++) {
             Client idInfo = client.get(i);
-            client.add(idInfo);
-        }
-        // imprimo la lista con los clientes
+            System.out.println(idInfo.getIdNumber());
+        }// imprimo la lista con los clientes
 
         boolean delete = false;
         while (! delete){
@@ -31,9 +31,9 @@ public class AddPossiblePirate extends AdministratorOperation{
             System.out.println("Do you want to continue adding? y/n");
             String deleteContinue = scanner.nextLine();
             if (deleteContinue == "n") {
-                delete = false;
-            } else{
                 delete = true;
+            } else{
+                delete = false;
             }
         }
         return delete;

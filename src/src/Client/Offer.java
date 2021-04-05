@@ -7,11 +7,11 @@ import Controller.*;
 
 public class Offer implements Serializable {
 
+    private String id;
     private List<String> starshipIdList;
     private Date dateEnd;
     private long price;
     private String creator;
-    private String id;
     private boolean [] type = new boolean [4];
     // type[0] = SpaceStation
     // type[1] = Destroyer

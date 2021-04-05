@@ -6,10 +6,15 @@ import Controller.*;
 
 public class Sale implements Serializable {
 
+    private String id;
     private Date date;
-    private Client seller;
-    private Client buyer;
+    private String seller;
+    private String buyer;
     private long cost;
+
+    public String getId(String idOffer) { return id; }
+
+    public void setId(String id) { this.id = id; }
 
     public Date getDate() {
         return date;
@@ -19,19 +24,19 @@ public class Sale implements Serializable {
         this.date = date;
     }
 
-    public Client getSeller() {
+    public String getSeller() {
         return seller;
     }
 
-    public void setSeller(Client seller) {
+    public void setSeller(String seller) {
         this.seller = seller;
     }
 
-    public Client getBuyer() {
+    public String getBuyer() {
         return buyer;
     }
 
-    public void setBuyer(Client buyer) {
+    public void setBuyer(String buyer) {
         this.buyer = buyer;
     }
 

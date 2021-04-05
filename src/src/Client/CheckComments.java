@@ -16,8 +16,8 @@ public class CheckComments extends ClientOperation{
 
         for (int i = 0; i < comments.size(); i++){
             Comment commentInfo = comments.get(i);
-            comments.add(commentInfo);
+            System.out.println(commentInfo.getComment());
         }
-        return false;
+        return true;
     }
 }

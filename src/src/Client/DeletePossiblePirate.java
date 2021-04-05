@@ -2,6 +2,7 @@ package Client;
 
 import java.util.List;
 import java.util.Scanner;
+import Controller.*;
 
 public class DeletePossiblePirate extends AdministratorOperation{
     @Override
@@ -14,7 +15,7 @@ public class DeletePossiblePirate extends AdministratorOperation{
 
         for (int i = 0; i < pirate.size(); i++){
             String idInfo = pirate.get(i);
-            pirate.add(idInfo);
+            System.out.println(idInfo);
         }
         // imprimo la lista con los piratas
 
@@ -32,9 +33,9 @@ public class DeletePossiblePirate extends AdministratorOperation{
             System.out.println("Do you want to continue deleting? y/n");
             String deleteContinue = scanner.nextLine();
             if (deleteContinue == "n") {
-                delete = false;
-            } else{
                 delete = true;
+            } else{
+                delete = false;
             }
         }
         return delete;
