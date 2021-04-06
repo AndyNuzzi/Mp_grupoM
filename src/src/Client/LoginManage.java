@@ -43,7 +43,6 @@ public class LoginManage {
                     System.out.println("This isn't a valid option");
                     break;
             }
-
         }
         while (loginOption != 3);
         System.out.println(" See you soon ");

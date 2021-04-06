@@ -72,7 +72,6 @@ public class RegisterAsClient extends Access {
     @Override
     public void doOperation() {
         System.out.println(" Register as client ");
-        Client client = null;
         String name = super.askForData(" Introduce your name");
         String planet = super.askForData(" Introduce your planet").toLowerCase();
         String species = super.askForData("Introduce your species").toLowerCase();
@@ -88,6 +87,7 @@ public class RegisterAsClient extends Access {
             }
         }
         if (idNumber != null) {
+            Client client = null;
             String password = this.askForPassword();
             if (password != null) {
                 String email = super.askForData(" Introduce your email ");
@@ -100,15 +100,12 @@ public class RegisterAsClient extends Access {
                 this.createUser(client);
                 System.out.println(" New User created successfully ");
                 User user = super.validate(nick, password);
-                System.out.println(" Log in successful ");
-                if (user.getClass().getSimpleName().equals("Client")){
-                    client = (Client) user;
-                    client.doOperation();
-                } else {
-                    Administrator administrator = (Administrator) user;
-                    administrator.doOperation();
-                }
+                super.openSession(user);
+            } else {
+                System.out.println(" Log in cancelled, wrong password ");
             }
+        } else {
+            System.out.println(" Log in cancelled, wrong nick ");
         }
     }
 
