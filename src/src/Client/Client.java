@@ -16,6 +16,7 @@ public class Client extends User implements Serializable{
 
     public Client(String name, String planet, String species, String idNumber, String nick, String password, String email) {
         super(name, planet, species, idNumber, nick, password, email);
+    }
 
     public void setPirate(boolean pirate) {
         this.pirate = pirate;
@@ -27,12 +28,12 @@ public class Client extends User implements Serializable{
 
     @Override
     public void doOperation() {
-        ClientOperation op1 = new CreateOffer();
-        ClientOperation op2 = new SearchOffer();
-        ClientOperation op3 = new Subscribe();
-        ClientOperation op4 = new CheckNotifications();
-        ClientOperation op5 = new CheckComments();
-        ClientOperation op6 = new CheckValoration();
+        ClientOperation op1 = new CreateOffer(this);
+        ClientOperation op2 = new SearchOffer(this);
+        ClientOperation op3 = new Subscribe(this);
+        ClientOperation op4 = new CheckNotifications(this);
+        ClientOperation op5 = new CheckComments(this);
+        ClientOperation op6 = new CheckValoration(this);
         super.operations.add(op1);
         super.operations.add(op2);
         super.operations.add(op3);

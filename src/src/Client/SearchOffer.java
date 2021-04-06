@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class SearchOffer extends ClientOperation{
     public SearchOffer (Client client){
-        super ();
+        super (client);
         // me traigo los datos del cliente
     }
 

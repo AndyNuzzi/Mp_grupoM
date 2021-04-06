@@ -1,7 +1,5 @@
 package Client;
 
-import java.util.Locale;
-
 public class RegisterAsClient extends Access {
 
     /**
@@ -12,8 +10,7 @@ public class RegisterAsClient extends Access {
      * @return
      */
     private String validateNick(String nick) {
-        // le pasamos el nick al controlador, este nos devolvera el idNumber si el nick es valido o null si no
-        return null;
+        return controller.validateNick(nick);
     }
 
     /**
@@ -46,7 +43,7 @@ public class RegisterAsClient extends Access {
      * @param client
      */
     private void createUser(Client client) {
-        // le pasamos el cliente para que lo cree
+        controller.createUser(client);
     }
 
     /**

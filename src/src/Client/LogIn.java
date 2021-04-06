@@ -1,8 +1,5 @@
 package Client;
 
-import java.util.Locale;
-import java.util.Scanner;
-
 public class LogIn extends Access{
 
 

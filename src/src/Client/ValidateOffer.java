@@ -6,6 +6,11 @@ import java.util.Scanner;
 import Controller.*;
 
 public class ValidateOffer extends AdministratorOperation{
+
+    public ValidateOffer (Administrator administrator){
+        super (administrator);
+    }
+
     @Override
     public boolean doOperation() {
         // llamar al metodo del controller?
@@ -21,7 +26,7 @@ public class ValidateOffer extends AdministratorOperation{
 
         // tiene que poder salir antes de seguir validando el resto de ofertas
 
-        List <Offer> unCheckedOffers = controller.getUnCheckedOffersList();
+        List <Offer> unCheckedOffers = controller.getUncheckedOffersList();
         //----------------------------------------------------------------------------------------
         for (int i = 0; i < unCheckedOffers.size(); i++){
             Offer unchecked = unCheckedOffers.get(i);

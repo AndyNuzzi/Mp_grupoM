@@ -5,6 +5,10 @@ import java.util.Scanner;
 import Controller.*;
 
 public class AddPossiblePirate extends AdministratorOperation{
+
+    public AddPossiblePirate(Administrator admin){
+        super(admin);
+    }
     @Override
     public boolean doOperation() {
         // pasar la lista de clientes
@@ -25,7 +29,7 @@ public class AddPossiblePirate extends AdministratorOperation{
             if (addConfirm == "y") {
                 System.out.println("Introduce Pirate id:");
                 String idPirate= scanner.nextLine();
-                controller.addPossbilePirate(idPirate);
+                controller.addPossiblePirate(idPirate);
                 // llamar al controlador pasandole el id del pirata que se quiere añadir
             }
             System.out.println("Do you want to continue adding? y/n");

@@ -129,13 +129,13 @@ public class DestroyerBuilder extends StarshipBuilder{
     public Starship getResult(Client owner){
         destroyer.setRegisterNumber(super.registerNumber());
         destroyer.setCrew(super.crew());
-        destroyer.setOwner(owner);
+        destroyer.setOwner(owner.getIdNumber());
 
         this.propulsion();
 
         this.defense();
         this.weapon();
-        createStarship((Starship) destroyer);
+        controller.createStarship((Starship) destroyer);
         return destroyer;
     }
 

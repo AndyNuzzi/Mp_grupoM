@@ -9,7 +9,6 @@ public class SpaceStationBuilder extends StarshipBuilder {
 
     public SpaceStationBuilder() {
         starship = spaceStation;
-
     }
 
     public void passengers() {
@@ -76,7 +75,7 @@ public class SpaceStationBuilder extends StarshipBuilder {
 
                 case 3:
                     System.out.println("Introducing Freighter");
-                    spaceStation.addStarShip(director.makeFrieghter(owner));
+                    spaceStation.addStarShip(director.makeFreighter(owner));
             }
 
 
@@ -135,14 +134,14 @@ public class SpaceStationBuilder extends StarshipBuilder {
     public Starship getResult(Client owner) {
         spaceStation.setRegisterNumber(super.registerNumber());
         spaceStation.setCrew(super.crew());
-        spaceStation.setOwner(owner);
+        spaceStation.setOwner(owner.getIdNumber());
 
         this.propulsion();
 
         this.passengers();
         this.starship(owner);
         this.defense();
-        createStarship((Starship) spaceStation);
+        controller.createStarship((Starship) spaceStation);
         return spaceStation;
     }
 

@@ -14,7 +14,6 @@ public abstract class User implements Serializable {
     protected String species;
     protected String nick;
     protected String idNumber;
-    protected String nick;
     protected String password;
     protected String email;
 
@@ -32,7 +31,11 @@ public abstract class User implements Serializable {
         this.nick = nick;
         this.password = password;
         this.email = email;
-    }    
+    }
+
+    public User() {
+
+    }
 
     private boolean isClientOperation (Operation operation){
         String operationClass = operation.getClass().getSimpleName();
@@ -57,9 +60,11 @@ public abstract class User implements Serializable {
                     clientOperation.doOperation();
                 } else {
                     AdministratorOperation administratorOperation = (AdministratorOperation) operation;
-                    operation.doOperation();
+                    administratorOperation.doOperation();
                 }
-            } else {
+            } else if (option == 6){
+                System.out.println(" Session closed ");
+            } else{
                 System.out.println(" Wrong option ");
             }
         } while (option != 6);

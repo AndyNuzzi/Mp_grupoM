@@ -37,22 +37,25 @@ public class DataManageSystemQueries extends DataManageSystem{
     public boolean validateNick(String nick){
         //Checks if nick is used
         List<Client> l = loadClientsFile();
-        Iterator<Client> it = l.iterator();
-        boolean chosen = false;
-        String id ="";
-        while (it.hasNext()&&!chosen){
-            Client c = it.next();
-            chosen = nick.equals(c.getNick());
-        }
-        if (!chosen){
-            List<Administrator> lAdm = loadAdministratorsFile();
-            Iterator<Administrator> itAd = lAdm.iterator();
-            while (itAd.hasNext()&&!chosen){
-                Administrator admin = itAd.next();
-                chosen = nick.equals(admin.getNick());
+        if (l != null) {
+            Iterator<Client> it = l.iterator();
+            boolean chosen = false;
+            String id = "";
+            while (it.hasNext() && !chosen) {
+                Client c = it.next();
+                chosen = nick.equals(c.getNick());
             }
+            if (!chosen) {
+                List<Administrator> lAdm = loadAdministratorsFile();
+                Iterator<Administrator> itAd = lAdm.iterator();
+                while (itAd.hasNext() && !chosen) {
+                    Administrator admin = itAd.next();
+                    chosen = nick.equals(admin.getNick());
+                }
+            }
+            return chosen;
         }
-        return chosen;
+        return false;
     }
 
     public List<Offer> searchOffers (String offerType){
@@ -165,12 +168,15 @@ public class DataManageSystemQueries extends DataManageSystem{
     public boolean checkRegisterNumber(String id){
         //Checks if a register number has been used before
         List<Starship> l = loadStarshipsFile();
-        Iterator<Starship> it = l.iterator();
-        boolean found = false;
-        while(it.hasNext()&&!found){
-            Starship starship = it.next();
-            if (starship.getRegisterNumber().equals(id))
-                found = true;
+        if (l != null) {
+            Iterator<Starship> it = l.iterator();
+            boolean found = false;
+            while (it.hasNext() && !found) {
+                Starship starship = it.next();
+                if (starship.getRegisterNumber().equals(id))
+                    found = true;
+            }
+            return !found;
         }
         return true;
     }

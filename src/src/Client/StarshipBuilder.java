@@ -3,18 +3,16 @@ package Client;
 import java.util.Scanner;
 import Controller.*;
 
-
-
-
 public abstract class StarshipBuilder {
     protected Starship starship;
+    protected Controller controller = new Controller();
 
 
     protected String registerNumber() {
         Scanner sc = new Scanner(System.in);
         boolean validate = false;
         boolean format = false;
-        int range = 0;
+        int range = 8;
         String number = null;
         String pattern = "[A-Z]{1}[0-9]{4}[A-Z]{3}";
 
@@ -27,7 +25,7 @@ public abstract class StarshipBuilder {
                 format = false;
 
             } else if (number.matches(pattern)) {
-                if (validateRegisterNumber(number)) {
+                if (controller.validateRegisterNumber(number)) {
                     format = true;
                     validate = true;
                     System.out.println("Validating Number");

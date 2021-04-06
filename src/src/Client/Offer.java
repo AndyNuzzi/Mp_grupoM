@@ -1,6 +1,7 @@
 package Client;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -9,7 +10,7 @@ import Controller.*;
 public class Offer implements Serializable {
 
     private String id;
-    private List<String> starshipIdList;
+    private List<String> starshipIdList = new ArrayList<>();
     private Date dateEnd;
     private long price;
     private String creator;
@@ -88,4 +89,5 @@ public class Offer implements Serializable {
     public Offer finish(){
         return this;
     }
+
 }

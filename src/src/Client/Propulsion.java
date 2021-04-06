@@ -1,6 +1,8 @@
 package Client;
 
-public abstract class Propulsion {
+import java.io.Serializable;
+
+public abstract class Propulsion implements Serializable {
 
     protected double speed;
 

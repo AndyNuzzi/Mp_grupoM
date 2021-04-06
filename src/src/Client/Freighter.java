@@ -1,6 +1,8 @@
 package Client;
 
-public class Freighter extends Starship{
+import java.io.Serializable;
+
+public class Freighter extends Starship implements Serializable {
     private int capacity;
     private Defense defense;
 

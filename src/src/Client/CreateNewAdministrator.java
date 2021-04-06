@@ -3,6 +3,10 @@ package Client;
 import java.util.Scanner;
 
 public class CreateNewAdministrator extends AdministratorOperation{
+
+    public CreateNewAdministrator(Administrator admin){
+        super(admin);
+    }
     @Override
     public boolean doOperation() {
 

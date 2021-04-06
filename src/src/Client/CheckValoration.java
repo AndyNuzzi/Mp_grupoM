@@ -4,7 +4,7 @@ import Controller.*;
 
 public class CheckValoration extends ClientOperation{
     public CheckValoration (Client client){
-        super ();
+        super (client);
         // me traigo los datos del cliente
     }
 

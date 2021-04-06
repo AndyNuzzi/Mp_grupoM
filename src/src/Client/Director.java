@@ -12,7 +12,7 @@ public class Director {
         return starshipBuilder.getResult(owner);
     }
 
-    public Starship makeFrieghter(Client owner) {
+    public Starship makeFreighter(Client owner) {
         StarshipBuilder starshipBuilder = new FreighterBuilder();
         return starshipBuilder.getResult(owner);
     }

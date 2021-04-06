@@ -12,7 +12,7 @@ public abstract class Starship implements Serializable{
     protected List<Propulsion> propulsion = new ArrayList<Propulsion>();
     protected int crew;
 
-    protected String getRegisterNumber() {
+    public String getRegisterNumber() {
         return this.registerNumber;
     }
 
@@ -24,11 +24,11 @@ public abstract class Starship implements Serializable{
         return this.registerNumber.equals(registerNumber);
     }
 
-    protected void setOwner(Client owner) {
-        this.owner = owner;
+    protected void setOwner(String ownerId) {
+        this.owner = ownerId;
     }
 
-    public Client getOwner() {
+    public String getOwner() {
         return owner;
     }
 

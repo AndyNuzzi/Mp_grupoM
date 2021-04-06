@@ -5,6 +5,11 @@ import java.util.Scanner;
 import Controller.*;
 
 public class DeletePossibleSwindler extends AdministratorOperation{
+
+    public DeletePossibleSwindler(Administrator admin){
+        super(admin);
+    }
+
     @Override
     public boolean doOperation() {
         // esta operacion se encarga de:
@@ -28,7 +33,7 @@ public class DeletePossibleSwindler extends AdministratorOperation{
             if (deleteConfirm == "y") {
                 System.out.println("Introduce Swindler id:");
                 String idSwindler = scanner.nextLine();
-                controller.deletePossbileSwindler(idSwindler);
+                controller.deletePossibleSwindler(idSwindler);
                 // llamar al controlador pasandole el id del swindler que se quiere eliminar
             }
             System.out.println("Do you want to continue deleting? y/n");
