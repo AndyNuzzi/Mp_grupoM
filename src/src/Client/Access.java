@@ -13,6 +13,7 @@ public abstract class Access {
      */
     public abstract void doOperation();
 
+
     /**
      * Pide informacion al usuario, ej email, contraseña...
      *
