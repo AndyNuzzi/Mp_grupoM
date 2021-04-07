@@ -14,14 +14,12 @@ public class Armor extends Defense implements Serializable {
         this.weigth = weigth;
     }
 
-
     public String getMaterial(){
         return this.material;
     }
 
-
-    public int getWeigth(){
-        return this.weigth;
+    public int getWeight(){
+        return this.weight;
     }
 
 }

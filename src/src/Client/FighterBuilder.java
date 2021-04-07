@@ -72,11 +72,13 @@ public class FighterBuilder extends StarshipBuilder {
     }
 
     public void propulsion() {
-        double speed=0;
+        double speed = 0;
         Propulsion prop = null;
         Scanner sc = new Scanner(System.in);
-        String name ;
-        String pattern="[1-6]{1}";
+        int option = 0;
+        boolean moreCanBeAdded = false;
+        boolean addMore =false;
+
         do {
             System.out.println(" Select Propulsion");
             System.out.println("1.FTL Engine");
@@ -84,44 +86,38 @@ public class FighterBuilder extends StarshipBuilder {
             System.out.println("3.Ion Engine");
             System.out.println("4.Trace Compressor");
             System.out.println("5.Warp Engine");
-            System.out.println("6.Exit Propulsion");
-            name = sc.nextLine();
-            if (name.matches(pattern)){
-            if(name!="6") {
-                System.out.println("Select Speed");
-                speed = sc.nextDouble();
-            }
-            switch (name) {
-                case "1":
+            option = sc.nextInt();
+            do {
+                if (option >= 1 && option <= 6) {
+                    System.out.println("Select Speed");
+                    speed = sc.nextDouble();
 
-                    prop = new FTLEngine(speed);
-                    break;
-
-                case "2":
-
-                    prop = new SolarSails(speed);
-                    break;
-
-                case "3":
-
-                    prop = new IonEngine(speed);
-                    break;
-                case "4":
-
-                    prop = new TraceCompressor(speed);
-                    break;
-                case "5":
-
-                    prop = new WarpEngine(speed);
-                    break;
-
-
-            }
-        } while (name != "6");
-
-        fighter.addPropulsion(prop);
+                    switch (option) {
+                        case 1:
+                            prop = new FTLEngine(speed);
+                            break;
+                        case 2:
+                            prop = new SolarSails(speed);
+                            break;
+                        case 3:
+                            prop = new IonEngine(speed);
+                            break;
+                        case 4:
+                            prop = new TraceCompressor(speed);
+                            break;
+                        case 5:
+                            prop = new WarpEngine(speed);
+                            break;
+                    }
+                } else {
+                    System.out.println(" Select a correct option1 ");
+                }
+            } while (!(option >= 1 && option < 6));
+            moreCanBeAdded = fighter.addPropulsion(prop);
+            System.out.println("Do you want to select other propulsion?y/n");
+            addMore= sc.nextLine().toLowerCase().equals("n");
+        } while (addMore && moreCanBeAdded);
     }
-
 
     @Override
     public Starship getResult(Client owner) {
