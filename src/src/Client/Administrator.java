@@ -1,7 +1,5 @@
 package Client;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.io.Serializable;
 
 public class Administrator extends User implements Serializable{
@@ -14,6 +12,9 @@ public class Administrator extends User implements Serializable{
         super(name, planet, species, idNumber, nick, password, email);
     }
 
+    /**
+     * Se encarga de meter las operaciones del administrador en la lista, y luego llamará al elegir operaciones
+     */
     @Override
     public void doOperation() {
         AdministratorOperation op1 = new ValidateOffer(this);

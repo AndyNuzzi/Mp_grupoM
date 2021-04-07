@@ -10,9 +10,12 @@ public class Client extends User implements Serializable{
     private List <String> subscription = new LinkedList<String>();
     private int additionVote;
     private int interactions;
-    // preguntar de donde es el import si de sql o de java util
     private Date banned;
     private boolean warning;
+
+    public Client (){
+        super ();
+    }
 
     public Client(String name, String planet, String species, String idNumber, String nick, String password, String email) {
         super(name, planet, species, idNumber, nick, password, email);
@@ -26,6 +29,9 @@ public class Client extends User implements Serializable{
         return pirate;
     }
 
+    /**
+     * Se encarga de meter las operaciones del cliente en la lista, y luego llamará al elegir operaciones
+     */
     @Override
     public void doOperation() {
         ClientOperation op1 = new CreateOffer(this);
