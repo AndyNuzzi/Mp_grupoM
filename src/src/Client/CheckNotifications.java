@@ -5,21 +5,23 @@ import java.util.List;
 public class CheckNotifications extends ClientOperation{
     public CheckNotifications (Client client){
         super (client);
-        // me traigo los datos del cliente
     }
 
     @Override
-    // VER QUE ES UNA NOTIFICACION
-    public boolean doOperation() {
-        // muestra todas las notificaciones de un cliente
+    // VER QUE ES UNA NOTIFICACION --> AL MOSTRARLAS......
+        // creo que deberian de ser ofertas, porque al subscribirte
+        // a una nave te manda una notificacion con la offerta enseña ofertas
 
-        List<String> notifications = controller.getNotificationsList();
+    public boolean doOperation() { // muestra todas las notificaciones de un cliente
 
-        for (int i = 0; i < notifications.size(); i++){
-            String notifInfo = notifications.get(i);
+        List<String> notificationsList = controller.getNotificationsList();
+
+        System.out.println("---------------  NEW NOTIFICATION  ---------------");
+        for (String notifInfo: notificationsList){
+            System.out.println("--------------------------------------------------");
             System.out.println(notifInfo);
-        }
-        // imprimo la lista con las notificaciones
+            System.out.println("--------------------------------------------------");
+        } // lista con las notificaciones
 
         return true;
     }

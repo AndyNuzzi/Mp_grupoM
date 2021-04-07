@@ -7,16 +7,15 @@ public class CreateNewAdministrator extends AdministratorOperation{
     public CreateNewAdministrator(Administrator admin){
         super(admin);
     }
+
     @Override
     public boolean doOperation() {
 
         Administrator admin = new Administrator();
 
-        // pedir por pantalla toda la info del admin con Scanner
-            //no dejar que añada mas de un admin
-        // llamar al metodo del controller con el metodo de nuevo admin --> controller.createNewAdministrator(admin)
-
         Scanner scanner = new Scanner(System.in);
+
+        System.out.println("---------------  NEW ADMINISTRATOR  ---------------");
 
         System.out.println("Your name is:");
         admin.setName(scanner.nextLine());

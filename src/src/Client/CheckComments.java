@@ -9,15 +9,20 @@ public class CheckComments extends ClientOperation{
     }
 
     @Override
-    public boolean doOperation() {
-        // se encarga de mostrar la lista con los comentarios de un cliente
+    public boolean doOperation() { //de muestra la lista con los comentarios de un cliente
 
         List<Comment> comments = controller.getCommentsList(client.getIdNumber());
 
-        for (int i = 0; i < comments.size(); i++){
-            Comment commentInfo = comments.get(i);
-            System.out.println(commentInfo.getComment());
-        }
+        System.out.println("---------------  NEW COMMENTS  ---------------");
+        for (Comment commentInfo: comments){
+            System.out.println("--------------------------------------------------");
+            System.out.println("Id sale: " + commentInfo.getIdSale());
+            System.out.println("Id client: " + commentInfo.getIdClient());
+            System.out.println("Valoration: " + commentInfo.getValoration());
+            System.out.println("Comment: " + commentInfo.getComment());
+            System.out.println("--------------------------------------------------");
+        } // lista con los comentarios
+
         return true;
     }
 }

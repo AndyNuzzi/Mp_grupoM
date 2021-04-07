@@ -6,21 +6,19 @@ public class Subscribe extends ClientOperation{
 
     public Subscribe (Client client){
         super (client);
-        // me traigo los datos del cliente
     }
 
     @Override
-    // 1-4
-    // poner los break
+    // FALTA POR IMPLEMENTAR:
+        // - PODER DARSE DE BAJA EN LAS SUBSCRIPCIONES
+        // - AL SUSBCRIBIRSE LANZAR LAS NOTIFICACIONES
 
-    // HAY QUE REVISARLO
-    public boolean doOperation() {
-        // se encarga de pedir los tipos de naves que van a estar en la oferta
+    public boolean doOperation() { // subscripcion a un tipo de nave
 
         boolean chooseShip = false;
 
         while (! chooseShip) {
-            System.out.println("Which starship do you want to subscribe? 1-4");
+            System.out.println("Which starship do you want to subscribe? (1-4)");
             System.out.println("*********** -1- space station ************");
             System.out.println("*********** -2- destroyer     ************");
             System.out.println("*********** -3- freighter     ************");
@@ -40,12 +38,8 @@ public class Subscribe extends ClientOperation{
                           break;
             }
             System.out.println("Do you want to continue susbcribing? y/n");
-            String addContinue = scanner.nextLine();
-            if (addContinue == "n") {
-                chooseShip = true;
-            } else{
-                chooseShip = false;
-            }
+            chooseShip = scanner.nextLine().toLowerCase().equals("n");
+
         }
         return chooseShip;
     }

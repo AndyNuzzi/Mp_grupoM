@@ -3,8 +3,6 @@ package Client;
 import java.util.List;
 import java.util.Scanner;
 
-import Controller.*;
-
 public class ValidateOffer extends AdministratorOperation{
 
     public ValidateOffer (Administrator administrator){
@@ -12,9 +10,9 @@ public class ValidateOffer extends AdministratorOperation{
     }
 
     @Override
-    public boolean doOperation() {
-        // llamar al metodo del controller?
+    // HAY QUE REVISAR ESTE METODO EN PROFUNDIDAD
 
+    public boolean doOperation() { // valida las ofertas creadas
 
         // acceder a la lista de unchecked offers (llamar al controlador)
         // recoger la lista que me devuelven (la info de la oferta entera)
@@ -26,22 +24,27 @@ public class ValidateOffer extends AdministratorOperation{
 
         // tiene que poder salir antes de seguir validando el resto de ofertas
 
-        List <Offer> unCheckedOffers = controller.getUncheckedOffersList();
-        //----------------------------------------------------------------------------------------
-        for (int i = 0; i < unCheckedOffers.size(); i++){
-            Offer unchecked = unCheckedOffers.get(i);
-            System.out.println(unchecked);
-        }
+        List <Offer> uncheckedOffers = controller.getUncheckedOffersList();
+
+        System.out.println("--------------------  OFFERS  --------------------");
+        for (Offer info: uncheckedOffers){
+            System.out.println("--------------------------------------------------");
+            System.out.println(info.getId());
+            System.out.println(info.getStarshipIdList());
+            System.out.println(info.getDateEnd());
+            System.out.println(info.getPrice());
+            System.out.println(info.getCreator());
+            System.out.println("--------------------------------------------------");
+        } // lista con las ofertas
 
         boolean validate = false;
+
         while (! validate){
             System.out.println("Which offer do you want to validate? (id)");
             Scanner scanner = new Scanner(System.in);
             String validation = scanner.nextLine();
 
         }
-        //----------------------------------------------------------------------------------------
-        // HAY QUE REVISAR ESTE METODO EN PROFUNDIDAD
         return true;
     }
 }

@@ -7,11 +7,14 @@ import java.util.Scanner;
 public class SearchOffer extends ClientOperation{
     public SearchOffer (Client client){
         super (client);
-        // me traigo los datos del cliente
     }
 
     @Override
-    public boolean doOperation() {
+    // FALTA POR IMPLEMENTAR:
+        // AL MOSTRAR LAS OFERTAS AL MENOS TIENEN QUE TENER UNA DE LAS NAVES DE LAS PEDIDAS
+        // PEDIR LA FECHA
+
+    public boolean doOperation() { // busca las ofertas según un tipo de nave y podrá comprar una oferta
 
         System.out.println("Which starship do you want to see?");
         Scanner scanner = new Scanner(System.in);
@@ -19,17 +22,23 @@ public class SearchOffer extends ClientOperation{
 
         List<Offer> offerList = controller.getOffer(shipElection);
 
-        for (int i = 0; i < offerList.size(); i++){
-            Offer info = offerList.get(i);
-            System.out.println(info);
-        }
+        System.out.println("--------------------  OFFERS  --------------------");
+        for (Offer info: offerList){
+            System.out.println("--------------------------------------------------");
+            System.out.println(info.getId());
+            System.out.println(info.getStarshipIdList());
+            System.out.println(info.getDateEnd());
+            System.out.println(info.getPrice());
+            System.out.println(info.getCreator());
+            System.out.println("--------------------------------------------------");
+        } // lista con las ofertas
 
         boolean buying = false;
 
         while (! buying){
             System.out.println("Do you want to buy any Offer? y/n");
             String buyingConfirm = scanner.nextLine();
-            if (buyingConfirm == "y") {
+            if (buyingConfirm.toLowerCase().equals("y")) {
                 System.out.println("Introduce Offer id:");
                 String idOffer = scanner.nextLine();
 
@@ -45,7 +54,7 @@ public class SearchOffer extends ClientOperation{
                 }
             }
             System.out.println("Do you want to continue buying? y/n");
-            buying = scanner.nextLine().equals("n");
+            buying = scanner.nextLine().toLowerCase().equals("n");
         }
         return buying;
     }

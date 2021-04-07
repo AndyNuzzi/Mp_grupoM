@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import Controller.*;
 
 public class Offer implements Serializable {
 
@@ -22,12 +21,12 @@ public class Offer implements Serializable {
 
     public Offer() {}
 
-    public boolean[] getType() {
-        return type;
+    public String getId() {
+        return id;
     }
 
-    public void setType(boolean[] type) {
-        this.type = type;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public List<String> getStarshipIdList() {
@@ -62,12 +61,12 @@ public class Offer implements Serializable {
         this.creator = creator;
     }
 
-    public String getId() {
-        return id;
+    public boolean[] getType() {
+        return type;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setType(boolean[] type) {
+        this.type = type;
     }
 
     public boolean addStarshipToOffer(Starship starship){
