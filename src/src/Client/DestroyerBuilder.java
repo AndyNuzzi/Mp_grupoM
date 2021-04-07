@@ -75,6 +75,7 @@ public class DestroyerBuilder extends StarshipBuilder{
 
 
     public  void propulsion(){
+        double speed=0;
         Propulsion prop = null;
         Scanner sc = new Scanner(System.in);
         int name=0;
@@ -87,8 +88,10 @@ public class DestroyerBuilder extends StarshipBuilder{
             System.out.println("5.Warp Engine");
             System.out.println("6.Exit Propulsion");
             name = sc.nextInt();
-            System.out.println("Select Speed");
-            double speed = sc.nextDouble();
+            if (name!=6) {
+                System.out.println("Select Speed");
+                speed = sc.nextDouble();
+            }
             switch (name) {
                 case 1:
 

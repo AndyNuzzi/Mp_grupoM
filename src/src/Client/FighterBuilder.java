@@ -17,8 +17,8 @@ public class FighterBuilder extends StarshipBuilder {
         System.out.println(" Select a Weapon ");
         System.out.println(" 1 PEM ");
         System.out.println(" 2 Laser Beam ");
-        System.out.println(" 1 Thermonuclear Missiles ");
-        System.out.println(" 2 Plasma Cannons ");
+        System.out.println(" 3 Thermonuclear Missiles ");
+        System.out.println(" 4 Plasma Cannons ");
         System.out.println("");
         Scanner scanner = new Scanner(System.in);
         int weaponOption = scanner.nextInt();
@@ -72,9 +72,11 @@ public class FighterBuilder extends StarshipBuilder {
     }
 
     public void propulsion() {
+        double speed=0;
         Propulsion prop = null;
         Scanner sc = new Scanner(System.in);
-        int name = 0;
+        String name ;
+        String pattern="[1-6]{1}";
         do {
             System.out.println(" Select Propulsion");
             System.out.println("1.FTL Engine");
@@ -83,36 +85,39 @@ public class FighterBuilder extends StarshipBuilder {
             System.out.println("4.Trace Compressor");
             System.out.println("5.Warp Engine");
             System.out.println("6.Exit Propulsion");
-            name = sc.nextInt();
-            System.out.println("Select Speed");
-            double speed = sc.nextDouble();
+            name = sc.nextLine();
+            if (name.matches(pattern)){
+            if(name!="6") {
+                System.out.println("Select Speed");
+                speed = sc.nextDouble();
+            }
             switch (name) {
-                case 1:
+                case "1":
 
                     prop = new FTLEngine(speed);
                     break;
 
-                case 2:
+                case "2":
 
                     prop = new SolarSails(speed);
                     break;
 
-                case 3:
+                case "3":
 
                     prop = new IonEngine(speed);
                     break;
-                case 4:
+                case "4":
 
                     prop = new TraceCompressor(speed);
                     break;
-                case 5:
+                case "5":
 
                     prop = new WarpEngine(speed);
                     break;
 
 
             }
-        } while (name != 6);
+        } while (name != "6");
 
         fighter.addPropulsion(prop);
     }
