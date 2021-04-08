@@ -125,4 +125,9 @@ public class FighterBuilder extends StarshipBuilder {
         return fighter;
     }
 
+    @Override
+    public void print() {
+
+    }
+
 }

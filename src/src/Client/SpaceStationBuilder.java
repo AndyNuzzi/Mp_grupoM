@@ -106,4 +106,16 @@ public class SpaceStationBuilder extends StarshipBuilder {
         return spaceStation;
     }
 
+
+
+    @Override
+    public void print() {
+        System.out.println("Register number: " + spaceStation.getRegisterNumber());
+        System.out.println("Owner: " + spaceStation.getOwner());
+        System.out.println("Owner: " + spaceStation.getOwner());
+        System.out.println("Owner: " + spaceStation.getOwner());System.out.println("Owner: " + spaceStation.getOwner());
+
+    }
+
+
 }

@@ -1,6 +1,5 @@
 package Client;
 
-import java.util.Locale;
 import java.util.Scanner;
 
 public class FreighterBuilder extends StarshipBuilder {
@@ -82,6 +81,11 @@ public class FreighterBuilder extends StarshipBuilder {
         this.defense();
         controller.createStarship((Starship) freighter);
         return freighter;
+    }
+
+    @Override
+    public void print() {
+
     }
 
 
