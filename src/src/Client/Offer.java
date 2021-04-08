@@ -62,8 +62,22 @@ public class Offer implements Serializable {
         this.creator = creator;
     }
 
-    public boolean[] getType() {
-        return type;
+    public List<String> getType() {
+        List<String> l = new ArrayList<>();
+        for (int i = 0; i < 3; i++){
+            if (type[i])
+                switch (i) {
+                    case 0 : l.add("SpaceStation");
+                    break;
+                    case 1: l.add("Destroyer");
+                    break;
+                    case 2: l.add("Freighter");
+                    break;
+                    case 3: l.add("Fighter");
+                    break;
+                }
+        }
+        return l;
     }
 
     public boolean checkType(String type){

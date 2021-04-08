@@ -14,6 +14,7 @@ public class Controller {
     private DataManageSystemDelete delete = DataManageSystemDelete.getInstance();
     private DataManageSystemActualization actualization = DataManageSystemActualization.getInstance();
     private IdentificatorsFile idFile = IdentificatorsFile.getInstance();
+    private SubscriptionFile subscriptionFile = SubscriptionFile.getInstance();
 
     //Methods
     public User validate(String nick, String password){
@@ -21,7 +22,7 @@ public class Controller {
         User u =queries.openSession(nick, password);
         if (u!=null&&u.getClass().getSimpleName().equals("Client")){
             Client c = (Client) u;
-            if (c.getBanned().compareTo(LocalDate.now()) > 0){
+            if (c.getBanned()!= null &&c.getBanned().compareTo(LocalDate.now()) > 0){
                 return null;
             }
             return c;
@@ -69,6 +70,8 @@ public class Controller {
 
     public boolean addOffer(Offer offer){
         //Adds a new offer to valid offer's list.
+        Subscription s = subscriptionFile.read();
+        s.notifySubscribers(offer.getType());
         return adders.addNewOffer(offer);
     }
 
@@ -160,18 +163,17 @@ public class Controller {
         return null;
     }
 
-    public void addSubscription(String typeOfShip) {
-        System.out.println("Falta");
-    }
-
     public List<Starship> getStarship(List<String> ids){
         return queries.getStarships(ids);
     }
 
-    //No terminadas
-        /*    public void addSubscription(Client c){
-                actualization.clientActualization(c);
-            }
+    public void addSubscription(String id, String option){
+        Subscription sub = subscriptionFile.read();
+        sub.addSubscription(id,option);
+    }
+
+          //No terminadas
+        /*
             public String getNotificationsList(){}
         */
 

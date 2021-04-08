@@ -97,7 +97,20 @@ public class SearchOffer extends ClientOperation{
 
     private void printStarships(List<Starship> starship) {
         for (Starship s: starship){
-            System.out.println("Imprimir nave completa");
+            switch (s.getClass().getSimpleName()){
+                case "SpaceStation": SpaceStation sp = (SpaceStation) s;
+                    //sp.print();
+                    break;
+                case "Destroyer": Destroyer destroyer = (Destroyer) s;
+                    //destroyer.print();
+                    break;
+                case "Freighter": Freighter freighter = (Freighter) s;
+                    //freighter.print();
+                    break;
+                case "fighter": Fighter fighter = (Fighter) s;
+                    //fighter.print();
+                    break;
+            }
         }
     }
 
