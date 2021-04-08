@@ -4,6 +4,7 @@ import Client.*;
 import Storage.*;
 
 import java.time.LocalDate;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Controller {
@@ -70,8 +71,11 @@ public class Controller {
 
     public boolean addOffer(Offer offer){
         //Adds a new offer to valid offer's list.
-        Subscription s = subscriptionFile.read();
-        s.notifySubscribers(offer.getType());
+        Subscription sub = subscriptionFile.read();
+        if (sub==null){
+            sub = new Subscription(new LinkedList<>(), new LinkedList<>(), new LinkedList<>(), new LinkedList<>());
+        }
+        sub.notifySubscribers(offer.getType(), "New offer available! Offer id: " + offer.getId(), actualization, queries);
         return adders.addNewOffer(offer);
     }
 
@@ -145,11 +149,6 @@ public class Controller {
         return id.getId(1);
     }
 
-    public List<String> getNotificationsList() {
-        System.out.println("Falta");
-        return null;
-    }
-
     public List<Offer> getOffer(String shipElection, String id) {
         return queries.searchOffers(shipElection, id);
     }
@@ -169,14 +168,10 @@ public class Controller {
 
     public void addSubscription(String id, String option){
         Subscription sub = subscriptionFile.read();
+        if (sub==null){
+            sub = new Subscription(new LinkedList<>(), new LinkedList<>(), new LinkedList<>(), new LinkedList<>());
+        }
         sub.addSubscription(id,option);
     }
-
-          //No terminadas
-        /*
-            public String getNotificationsList(){}
-        */
-
-
 
 }

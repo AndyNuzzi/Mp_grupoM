@@ -28,15 +28,16 @@ public class Subscribe extends ClientOperation{
             String typeOfShip = scanner.nextLine();
 
             switch (typeOfShip) {
-                case "1": controller.addSubscription(typeOfShip);
+                case "1": controller.addSubscription(client.getIdNumber(), "SpaceStation");
                           break;
-                case "2": controller.addSubscription(typeOfShip);
+                case "2": controller.addSubscription(client.getIdNumber(), "Destroyer");
                           break;
-                case "3": controller.addSubscription(typeOfShip);
+                case "3": controller.addSubscription(client.getIdNumber(), "Freighter");
                           break;
-                case "4": controller.addSubscription(typeOfShip);
+                case "4": controller.addSubscription(client.getIdNumber(), "Fighter");
                           break;
             }
+
             System.out.println("Do you want to continue susbcribing? y/n");
             chooseShip = scanner.nextLine().toLowerCase().equals("n");
 

@@ -64,7 +64,7 @@ public class Offer implements Serializable {
 
     public List<String> getType() {
         List<String> l = new ArrayList<>();
-        for (int i = 0; i < 3; i++){
+        for (int i = 0; i <= 3; i++){
             if (type[i])
                 switch (i) {
                     case 0 : l.add("SpaceStation");
@@ -102,7 +102,7 @@ public class Offer implements Serializable {
 
     public boolean addStarshipToOffer(Starship starship){
         starshipIdList.add(starship.getRegisterNumber());
-        if (!starship.getClass().getSimpleName().equals("SpaceStation")){
+        if (starship.getClass().getSimpleName().equals("SpaceStation")){
             SpaceStation sp = (SpaceStation) starship;
             List<Starship> starshipList = sp.getStarships();
             for (Starship s: starshipList){

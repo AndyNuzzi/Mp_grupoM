@@ -14,14 +14,19 @@ public class CheckNotifications extends ClientOperation{
 
     public boolean doOperation() { // muestra todas las notificaciones de un cliente
 
-        List<String> notificationsList = controller.getNotificationsList();
+        List<Notification> notificationsList = client.getNotificationList();
+
+        if (notificationsList!=null){
+            for (Notification not: notificationsList){
+                System.out.println("--------------------------------------------------");
+                not.print();
+                System.out.println("--------------------------------------------------");
+            }
+        } else {
+            System.out.println("There aren't notifications available.");
+        }
 
         System.out.println("---------------  NEW NOTIFICATION  ---------------");
-        for (String notifInfo: notificationsList){
-            System.out.println("--------------------------------------------------");
-            System.out.println(notifInfo);
-            System.out.println("--------------------------------------------------");
-        } // lista con las notificaciones
 
         return true;
     }

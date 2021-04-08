@@ -13,6 +13,7 @@ public class Client extends User implements Serializable{
     private int interactions;
     private LocalDate banned;
     private boolean warning;
+    private List<Notification> notificationList;
 
     public Client(String name, String planet, String species, String idNumber, String nick, String password, String email) {
         super(name, planet, species, idNumber, nick, password, email);
@@ -59,5 +60,11 @@ public class Client extends User implements Serializable{
         this.warning = warning;
     }
 
+    public void addNotification(Notification n){
+        notificationList.add(n);
+    }
 
+    public List<Notification> getNotificationList(){
+        return notificationList;
+    }
 }
