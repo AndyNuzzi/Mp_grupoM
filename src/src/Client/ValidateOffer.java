@@ -60,6 +60,7 @@ public class ValidateOffer extends AdministratorOperation{
                         c.setWarning(true);
                         Notification not = new Notification("Your offer was not validated. Next time you will be banned for 5 days.");
                         c.addNotification(not);
+                        controller.actualizateClient(c);
                     }
                 }
 

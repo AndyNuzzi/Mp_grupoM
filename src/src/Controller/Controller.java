@@ -174,4 +174,7 @@ public class Controller {
         sub.addSubscription(id,option);
     }
 
+    public void actualizateClient(Client c){
+        actualization.clientActualization(c);
+    }
 }
