@@ -27,10 +27,10 @@ public class CreateNewAdministrator extends AdministratorOperation{
         System.out.println("Your nick is:");
         admin.setNick(scanner.nextLine());
 
-        String password = null;
+        String password = "null";
         String confirmPassword = " ";
 
-        while (password.equals(confirmPassword)) {
+        while (!password.equals(confirmPassword)) {
             System.out.println("Your password is:");
             password = scanner.nextLine();
             System.out.println("Confirm your password: ");

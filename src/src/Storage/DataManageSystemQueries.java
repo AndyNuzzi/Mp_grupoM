@@ -72,10 +72,13 @@ public class DataManageSystemQueries extends DataManageSystem{
     public User openSession(String nick, String password){
         //Opens a session of a User
         List clientList = loadClientsFile();
-        User c = search(clientList, nick, password);
+        User c = null;
+        if (clientList != null)
+            c = search(clientList, nick, password);
         if (c==null){
             List administratorList = loadAdministratorsFile();
-            c = search(administratorList, nick, password);
+            if (administratorList!=null)
+                c = search(administratorList, nick, password);
         }
         else{
             List swindlerList = loadSwindlerFile();

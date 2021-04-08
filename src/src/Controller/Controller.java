@@ -19,7 +19,7 @@ public class Controller {
     public User validate(String nick, String password){
         //Returns a User with its information
         User u =queries.openSession(nick, password);
-        if (u.getClass().getSimpleName().equals("Client")){
+        if (u!=null&&u.getClass().getSimpleName().equals("Client")){
             Client c = (Client) u;
             if (c.getBanned().compareTo(LocalDate.now()) > 0){
                 return null;
