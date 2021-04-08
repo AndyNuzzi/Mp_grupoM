@@ -13,7 +13,7 @@ public class Client extends User implements Serializable{
     private int interactions;
     private LocalDate banned;
     private boolean warning;
-    private List<Notification> notificationList;
+    private List<Notification> notificationList = new LinkedList<Notification>();
 
     public Client(String name, String planet, String species, String idNumber, String nick, String password, String email) {
         super(name, planet, species, idNumber, nick, password, email);

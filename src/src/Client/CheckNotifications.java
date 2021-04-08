@@ -17,16 +17,18 @@ public class CheckNotifications extends ClientOperation{
         List<Notification> notificationsList = client.getNotificationList();
 
         if (notificationsList!=null){
+            System.out.println("---------------  NEW NOTIFICATION  ---------------");
             for (Notification not: notificationsList){
                 System.out.println("--------------------------------------------------");
                 not.print();
                 System.out.println("--------------------------------------------------");
             }
+            //Eliminar notificaciones
         } else {
             System.out.println("There aren't notifications available.");
         }
 
-        System.out.println("---------------  NEW NOTIFICATION  ---------------");
+
 
         return true;
     }

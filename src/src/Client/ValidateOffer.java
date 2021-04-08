@@ -56,8 +56,11 @@ public class ValidateOffer extends AdministratorOperation{
                         c.setWarning(false);
                         c.setBanned(LocalDate.now().plusDays(5));
                     }
-                    else c.setWarning(true);
-                    //notificar
+                    else {
+                        c.setWarning(true);
+                        Notification not = new Notification("Your offer was not validated. Next time you will be banned for 5 days.");
+                        c.addNotification(not);
+                    }
                 }
 
                 uncheckedOffers = controller.getUncheckedOffersList();

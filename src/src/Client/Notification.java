@@ -1,6 +1,8 @@
 package Client;
 
-public class Notification {
+import java.io.Serializable;
+
+public class Notification implements Serializable {
     private String message;
 
     public Notification(String message) {

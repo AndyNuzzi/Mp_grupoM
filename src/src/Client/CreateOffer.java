@@ -59,6 +59,8 @@ public class CreateOffer extends ClientOperation {
             System.out.println("Do you want to continue adding starships? y/n");
             addShip = scanner.nextLine().toLowerCase().equals("n");
             offer.setCreator(client.getIdNumber());
+            System.out.println("Price (in EUROS): ");
+            offer.setPrice(scanner.nextLong());
             controller.addToUncheckedOffers(offer.finish());
 
         }

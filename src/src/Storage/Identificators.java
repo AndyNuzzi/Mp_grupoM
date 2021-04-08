@@ -30,7 +30,7 @@ public class Identificators  implements Serializable {
             case 3: c = "S00000";
             break;
         }
-        id[i] = c + Long.toString(Long.parseLong(id[i].substring(1, id[i].length()-1)) + 1);
+        id[i] = c + Long.toString(Long.parseLong(id[i].substring(1, id[i].length())) + 1);
         IdentificatorsFile idFile = IdentificatorsFile.getInstance();
         idFile.writeId(idFile.getDirectory(), this);
         return result;
