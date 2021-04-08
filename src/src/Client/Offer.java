@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 
 public class Offer implements Serializable {
@@ -65,22 +66,44 @@ public class Offer implements Serializable {
         return type;
     }
 
-    public void setType(boolean[] type) {
-        this.type = type;
+    public boolean checkType(String type){
+        type = type.toLowerCase();
+        switch (type){
+            case "spacestation":
+                return this.type[0];
+            case "destroyer":
+                return this.type[1];
+            case "freighter":
+                return this.type[2];
+            case "fighter":
+                return this.type[3];
+            default:
+                return false;
+        }
+    }
+
+    public void setType(int i) {
+        this.type[i] = true;
     }
 
     public boolean addStarshipToOffer(Starship starship){
         starshipIdList.add(starship.getRegisterNumber());
-        return true;
-    }
-
-    public boolean addStarshipToOffer(SpaceStation spaceStation){
-        starshipIdList.add(spaceStation.getRegisterNumber());
-        type[0] = true;
-        List <Starship> starshipList = spaceStation.getStarships();
-        for (Starship s:starshipList){
-            starshipIdList.add(s.getRegisterNumber());
-            // comprobar si hay nave
+        if (!starship.getClass().getSimpleName().equals("SpaceStation")){
+            SpaceStation sp = (SpaceStation) starship;
+            List<Starship> starshipList = sp.getStarships();
+            for (Starship s: starshipList){
+                starshipIdList.add(s.getRegisterNumber());
+                switch (s.getClass().getSimpleName()){
+                    case "SpaceStation": type[0] = true;
+                    break;
+                    case "Destroyer": type[1] = true;
+                    break;
+                    case "Freighter": type[2] = true;
+                    break;
+                    case "Fighter": type[3] = true;
+                    break;
+                }
+            }
         }
         return true;
     }
@@ -88,5 +111,6 @@ public class Offer implements Serializable {
     public Offer finish(){
         return this;
     }
+
 
 }

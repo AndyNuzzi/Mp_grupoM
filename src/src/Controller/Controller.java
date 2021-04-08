@@ -2,6 +2,8 @@ package Controller;
 
 import Client.*;
 import Storage.*;
+
+import java.time.LocalDate;
 import java.util.List;
 
 public class Controller {
@@ -11,19 +13,28 @@ public class Controller {
     private DataManageSystemQueries queries = DataManageSystemQueries.getInstance();
     private DataManageSystemDelete delete = DataManageSystemDelete.getInstance();
     private DataManageSystemActualization actualization = DataManageSystemActualization.getInstance();
-    private Identificators identificators = new Identificators();
+    private IdentificatorsFile idFile = IdentificatorsFile.getInstance();
 
     //Methods
     public User validate(String nick, String password){
         //Returns a User with its information
-        return queries.openSession(nick, password);
+        User u =queries.openSession(nick, password);
+        if (u.getClass().getSimpleName().equals("Client")){
+            Client c = (Client) u;
+            if (c.getBanned().compareTo(LocalDate.now()) > 0){
+                return null;
+            }
+            return c;
+        }
+        return u;
     }
 
     public String validateNick(String nick){
         //Checks if nick is unique. If it's unique, returns an identificator.
         //In other case it returns null.
         if (!queries.validateNick(nick)){
-            String output = identificators.getId(0);
+            Identificators id = idFile.readId(idFile.getDirectory());
+            String output = id.getId(0);
             return output;
         }
         return null;
@@ -46,6 +57,8 @@ public class Controller {
 
     public boolean addToUncheckedOffers(Offer offer){
         //Adds a new offer to the list to be checked.
+        Identificators id = idFile.readId(idFile.getDirectory());
+        offer.setId(id.getId(2));
         return adders.addNewUncheckedOffer(offer);
     }
 
@@ -125,7 +138,8 @@ public class Controller {
     }
 
     public String getIdAdmin(){
-        return identificators.getId(1);
+        Identificators id = idFile.readId(idFile.getDirectory());
+        return id.getId(1);
     }
 
     public List<String> getNotificationsList() {
@@ -133,12 +147,12 @@ public class Controller {
         return null;
     }
 
-    public List<Offer> getOffer(String shipElection) {
-        return null;
+    public List<Offer> getOffer(String shipElection, String id) {
+        return queries.searchOffers(shipElection, id);
     }
 
     public void deleteOffer(String id) {
-        System.out.println("Falta");
+        delete.deleteOffer(id);
     }
 
     public String getIdSale() {
@@ -150,6 +164,9 @@ public class Controller {
         System.out.println("Falta");
     }
 
+    public List<Starship> getStarship(List<String> ids){
+        return queries.getStarships(ids);
+    }
 
     //No terminadas
         /*    public void addSubscription(Client c){

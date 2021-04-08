@@ -1,5 +1,6 @@
 package Client;
 
+import java.time.LocalDate;
 import java.util.*;
 import java.io.Serializable;
 
@@ -10,8 +11,7 @@ public class Client extends User implements Serializable{
     private List <String> subscription = new LinkedList<String>();
     private int additionVote;
     private int interactions;
-    // preguntar de donde es el import si de sql o de java util
-    private Date banned;
+    private LocalDate banned;
     private boolean warning;
 
     public Client(String name, String planet, String species, String idNumber, String nick, String password, String email) {
@@ -42,5 +42,22 @@ public class Client extends User implements Serializable{
         super.operations.add(op6);
         super.getOperation();
     }
+
+    public LocalDate getBanned() {
+        return banned;
+    }
+
+    public void setBanned(LocalDate banned) {
+        this.banned = banned;
+    }
+
+    public boolean isWarning() {
+        return warning;
+    }
+
+    public void setWarning(boolean warning) {
+        this.warning = warning;
+    }
+
 
 }

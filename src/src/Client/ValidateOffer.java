@@ -1,6 +1,10 @@
 package Client;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class ValidateOffer extends AdministratorOperation{
@@ -26,24 +30,49 @@ public class ValidateOffer extends AdministratorOperation{
 
         List <Offer> uncheckedOffers = controller.getUncheckedOffersList();
 
-        System.out.println("--------------------  OFFERS  --------------------");
-        for (Offer info: uncheckedOffers){
-            System.out.println("--------------------------------------------------");
-            System.out.println(info.getId());
-            System.out.println(info.getStarshipIdList());
-            System.out.println(info.getDateEnd());
-            System.out.println(info.getPrice());
-            System.out.println(info.getCreator());
-            System.out.println("--------------------------------------------------");
-        } // lista con las ofertas
+        if (uncheckedOffers != null && !uncheckedOffers.isEmpty()) {
+            boolean validate = false;
+            while (!validate) {
+                System.out.println("--------------------  OFFERS  --------------------");
+                Offer info = uncheckedOffers.remove(0);
+                System.out.println("--------------------------------------------------");
+                System.out.println(info.getId());
+                System.out.println(info.getStarshipIdList());
+                System.out.println(info.getDateEnd());
+                System.out.println(info.getPrice());
+                System.out.println(info.getCreator());
+                System.out.println("--------------------------------------------------");
 
-        boolean validate = false;
+                System.out.println("Validate offer? y/n");
+                Scanner scanner = new Scanner(System.in);
+                String validation = scanner.nextLine();
+                controller.deleteFromUncheckedOffers(info);
+                if ("y".equals(validation.toLowerCase())) {
+                    controller.addOffer(info);
+                }
+                else{
+                    Client c = controller.getClient(info.getCreator());
+                    if (c.isWarning()){
+                        c.setWarning(false);
+                        c.setBanned(LocalDate.now().plusDays(5));
+                    }
+                    else c.setWarning(true);
+                    //notificar
+                }
 
-        while (! validate){
-            System.out.println("Which offer do you want to validate? (id)");
-            Scanner scanner = new Scanner(System.in);
-            String validation = scanner.nextLine();
-
+                uncheckedOffers = controller.getUncheckedOffersList();
+                if (!uncheckedOffers.isEmpty()) {
+                    System.out.println("Do you want to validate one more offer? y/n");
+                    String result = scanner.nextLine();
+                    validate = "n".equals(result.toLowerCase());
+                }
+                else{
+                    System.out.println("There aren't new offers waiting for validation");
+                    validate = true;
+                }
+            }
+        } else{
+            System.out.println("There aren't new offers waiting for validation");
         }
         return true;
     }

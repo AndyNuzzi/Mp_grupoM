@@ -39,21 +39,26 @@ public class CreateOffer extends ClientOperation {
             switch (typeOfShip) {
                 case "1":
                     starship = (director.makeSpaceStation(super.client));
+                    offer.setType(0);
                     break;
                 case "2":
                     starship = (director.makeDestroyer(super.client));
+                    offer.setType(1);
                     break;
                 case "3":
                     starship = (director.makeFreighter(super.client));
+                    offer.setType(2);
                     break;
                 case "4":
                     starship = (director.makeFighter(super.client));
+                    offer.setType(3);
                     break;
             }
 
             offer.addStarshipToOffer(starship);
             System.out.println("Do you want to continue adding starships? y/n");
             addShip = scanner.nextLine().toLowerCase().equals("n");
+            offer.setCreator(client.getIdNumber());
             controller.addToUncheckedOffers(offer.finish());
 
         }
