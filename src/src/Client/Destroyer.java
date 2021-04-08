@@ -16,7 +16,7 @@ public class Destroyer extends Starship implements Serializable{
     public boolean addDefense(Defense defense){
         if (this.checkDefenseNumber()){
             this.defense.add(defense);
-            return true;
+            return this.checkDefenseNumber();
         } else {
             System.out.println(" No more Defenses can be added ");
             return false;
@@ -24,7 +24,7 @@ public class Destroyer extends Starship implements Serializable{
     }
 
     private boolean checkDefenseNumber(){
-        return this.defense.size() < 3;
+        return this.defense.size() < 2;
     }
 
     public List <Weapon> getWeapon() {

@@ -2,7 +2,6 @@ package Client;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 import java.io.Serializable;
 
 public abstract class Starship implements Serializable{
@@ -39,7 +38,7 @@ public abstract class Starship implements Serializable{
     public boolean addPropulsion(Propulsion propulsion) {
         if (this.checkPropulsionNumber()){
             this.propulsion.add(propulsion);
-            return true;
+            return this.checkPropulsionNumber();
         } else {
             System.out.println(" No more Propulsion can be added ");
             return false;
@@ -47,14 +46,14 @@ public abstract class Starship implements Serializable{
     }
 
     private boolean checkPropulsionNumber () {
-            return this.propulsion.size() < 3;
+            return this.propulsion.size() < 2;
         }
 
     public int getCrew () {
         return crew;
     }
 
-    public void setCrew ( int crew){
+    public void setCrew (int crew){
         this.crew = crew;
     }
 
