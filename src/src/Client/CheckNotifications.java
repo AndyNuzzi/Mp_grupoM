@@ -1,26 +1,43 @@
 package Client;
 
 import java.util.List;
+import java.util.Locale;
+import java.util.Scanner;
 
 public class CheckNotifications extends ClientOperation{
     public CheckNotifications (Client client){
         super (client);
-        // me traigo los datos del cliente
     }
 
     @Override
-    // VER QUE ES UNA NOTIFICACION
-    public boolean doOperation() {
-        // muestra todas las notificaciones de un cliente
+    // VER QUE ES UNA NOTIFICACION --> AL MOSTRARLAS......
+        // creo que deberian de ser ofertas, porque al subscribirte
+        // a una nave te manda una notificacion con la offerta enseña ofertas
 
-        List<String> notifications = controller.getNotificationsList();
+    public boolean doOperation() { // muestra todas las notificaciones de un cliente
 
-        for (int i = 0; i < notifications.size(); i++){
-            String notifInfo = notifications.get(i);
-            System.out.println(notifInfo);
+        List<Notification> notificationsList = client.getNotificationList();
+
+        if (notificationsList != null && notificationsList.size() > 0) {
+            System.out.println("---------------  NEW NOTIFICATION  ---------------");
+            for (Notification not: notificationsList){
+                System.out.println("--------------------------------------------------");
+                not.print();
+                System.out.println("--------------------------------------------------");
+            }
+            //Eliminar notificaciones
+        } else {
+            System.out.println("There aren't notifications available.");
         }
-        // imprimo la lista con las notificaciones
 
+        if (notificationsList.size()!= 0) {
+            System.out.println("Delete notifications? y/n");
+            Scanner sc = new Scanner(System.in);
+            String input = sc.nextLine();
+            if (input.toLowerCase().equals("y")) {
+                controller.deleteNotification(client);
+            }
+        }
         return true;
     }
 }

@@ -2,10 +2,7 @@ package Storage;
 
 import Client.*;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class DataManageSystemQueries extends DataManageSystem{
 
@@ -58,25 +55,30 @@ public class DataManageSystemQueries extends DataManageSystem{
         return false;
     }
 
-    public List<Offer> searchOffers (String offerType){
-        List l = loadOffersFile();
-        List <Offer> sol = new LinkedList<>();
-        for (Object obj: l){
-            Offer o = (Offer) obj;
-            if (true){//(compareTypes(o, offerType)){
-                sol.add(o);
+    public List<Offer> searchOffers (String offerType, String id){
+        List<Offer> l = loadOffersFile();
+        if (l!=null){
+            List <Offer> sol = new LinkedList<>();
+            for (Offer o: l){
+                if (o.checkType(offerType)&& !o.getCreator().equals(id)){
+                    sol.add(o);
+                }
             }
+            return sol;
         }
-        return sol;
+        return null;
     }
 
     public User openSession(String nick, String password){
         //Opens a session of a User
         List clientList = loadClientsFile();
-        User c = search(clientList, nick, password);
+        User c = null;
+        if (clientList != null)
+            c = search(clientList, nick, password);
         if (c==null){
             List administratorList = loadAdministratorsFile();
-            c = search(administratorList, nick, password);
+            if (administratorList!=null)
+                c = search(administratorList, nick, password);
         }
         else{
             List swindlerList = loadSwindlerFile();
@@ -103,11 +105,13 @@ public class DataManageSystemQueries extends DataManageSystem{
         //Returns a comments' list of a specific client
         List<Comment> l = loadCommentsFile();
         List<Comment> output = new ArrayList<Comment>();
-        Iterator <Comment> it = l.iterator();
-        while (it.hasNext()){
-            Comment c = it.next();
-            if (c.getIdSeller().equals(idClient))
-                output.add(c);
+        if (l!=null) {
+            Iterator<Comment> it = l.iterator();
+            while (it.hasNext()) {
+                Comment c = it.next();
+                if (c.getIdSeller().equals(idClient))
+                    output.add(c);
+            }
         }
         return output;
     }
@@ -117,11 +121,14 @@ public class DataManageSystemQueries extends DataManageSystem{
         List<Comment> commentList = getComments(id);
         int val = 0;
         int i = 0;
-        for (Comment c: commentList){
-            val += c.getValoration();
-            i++;
+        if (commentList.size()>0) {
+            for (Comment c : commentList) {
+                val += c.getValoration();
+                i++;
+            }
+            return val / i;
         }
-        return val/i;
+        else return 0;
     }
 
     private boolean check(List<String> l, String idNumber) {
@@ -165,6 +172,10 @@ public class DataManageSystemQueries extends DataManageSystem{
         return loadSwindlerFile();
     }
 
+    public List<Comment> loadComments(){
+        return loadCommentsFile();
+    }
+
     public boolean checkRegisterNumber(String id){
         //Checks if a register number has been used before
         List<Starship> l = loadStarshipsFile();
@@ -202,5 +213,23 @@ public class DataManageSystemQueries extends DataManageSystem{
             found = c.getIdNumber().equals(id);
         }
         return c;
+    }
+
+    public List<Starship> getStarships(List<String> ids){
+        Collections.sort(ids);
+        List<Starship> starshipList = loadStarshipsFile();
+        List<Starship> sol = new ArrayList<Starship>();
+        if (starshipList!=null){
+            Iterator<Starship> iterator = starshipList.iterator();
+            String id = ids.remove(0);
+            while (iterator.hasNext() && !ids.isEmpty()){
+                Starship next = iterator.next();
+                if (next.getRegisterNumber().equals(id)){
+                    sol.add(next);
+                    id = ids.remove(0);
+                }
+            }
+        }
+        return sol;
     }
 }

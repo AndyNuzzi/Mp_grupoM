@@ -1,22 +1,20 @@
 package Client;
 
-import Controller.*;
-
 public class CheckValoration extends ClientOperation{
     public CheckValoration (Client client){
         super (client);
-        // me traigo los datos del cliente
     }
 
     @Override
-    public boolean doOperation() {
-        // llamar al controller y que pase las valoraciones nuevas
-        // y mostrar la valoracion media
-
-
-        System.out.println(controller.getAverageValoration(client.getIdNumber()));
-        // muestra por pantalla la valoración media calculada
-
+    public boolean doOperation() { // muestra la valoración media
+        float val = controller.getAverageValoration(client.getIdNumber());
+        if (val != 0) {
+            System.out.println("---------------  AVERAGE VALORATION  ---------------");
+            System.out.println(val);
+        }
+        else {
+            System.out.println("You haven't been valued");
+        }
         return false;
     }
 }

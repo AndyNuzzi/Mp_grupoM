@@ -32,14 +32,14 @@ public class DataManageSystemDelete extends DataManageSystem{
 
 
     //Methods
-    public boolean deleteOffer(Offer offer){
+    public boolean deleteOffer(String id){
         //Deletes an offer from offers' file
         List l = loadOffersFile();
         Iterator <Offer> it = l.iterator();
         boolean found = false;
         while (it.hasNext()&&!found){
             Offer o = it.next();
-            if (o.getId().equals(offer.getId())){
+            if (o.getId().equals(id)){
                 found = true;
                 l.remove(o);
             }
