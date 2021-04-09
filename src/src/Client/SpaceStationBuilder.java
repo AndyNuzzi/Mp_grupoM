@@ -100,13 +100,13 @@ public class SpaceStationBuilder extends StarshipBuilder {
                 option = scanner.nextInt();
                 switch (option) {
                     case 1:
-                        director.makeDestroyer(owner);
+                        starship = director.makeDestroyer(owner);
                         break;
                     case 2:
-                        director.makeFighter(owner);
+                        starship = director.makeFighter(owner);
                         break;
                     case 3:
-                        director.makeFreighter(owner);
+                        starship = director.makeFreighter(owner);
                         break;
                     case 4:
                         System.out.println(" Selected: no starships ");
@@ -138,7 +138,6 @@ public class SpaceStationBuilder extends StarshipBuilder {
         this.starship(owner);
         this.defense();
         controller.createStarship((Starship) spaceStation);
-        spaceStation.print();
         return spaceStation;
     }
 
