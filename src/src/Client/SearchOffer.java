@@ -61,15 +61,31 @@ public class SearchOffer extends ClientOperation{
                     System.out.println("Introduce Offer id:");
                     String idOffer = scanner.nextLine();
 
-                    boolean found = false;
-                    Offer offer = null;
-                    Iterator<Offer> iterator = offerList.iterator();
-                    while (iterator.hasNext() && !found) {
-                        offer = iterator.next();
-                        found = offer.getId().equals(idOffer);
-                    }
-                    if (found) {
-                        buy(offer);
+                    if (client.getPirate()){
+                        System.out.println("You are considered a pirate. Contact an administrator.");
+                        System.out.println("You can only buy freighter");
+                        boolean found = false;
+                        Offer offer = null;
+                        Iterator<Offer> iterator = offerList.iterator();
+                        while (iterator.hasNext() && !found) {
+                            offer = iterator.next();
+                            found = offer.getId().equals(idOffer);
+                        }
+                        List<String> l = offer.getType();
+                        if (found && l.size() == 1 && l.get(0).equals("Freighter")) {
+                            buy(offer);
+                        }
+                    } else {
+                        boolean found = false;
+                        Offer offer = null;
+                        Iterator<Offer> iterator = offerList.iterator();
+                        while (iterator.hasNext() && !found) {
+                            offer = iterator.next();
+                            found = offer.getId().equals(idOffer);
+                        }
+                        if (found) {
+                            buy(offer);
+                        }
                     }
                 }
                 System.out.println("Do you want to continue buying? y/n");

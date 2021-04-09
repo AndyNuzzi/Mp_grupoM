@@ -67,4 +67,8 @@ public class Client extends User implements Serializable{
     public List<Notification> getNotificationList(){
         return notificationList;
     }
+
+    public void setNotificationList(List <Notification> l){
+        notificationList = l;
+    }
 }

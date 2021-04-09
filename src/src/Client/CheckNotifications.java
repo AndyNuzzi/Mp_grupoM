@@ -1,6 +1,7 @@
 package Client;
 
 import java.util.List;
+import java.util.Scanner;
 
 public class CheckNotifications extends ClientOperation{
     public CheckNotifications (Client client){
@@ -28,8 +29,12 @@ public class CheckNotifications extends ClientOperation{
             System.out.println("There aren't notifications available.");
         }
 
-
-
+        System.out.println("Delete notifications? y/n");
+        Scanner sc = new Scanner(System.in);
+        String input = sc.nextLine();
+        if (input.equals('y')){
+            controller.deleteNotification(client);
+        }
         return true;
     }
 }

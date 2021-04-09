@@ -97,6 +97,9 @@ public class Controller {
     public void addPossiblePirate(String id){
         //Adds a client in pirates' list
         adders.addNewPirate(id);
+        Client c = getClient(id);
+        c.setPirate(true);
+        actualizateClient(c);
     }
 
     public void addPossibleSwindler(String id){
@@ -112,6 +115,9 @@ public class Controller {
     public void deletePossiblePirate(String id){
         //Deletes an id from the list
         delete.deletePirate(id);
+        Client c = getClient(id);
+        c.setPirate(false);
+        actualizateClient(c);
     }
 
     public List<String> getSwindlerList(){
@@ -177,4 +183,10 @@ public class Controller {
     public void actualizateClient(Client c){
         actualization.clientActualization(c);
     }
+
+    public void deleteNotification(Client c){
+        c.setNotificationList(new LinkedList<Notification>());
+        actualizateClient(c);
+    }
+
 }
