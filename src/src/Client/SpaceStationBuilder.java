@@ -6,138 +6,134 @@ public class SpaceStationBuilder extends StarshipBuilder {
 
     private SpaceStation spaceStation = new SpaceStation();
 
-
     public SpaceStationBuilder() {
         starship = spaceStation;
     }
 
+    /**
+     * Pide u guarda el numero de pasajeros
+     */
     public void passengers() {
         System.out.println(" Introduce the number of passengers ");
         Scanner scanner = new Scanner(System.in);
         this.spaceStation.setPassengers(scanner.nextInt());
     }
 
-    public void defense() {
+    /**
+     * Muestra el menu de seleccion de defensas
+     */
+    private void showDefenses() {
         System.out.println(" Select a Defense ");
         System.out.println(" 1 Shield ");
         System.out.println(" 2 Armor ");
         System.out.println("");
+    }
+
+    /**
+     * Pide al usuario si desea introducir defensas y las introduce
+     */
+    public void defense() {
         Scanner scanner = new Scanner(System.in);
-        int defenseOption = scanner.nextInt();
-        Defense defense = null;
-        switch (defenseOption) {
-            case 1:
-                System.out.println(" Introduce the resistance of your Defense ");
-                int resistance = scanner.nextInt();
-                System.out.println(" Introduce the enegy amount of your Defense ");
-                double energyAmount = scanner.nextDouble();
-                defense = new Shield(resistance, energyAmount);
-                break;
-            case 2:
-                System.out.println(" Introduce the resistance of your Defense ");
-                resistance = scanner.nextInt();
-                System.out.println(" Introduce the material ");
-                String material = scanner.nextLine().toLowerCase();
-                System.out.println(" Introduce the weight of your Defense ");
-                int weight = scanner.nextInt();
-                defense = new Armor(resistance, material, weight);
-                break;
-        }
-        spaceStation.addDefense(defense);
+        boolean defenseCanBeAdded;
+        boolean exit = false;
+        do {
+            Defense defense = null;
+            do {
+                this.showDefenses();
+                int option = scanner.nextInt();
+                int resistance = 0;
+                if (option > 0 && option < 3) {
+                    System.out.println(" Introduce the resistance ");
+                    resistance = scanner.nextInt();
+                }
+                switch (option) {
+                    case 1:
+                        System.out.println(" Introduce the energy amount ");
+                        double energyAmount = scanner.nextDouble();
+                        defense = new Shield(resistance, energyAmount);
+                        break;
+                    case 2:
+                        System.out.println(" Introduce the material ");
+                        scanner = new Scanner(System.in);
+                        String material = scanner.nextLine().toLowerCase();
+                        System.out.println(" Introduce the weight ");
+                        int weight = scanner.nextInt();
+                        defense = new Armor(resistance, material, weight);
+                        break;
+                    default:
+                        System.out.println("Wrong option");
+                        break;
+                }
+            } while (defense == null);
+            defenseCanBeAdded = spaceStation.addDefense(defense);
+            if (defenseCanBeAdded) {
+                System.out.println("Introduce 1 for exit, other number for not to");
+                exit = scanner.nextInt() == 1;
+            }
+        } while (!exit && defenseCanBeAdded);
     }
 
+    /**
+     * Muestra la seleccion de naves
+     */
+    private void showStarship() {
+        System.out.println("Select a Starship");
+        System.out.println("1. Destroyer");
+        System.out.println("2. Fighter");
+        System.out.println("3. Freighter");
+        System.out.println("4. Exit");
+    }
 
+    /**
+     * Pide al usuario si desea introducir más naves y las introduce
+     *
+     * @param owner
+     */
     public void starship(Client owner) {
-        Scanner sc = new Scanner(System.in);
+        Director director = new Director();
+        Scanner scanner = new Scanner(System.in);
         Starship starship = null;
-        int selection;
-
-
+        int option;
         do {
-            System.out.println("Select a Starship");
-            System.out.println("1.Destroyer");
-            System.out.println("2.Fighter");
-            System.out.println("3.Freighter");
-            System.out.println("4.Exit");
-            selection = sc.nextInt();
-
-            Director director = new Director();
-
-
-            switch (selection) {
-                case 1:
-                    System.out.println("Introducing Destroyer");
-                    spaceStation.addStarShip(director.makeDestroyer(owner));
-
-                case 2:
-                    System.out.println("Introducing Fighter");
-                    spaceStation.addStarShip(director.makeFighter(owner));
-
-                case 3:
-                    System.out.println("Introducing Freighter");
-                    spaceStation.addStarShip(director.makeFreighter(owner));
+            do {
+                this.showStarship();
+                option = scanner.nextInt();
+                switch (option) {
+                    case 1:
+                        starship = director.makeDestroyer(owner);
+                        break;
+                    case 2:
+                        starship = director.makeFighter(owner);
+                        break;
+                    case 3:
+                        starship = director.makeFreighter(owner);
+                        break;
+                    case 4:
+                        System.out.println(" Selected: no starships ");
+                        break;
+                    default:
+                        System.out.println(" Wrong option ");
+                        break;
+                }
+            } while (option < 1 && option > 4);
+            if (option != 4) {
+                spaceStation.addStarShip(starship);
             }
-
-
-        } while (selection != 4);
+        } while (option != 4);
     }
 
-
-    public void propulsion() {
-        Propulsion prop = null;
-        Scanner sc = new Scanner(System.in);
-        int name = 0;
-        do {
-            System.out.println(" Select Propulsion");
-            System.out.println("1.FTL Engine");
-            System.out.println("2.Solar Sails");
-            System.out.println("3.Ion Engine");
-            System.out.println("4.Trace Compressor");
-            System.out.println("5.Warp Engine");
-            System.out.println("6.Exit Propulsion");
-            name = sc.nextInt();
-            System.out.println("Select Speed");
-            double speed = sc.nextDouble();
-            switch (name) {
-                case 1:
-
-                    prop = new FTLEngine(speed);
-                    break;
-
-                case 2:
-
-                    prop = new SolarSails(speed);
-                    break;
-
-                case 3:
-
-                    prop = new IonEngine(speed);
-                    break;
-                case 4:
-
-                    prop = new TraceCompressor(speed);
-                    break;
-                case 5:
-
-                    prop = new WarpEngine(speed);
-                    break;
-
-
-            }
-        } while (name != 6);
-
-        this.spaceStation.addPropulsion(prop);
-    }
-
-
+    /**
+     * Crea la nave y le envía la nave al controller
+     *
+     * @param owner
+     * @return
+     */
     @Override
     public Starship getResult(Client owner) {
         spaceStation.setRegisterNumber(super.registerNumber());
         spaceStation.setCrew(super.crew());
         spaceStation.setOwner(owner.getIdNumber());
-
-        this.propulsion();
-
+        super.propulsion();
         this.passengers();
         this.starship(owner);
         this.defense();

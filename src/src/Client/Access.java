@@ -38,7 +38,28 @@ public abstract class Access {
      * @return
      */
     protected User validate(String nick, String password) {
-        return controller.validate(nick,password);
+        return controller.validate(nick, password);
+    }
+
+    /**
+     * Le llegará un usuario y se encargará de castearlo a un cliente o a un administrador
+     * Luego iniciará la sesión
+     *
+     * @param user
+     */
+    protected void openSession(User user) {
+        if (user != null) {
+            System.out.println(" Log in successful ");
+            if (user.getClass().getSimpleName().equals("Client")) {
+                Client client = (Client) user;
+                client.doOperation();
+            } else {
+                Administrator administrator = (Administrator) user;
+                administrator.doOperation();
+            }
+        } else {
+            System.out.println(" Log in cancelled ");
+        }
     }
 
 }

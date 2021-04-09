@@ -2,19 +2,28 @@ package Client;
 
 import Controller.*;
 
-public abstract class AdministratorOperation implements Operation{
+public abstract class AdministratorOperation implements Operation {
+
     protected Controller controller;
-    // intanciar el controller
 
     protected Administrator admin;
 
-    public AdministratorOperation(){}
-    public AdministratorOperation(Administrator admin){
+    /**
+     * El constructor inicializará tanto el cliente como el controller
+     *
+     * @param admin
+     */
+    public AdministratorOperation(Administrator admin) {
         this.admin = admin;
         this.controller = new Controller();
     }
 
+    /**
+     * En cada doOperation sobrescribiremos este método, en cada uno añadiremos a la lista de operaciones
+     * las operaciones necesarias
+     *
+     * @return
+     */
     public abstract boolean doOperation();
-    //clase abstracta
 
 }

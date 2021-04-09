@@ -15,6 +15,10 @@ public class Client extends User implements Serializable{
     private boolean warning;
     private List<Notification> notificationList = new LinkedList<Notification>();
 
+    public Client (){
+        super ();
+    }
+
     public Client(String name, String planet, String species, String idNumber, String nick, String password, String email) {
         super(name, planet, species, idNumber, nick, password, email);
     }
@@ -27,6 +31,9 @@ public class Client extends User implements Serializable{
         return pirate;
     }
 
+    /**
+     * Se encarga de meter las operaciones del cliente en la lista, y luego llamará al elegir operaciones
+     */
     @Override
     public void doOperation() {
         ClientOperation op1 = new CreateOffer(this);
