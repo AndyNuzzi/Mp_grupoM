@@ -7,16 +7,15 @@ public class CreateNewAdministrator extends AdministratorOperation{
     public CreateNewAdministrator(Administrator admin){
         super(admin);
     }
+
     @Override
     public boolean doOperation() {
 
         Administrator admin = new Administrator();
 
-        // pedir por pantalla toda la info del admin con Scanner
-            //no dejar que añada mas de un admin
-        // llamar al metodo del controller con el metodo de nuevo admin --> controller.createNewAdministrator(admin)
-
         Scanner scanner = new Scanner(System.in);
+
+        System.out.println("---------------  NEW ADMINISTRATOR  ---------------");
 
         System.out.println("Your name is:");
         admin.setName(scanner.nextLine());
@@ -28,10 +27,10 @@ public class CreateNewAdministrator extends AdministratorOperation{
         System.out.println("Your nick is:");
         admin.setNick(scanner.nextLine());
 
-        String password = null;
+        String password = "null";
         String confirmPassword = " ";
 
-        while (password.equals(confirmPassword)) {
+        while (!password.equals(confirmPassword)) {
             System.out.println("Your password is:");
             password = scanner.nextLine();
             System.out.println("Confirm your password: ");
