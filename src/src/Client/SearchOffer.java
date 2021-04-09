@@ -1,5 +1,6 @@
 package Client;
 
+import java.time.LocalDate;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
@@ -49,7 +50,7 @@ public class SearchOffer extends ClientOperation{
 
         List<Offer> offerList = controller.getOffer(type, client.getIdNumber());
 
-        if (offerList != null) {
+        if (offerList != null && offerList.size()>0) {
             presentOffers(offerList);
 
             boolean buying = false;
@@ -132,15 +133,31 @@ public class SearchOffer extends ClientOperation{
 
     private boolean buy(Offer offer){
         Sale sale = new Sale();
-        controller.deleteOffer(offer.getId());
         sale.setId(controller.getIdSale());
         sale.setBuyer(client.getIdNumber());
         sale.setCost(offer.getPrice());
         sale.setSeller(offer.getCreator());
-
-        // logica de pedir la fecha
-
+        sale.setDate(LocalDate.now());
+        sale.setCost(offer.getPrice());
+        System.out.println("Do you want to leave a comment? y/n");
+        Scanner sc = new Scanner(System.in);
+        String input = sc.nextLine();
+        if (input.toLowerCase().equals("y")){
+            Comment comment = new Comment();
+            comment.setIdSale(sale.getId());
+            comment.setIdSeller(offer.getCreator());
+            comment.setIdClient(sale.getBuyer());
+            System.out.println("Write your comment here: (Press enter to finish your comment)");
+            input = sc.nextLine();
+            comment.setComment(input);
+            System.out.println("Introduce a valoration: 1-5");
+            Scanner scn = new Scanner(System.in);
+            int i = scn.nextInt();
+            comment.setValoration(i);
+            controller.addComment(comment);
+        }
         controller.storeSale(sale.buy());
+        controller.deleteOffer(offer.getId());
         return false;
     }
 }

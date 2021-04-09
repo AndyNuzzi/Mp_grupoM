@@ -172,6 +172,10 @@ public class DataManageSystemQueries extends DataManageSystem{
         return loadSwindlerFile();
     }
 
+    public List<Comment> loadComments(){
+        return loadCommentsFile();
+    }
+
     public boolean checkRegisterNumber(String id){
         //Checks if a register number has been used before
         List<Starship> l = loadStarshipsFile();

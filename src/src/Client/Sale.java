@@ -1,13 +1,14 @@
 package Client;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import Controller.*;
 
 public class Sale implements Serializable {
 
     private String id;
-    private Date date;
+    private LocalDate date;
     private String seller;
     private String buyer;
     private long cost;
@@ -16,12 +17,20 @@ public class Sale implements Serializable {
 
     public void setId(String id) { this.id = id; }
 
-    public Date getDate() {
+    public String getId() {
+        return id;
+    }
+
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
+    }
+
+    public void setCost(long cost) {
+        this.cost = cost;
     }
 
     public String getSeller() {

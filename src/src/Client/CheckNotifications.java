@@ -18,7 +18,7 @@ public class CheckNotifications extends ClientOperation{
 
         List<Notification> notificationsList = client.getNotificationList();
 
-        if (notificationsList!=null){
+        if (notificationsList != null && notificationsList.size() > 0) {
             System.out.println("---------------  NEW NOTIFICATION  ---------------");
             for (Notification not: notificationsList){
                 System.out.println("--------------------------------------------------");

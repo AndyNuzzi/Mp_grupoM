@@ -7,10 +7,14 @@ public class CheckValoration extends ClientOperation{
 
     @Override
     public boolean doOperation() { // muestra la valoración media
-
-        System.out.println("---------------  AVERAGE CLIENT VALORATION  ---------------");
-        System.out.println(controller.getAverageValoration(client.getIdNumber()));
-
+        float val = controller.getAverageValoration(client.getIdNumber());
+        if (val != 0) {
+            System.out.println("---------------  AVERAGE VALORATION  ---------------");
+            System.out.println(val);
+        }
+        else {
+            System.out.println("You haven't been valued");
+        }
         return false;
     }
 }

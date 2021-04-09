@@ -164,8 +164,8 @@ public class Controller {
     }
 
     public String getIdSale() {
-        System.out.println("Falta");
-        return null;
+        Identificators id = idFile.readId(idFile.getDirectory());
+        return id.getId(3);
     }
 
     public List<Starship> getStarship(List<String> ids){
@@ -186,6 +186,14 @@ public class Controller {
 
     public void deleteNotification(Client c){
         c.setNotificationList(new LinkedList<Notification>());
+        actualizateClient(c);
+    }
+
+    public void addComment(Comment comment) {
+        adders.addNewComment(comment);
+        Notification not = new Notification("You have sold your offer! Check your comment!");
+        Client c =queries.getClient(comment.getIdSeller());
+        c.addNotification(not);
         actualizateClient(c);
     }
 
