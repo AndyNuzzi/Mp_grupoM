@@ -44,8 +44,10 @@ public class DestroyerBuilder extends StarshipBuilder {
                 switch (option) {
                     case 1:
                         weapon = new PEM(power);
+                        break;
                     case 2:
                         weapon = new LaserBeam(power);
+                        break;
                     case 3:
                         weapon = new ThermonuclearMissiles(power);
                         break;
@@ -57,6 +59,7 @@ public class DestroyerBuilder extends StarshipBuilder {
                         break;
                 }
             } while (weapon == null);
+            destroyer.addWeapon(weapon);
             System.out.println("Introduce 1 for exit, other number for not to");
             exit = scanner.nextInt() == 1;
         } while (!exit);
@@ -128,8 +131,8 @@ public class DestroyerBuilder extends StarshipBuilder {
         destroyer.setCrew(super.crew());
         destroyer.setOwner(owner.getIdNumber());
         super.propulsion();
-        this.defense();
         this.weapon();
+        this.defense();
         controller.createStarship((Starship) destroyer);
         return destroyer;
     }

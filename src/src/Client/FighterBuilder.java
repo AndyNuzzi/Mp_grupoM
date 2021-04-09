@@ -102,6 +102,7 @@ public class FighterBuilder extends StarshipBuilder {
                 default:
                     System.out.println(" Wrong option ");
                     defense = null;
+                    break;
             }
         } while (defense == null);
         fighter.setDefense(defense);

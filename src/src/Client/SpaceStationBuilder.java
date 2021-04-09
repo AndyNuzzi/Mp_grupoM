@@ -51,6 +51,7 @@ public class SpaceStationBuilder extends StarshipBuilder {
                         System.out.println(" Introduce the energy amount ");
                         double energyAmount = scanner.nextDouble();
                         defense = new Shield(resistance, energyAmount);
+                        break;
                     case 2:
                         System.out.println(" Introduce the material ");
                         scanner = new Scanner(System.in);
@@ -58,6 +59,7 @@ public class SpaceStationBuilder extends StarshipBuilder {
                         System.out.println(" Introduce the weight ");
                         int weight = scanner.nextInt();
                         defense = new Armor(resistance, material, weight);
+                        break;
                     default:
                         System.out.println("Wrong option");
                         break;
@@ -106,12 +108,17 @@ public class SpaceStationBuilder extends StarshipBuilder {
                     case 3:
                         director.makeFreighter(owner);
                         break;
+                    case 4:
+                        System.out.println(" Selected: no starships ");
+                        break;
                     default:
                         System.out.println(" Wrong option ");
                         break;
                 }
             } while (option < 1 && option > 4);
-            spaceStation.addStarShip(starship);
+            if (option != 4) {
+                spaceStation.addStarShip(starship);
+            }
         } while (option != 4);
     }
 
@@ -131,6 +138,7 @@ public class SpaceStationBuilder extends StarshipBuilder {
         this.starship(owner);
         this.defense();
         controller.createStarship((Starship) spaceStation);
+        spaceStation.print();
         return spaceStation;
     }
 

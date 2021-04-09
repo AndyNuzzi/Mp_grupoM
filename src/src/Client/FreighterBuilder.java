@@ -61,6 +61,7 @@ public class FreighterBuilder extends StarshipBuilder {
                 default:
                     System.out.println(" Wrong option ");
                     defense = null;
+                    break;
             }
         } while (defense == null);
         freighter.setDefense(defense);
