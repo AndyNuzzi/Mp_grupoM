@@ -1,10 +1,8 @@
 package Client;
 
-import java.text.SimpleDateFormat;
+
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 import java.util.Scanner;
 
 public class ValidateOffer extends AdministratorOperation{
@@ -14,19 +12,10 @@ public class ValidateOffer extends AdministratorOperation{
     }
 
     @Override
-    // HAY QUE REVISAR ESTE METODO EN PROFUNDIDAD
-
-    public boolean doOperation() { // valida las ofertas creadas
-
-        // acceder a la lista de unchecked offers (llamar al controlador)
-        // recoger la lista que me devuelven (la info de la oferta entera)
-        // ir mostrando
-        // y llamar al controller para validar (pasar)
-        // si valido elimino la oferta de la lista de unchecked (controller.deleteFromUncheckedOffers(offer) --> devuelve un booleano)
-            // añado la oferta (controller.addOffer(offer))
-        // si no valido se sanciona al cliente y se elimina la oferta de unchecked offers
-
-        // tiene que poder salir antes de seguir validando el resto de ofertas
+    public boolean doOperation() {
+        /**
+         * doOperation de la clase ValidateOffer valida las ofertas creadas
+         */
 
         List <Offer> uncheckedOffers = controller.getUncheckedOffersList();
 

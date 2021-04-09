@@ -2,8 +2,7 @@ package Client;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Date;
-import Controller.*;
+
 
 public class Sale implements Serializable {
 

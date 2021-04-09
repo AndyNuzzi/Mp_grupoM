@@ -16,10 +16,7 @@ public class CreateOffer extends ClientOperation {
          */
 
         Offer offer = new Offer();
-        // instanciar la oferta
-
         Director director = new Director();
-        // instanciar al director
 
         boolean addShip = false;
         Starship starship = null;

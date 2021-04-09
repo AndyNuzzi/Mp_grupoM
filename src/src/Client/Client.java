@@ -9,9 +9,6 @@ import java.io.Serializable;
 public class Client extends User implements Serializable{
 
     private boolean pirate;
-    private List <String> subscription = new LinkedList<String>();
-    private int additionVote;
-    private int interactions;
     private LocalDate banned;
     private boolean warning;
     private List<Notification> notificationList = new LinkedList<Notification>();

@@ -5,7 +5,7 @@ import Controller.*;
 public abstract class ClientOperation implements Operation{
 
     protected Controller controller;
-    protected Client client; // instanciar el cliente
+    protected Client client;
 
 
     /**

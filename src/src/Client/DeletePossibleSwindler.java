@@ -11,7 +11,10 @@ public class DeletePossibleSwindler extends AdministratorOperation{
 
     @Override
 
-    public boolean doOperation() { // elimina timadores de la lista de piratas
+    public boolean doOperation() {
+        /**
+         * doOperation de la clase DeletePossibleSwindler elimina timadores de la lista de timadores
+         */
 
         List<String> swindler = controller.getSwindlerList();
 
@@ -21,7 +24,10 @@ public class DeletePossibleSwindler extends AdministratorOperation{
                 System.out.println("--------------------------------------------------");
                 System.out.println(" Pirate id: " + swindlerInfo);
                 System.out.println("--------------------------------------------------");
-            } // imprimo la lista con los timadores
+            }
+            /**
+             * imprimo la lista con los timadores
+             */
 
             boolean delete = false;
             while (!delete) {
@@ -32,7 +38,9 @@ public class DeletePossibleSwindler extends AdministratorOperation{
                     System.out.println("Introduce Swindler id:");
                     String idSwindler = scanner.nextLine();
                     controller.deletePossibleSwindler(idSwindler);
-                    // llamar al controlador pasandole el id del swindler que se quiere eliminar
+                    /**
+                     * llamar al controlador pasandole el id del timador que se quiere eliminar
+                     */
                 }
                 System.out.println("Do you want to continue deleting? y/n");
                 String deleteContinue = scanner.nextLine();

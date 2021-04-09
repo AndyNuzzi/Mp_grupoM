@@ -11,11 +11,11 @@ public class SearchOffer extends ClientOperation{
     }
 
     @Override
-    // FALTA POR IMPLEMENTAR:
-        // AL MOSTRAR LAS OFERTAS AL MENOS TIENEN QUE TENER UNA DE LAS NAVES DE LAS PEDIDAS
-        // PEDIR LA FECHA
 
-    public boolean doOperation() { // busca las ofertas según un tipo de nave y podrá comprar una oferta
+    public boolean doOperation() {
+        /**
+         * doOperation de la clase SearchOffer busca las ofertas según un tipo de nave y podrá comprar una oferta
+         */
 
         Scanner scanner = new Scanner(System.in);
         boolean askAgain = true;
@@ -109,7 +109,10 @@ public class SearchOffer extends ClientOperation{
             System.out.println(info.getPrice());
             System.out.println(info.getCreator());
             System.out.println("--------------------------------------------------");
-        } // lista con las ofertas
+        }
+        /**
+         * lista con las ofertas
+         */
     }
 
     private void printStarships(List<Starship> starship) {
