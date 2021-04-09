@@ -18,7 +18,6 @@ public abstract class ClientOperation implements Operation{
         this.controller = new Controller();
     }
 
-
     /**
      * En cada doOperation sobrescribiremos este método, en cada uno añadiremos a la lista de operaciones
      * las operaciones necesarias

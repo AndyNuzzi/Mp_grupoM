@@ -1,11 +1,12 @@
 package Client;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
-public class SearchOffer extends ClientOperation{
+public class SearchOffer extends ClientOperation implements Serializable {
     public SearchOffer (Client client){
         super (client);
     }

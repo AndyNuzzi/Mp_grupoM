@@ -1,8 +1,9 @@
 package Client;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
-public class Subscribe extends ClientOperation{
+public class Subscribe extends ClientOperation implements Serializable {
 
     public Subscribe (Client client){
         super (client);

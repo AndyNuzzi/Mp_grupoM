@@ -1,6 +1,8 @@
 package Client;
 
-public class CheckValoration extends ClientOperation{
+import java.io.Serializable;
+
+public class CheckValoration extends ClientOperation implements Serializable {
     public CheckValoration (Client client){
         super (client);
     }

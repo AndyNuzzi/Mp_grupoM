@@ -1,8 +1,9 @@
 package Client;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class CheckComments extends ClientOperation{
+public class CheckComments extends ClientOperation implements Serializable {
     public CheckComments (Client client){
         super (client);
     }

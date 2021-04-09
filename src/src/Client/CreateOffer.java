@@ -1,9 +1,11 @@
 package Client;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 
-public class CreateOffer extends ClientOperation {
+public class CreateOffer extends ClientOperation implements Serializable {
+
     public CreateOffer(Client client) {
         super(client);
     }

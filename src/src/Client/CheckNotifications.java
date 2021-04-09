@@ -1,10 +1,11 @@
 package Client;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
-public class CheckNotifications extends ClientOperation{
+public class CheckNotifications extends ClientOperation implements Serializable {
     public CheckNotifications (Client client){
         super (client);
     }
