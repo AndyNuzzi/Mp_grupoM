@@ -11,7 +11,10 @@ public class DeletePossiblePirate extends AdministratorOperation{
 
     @Override
 
-    public boolean doOperation() { // elimina piratas de la lista de piratas
+    public boolean doOperation() {
+        /**
+         * doOperation de la clase DeletePossiblePirate elimina piratas de la lista de piratas
+         */
 
         List<String> pirate = controller.getPirateList();
 
@@ -21,7 +24,10 @@ public class DeletePossiblePirate extends AdministratorOperation{
                 System.out.println("--------------------------------------------------");
                 System.out.println(" Pirate id: " + pirateInfo);
                 System.out.println("--------------------------------------------------");
-            } // imprimo la lista con los piratas
+            }
+            /**
+             * imprimo la lista con los piratas
+             */
 
             boolean delete = false;
             while (!delete) {

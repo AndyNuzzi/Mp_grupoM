@@ -37,7 +37,9 @@ public class ValidateOffer extends AdministratorOperation{
                 Offer info = uncheckedOffers.remove(0);
                 System.out.println("--------------------------------------------------");
                 System.out.println(info.getId());
-                System.out.println(info.getStarshipIdList());
+                /*List <Starship> l = info.getStarshipIdList();
+                Iterator <
+                System.out.println();*/
                 System.out.println(info.getDateEnd());
                 System.out.println(info.getPrice());
                 System.out.println(info.getCreator());

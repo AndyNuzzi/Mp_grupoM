@@ -89,6 +89,8 @@ public abstract class User implements Serializable {
                 System.out.println(" Wrong option ");
             }
         } while (option != 6);
+        while (!operations.isEmpty())
+            operations.remove(0);
     }
 
     public String getName() {

@@ -185,8 +185,7 @@ public class Controller {
     }
 
     public void deleteNotification(Client c){
-        c.setNotificationList(new LinkedList<Notification>());
-        actualizateClient(c);
+        c.setNotificationList();
     }
 
     public void addComment(Comment comment) {

@@ -9,11 +9,11 @@ public class CreateOffer extends ClientOperation {
     }
 
     @Override
-    // FALTA POR IMPLEMENTAR:
-            // - FECHA LIMITE DE VIGENCIA DE LA OFERTA
-            // - PRECIO DE LA OFERTA
-
-    public boolean doOperation() { //crea la oferta y se pide el tipo de nave que se quiere meter en la oferta
+    public boolean doOperation() {
+        /**
+         * doOperation de la clase CreateOffer crea la oferta y se pide el tipo de nave
+         * que se quiere meter en la oferta
+         */
 
         Offer offer = new Offer();
         // instanciar la oferta

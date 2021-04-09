@@ -1,12 +1,13 @@
 package Client;
 
+import Controller.Controller;
+
 import java.time.LocalDate;
 import java.util.*;
 import java.io.Serializable;
 
 public class Client extends User implements Serializable{
 
-    private List<Offer> onSale = new ArrayList<Offer>();
     private boolean pirate;
     private List <String> subscription = new LinkedList<String>();
     private int additionVote;
@@ -75,7 +76,9 @@ public class Client extends User implements Serializable{
         return notificationList;
     }
 
-    public void setNotificationList(List <Notification> l){
-        notificationList = l;
+    public void setNotificationList(){
+        while (!notificationList.isEmpty())
+            notificationList.remove(0);
     }
+
 }
