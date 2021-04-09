@@ -27,7 +27,7 @@ public class Freighter extends Starship implements Serializable {
      */
     private void printDefense() {
         System.out.println("Defense:" + defense.getName());
-        System.out.println(defense.getResistance());
+        System.out.println("Resistance: " + defense.getResistance());
         if (defense.getName().equals("Shield")) {
             System.out.println("Energy amount: " + ((Shield) defense).getEnergyAmount());
         } else {
