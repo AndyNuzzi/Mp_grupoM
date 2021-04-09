@@ -30,7 +30,7 @@ public class DestroyerBuilder extends StarshipBuilder {
      */
     public void weapon() {
         Scanner scanner = new Scanner(System.in);
-        boolean exit = false;
+       String exit= null;
         do {
             Weapon weapon = null;
             do {
@@ -60,9 +60,10 @@ public class DestroyerBuilder extends StarshipBuilder {
                 }
             } while (weapon == null);
             destroyer.addWeapon(weapon);
-            System.out.println("Introduce 1 for exit, other number for not to");
-            exit = scanner.nextInt() == 1;
-        } while (!exit);
+            System.out.println("Do you want to add other weapon? y/n");
+            Scanner sc= new Scanner(System.in);
+            exit = sc.nextLine().toLowerCase();
+        } while (exit.equals("y"));
     }
 
     /**
@@ -81,7 +82,7 @@ public class DestroyerBuilder extends StarshipBuilder {
     public void defense() {
         Scanner scanner = new Scanner(System.in);
         boolean defenseCanBeAdded;
-        boolean exit = false;
+        String exit= null;
         do {
             Defense defense = null;
             do {
@@ -113,10 +114,11 @@ public class DestroyerBuilder extends StarshipBuilder {
             } while (defense == null);
             defenseCanBeAdded = destroyer.addDefense(defense);
             if (defenseCanBeAdded) {
-                System.out.println("Introduce 1 for exit, other number for not to");
-                exit = scanner.nextInt() == 1;
+                System.out.println("Do you want to add other weapon? y/n");
+                Scanner sc= new Scanner(System.in);
+                exit = sc.nextLine().toLowerCase();
             }
-        } while (!exit && defenseCanBeAdded);
+        } while (exit.equals("y") && defenseCanBeAdded);
     }
 
     /**

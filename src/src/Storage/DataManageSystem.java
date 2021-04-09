@@ -21,7 +21,7 @@ public abstract class DataManageSystem {
     //Methods
 
     protected List loadClientsFile(){
-        return  clientFile.read(clientFile.getDirectory());
+      return  clientFile.read(clientFile.getDirectory());
     }
 
     protected List loadOffersFile(){

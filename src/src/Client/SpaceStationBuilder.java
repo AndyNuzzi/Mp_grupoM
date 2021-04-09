@@ -35,7 +35,7 @@ public class SpaceStationBuilder extends StarshipBuilder {
     public void defense() {
         Scanner scanner = new Scanner(System.in);
         boolean defenseCanBeAdded;
-        boolean exit = false;
+        String exit=null;
         do {
             Defense defense = null;
             do {
@@ -67,10 +67,11 @@ public class SpaceStationBuilder extends StarshipBuilder {
             } while (defense == null);
             defenseCanBeAdded = spaceStation.addDefense(defense);
             if (defenseCanBeAdded) {
-                System.out.println("Introduce 1 for exit, other number for not to");
-                exit = scanner.nextInt() == 1;
+                System.out.println("Do you want to add other defense? y/n");
+                Scanner sc= new Scanner(System.in);
+                exit = sc.nextLine();
             }
-        } while (!exit && defenseCanBeAdded);
+        } while (exit.equals("y") && defenseCanBeAdded);
     }
 
     /**
