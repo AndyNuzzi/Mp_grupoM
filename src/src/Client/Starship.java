@@ -67,8 +67,13 @@ public abstract class Starship implements Serializable{
      */
     public void printPropulsion (){
         for (Propulsion propulsion : propulsion){
-            System.out.println("Propulsion: " + propulsion);
+            System.out.println("Propulsion: " + propulsion.getName());
+            System.out.println("Speed: " + propulsion.getSpeed());
         }
+    }
+
+    public String getName(){
+        return this.getClass().getSimpleName();
     }
 
 }

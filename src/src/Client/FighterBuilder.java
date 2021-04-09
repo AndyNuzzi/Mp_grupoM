@@ -92,6 +92,7 @@ public class FighterBuilder extends StarshipBuilder {
                 case 2:
                     System.out.println(" Introduce the resistance of your Defense ");
                     resistance = scanner.nextInt();
+                    scanner = new Scanner(System.in);
                     System.out.println(" Introduce the material ");
                     String material = scanner.nextLine().toLowerCase();
                     System.out.println(" Introduce the weight of your Defense ");

@@ -48,13 +48,24 @@ public class SpaceStation extends Starship implements Serializable{
      */
     private void printStarships (){
         for (Starship starship: this.starships){
+            System.out.println(" Starship: " + starship.getName());
             starship.print();
         }
     }
 
+    /**
+     * Mostrará las defensas
+     */
     private void printDefense (){
         for (Defense defense: this.defense){
-            defense.getResistance();
+            System.out.println("Defense:" + defense.getName());
+            System.out.println(defense.getResistance());
+            if (defense.getName().equals("Shield")){
+                System.out.println("Energy amount: " + ((Shield) defense).getEnergyAmount());
+            } else {
+                System.out.println("Material: " + ( (Armor) defense).getMaterial());
+                System.out.println("Weight: " + ((Armor) defense).getWeight());
+            }
         }
     }
 
@@ -66,11 +77,10 @@ public class SpaceStation extends Starship implements Serializable{
         System.out.println("Register number: " + this.registerNumber);
         System.out.println("Owner: " + this.owner);
         super.printPropulsion();
-        System.out.println("Owner: " + this.crew);
-        System.out.println("Owner: " + this.passengers);
+        System.out.println("Crew: " + this.crew);
+        System.out.println("Passengers: " + this.passengers);
         this.printStarships();
-
-
+        this.printDefense();
     }
 
 

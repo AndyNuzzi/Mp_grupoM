@@ -57,9 +57,8 @@ public class DestroyerBuilder extends StarshipBuilder {
                         break;
                 }
             } while (weapon == null);
-
-                System.out.println("Introduce 1 for exit, other number for not to");
-                exit = scanner.nextInt() == 1;
+            System.out.println("Introduce 1 for exit, other number for not to");
+            exit = scanner.nextInt() == 1;
         } while (!exit);
     }
 
@@ -132,6 +131,7 @@ public class DestroyerBuilder extends StarshipBuilder {
         this.defense();
         this.weapon();
         controller.createStarship((Starship) destroyer);
+        destroyer.print();
         return destroyer;
     }
 

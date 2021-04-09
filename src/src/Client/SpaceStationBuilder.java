@@ -53,6 +53,7 @@ public class SpaceStationBuilder extends StarshipBuilder {
                         defense = new Shield(resistance, energyAmount);
                     case 2:
                         System.out.println(" Introduce the material ");
+                        scanner = new Scanner(System.in);
                         String material = scanner.nextLine().toLowerCase();
                         System.out.println(" Introduce the weight ");
                         int weight = scanner.nextInt();
@@ -110,8 +111,8 @@ public class SpaceStationBuilder extends StarshipBuilder {
                         break;
                 }
             } while (option < 1 && option > 4);
-        }
-        while (option != 4);
+            spaceStation.addStarShip(starship);
+        } while (option != 4);
     }
 
     /**
