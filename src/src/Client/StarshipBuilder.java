@@ -21,7 +21,7 @@ public abstract class StarshipBuilder {
         do {
             System.out.println(" Introduce the register number of your starship ");
             registerNumber = scanner.nextLine();
-            if (registerNumber.matches(pattern) || registerNumber.length() != 8) {
+            if (!registerNumber.matches(pattern) || registerNumber.length() != 8) {
                 System.out.println(" Format does not match ");
                 registerNumber = null;
             } else if (!controller.validateRegisterNumber(registerNumber)) {
