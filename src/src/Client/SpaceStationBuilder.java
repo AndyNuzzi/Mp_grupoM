@@ -6,7 +6,6 @@ public class SpaceStationBuilder extends StarshipBuilder {
 
     private SpaceStation spaceStation = new SpaceStation();
 
-
     public SpaceStationBuilder() {
         starship = spaceStation;
     }

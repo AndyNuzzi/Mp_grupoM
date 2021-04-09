@@ -5,6 +5,7 @@ import java.util.Scanner;
 import Controller.*;
 
 public abstract class StarshipBuilder {
+
     protected Starship starship;
     protected Controller controller = new Controller();
 
@@ -33,6 +34,10 @@ public abstract class StarshipBuilder {
         return registerNumber;
     }
 
+    /**
+     * Pide la crew
+     * @return
+     */
     protected int crew() {
         System.out.println(" Introduce the crew ");
         Scanner scanner = new Scanner(System.in);
@@ -103,6 +108,5 @@ public abstract class StarshipBuilder {
      * @return
      */
     public abstract Starship getResult(Client owner);
-
 
 }
