@@ -34,4 +34,9 @@ public class Destroyer extends Starship implements Serializable{
     public List<Defense> getDefenses() {
         return this.defense;
     }
+
+    @Override
+    public void print() {
+
+    }
 }

@@ -57,4 +57,18 @@ public abstract class Starship implements Serializable{
         this.crew = crew;
     }
 
+    /**
+     * Mostrara la nave espacial por pantalla
+     */
+    public abstract void print ();
+
+    /**
+     * Muestra las propulsiones por pantalla
+     */
+    public void printPropulsion (){
+        for (Propulsion propulsion : propulsion){
+            System.out.println("Propulsion: " + propulsion);
+        }
+    }
+
 }

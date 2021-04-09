@@ -30,4 +30,9 @@ public class Fighter extends Starship implements Serializable{
     public void setDefense(Defense defense) {
         this.defense = defense;
     }
+
+    @Override
+    public void print() {
+
+    }
 }

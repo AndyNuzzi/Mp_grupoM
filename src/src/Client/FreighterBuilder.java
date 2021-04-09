@@ -83,10 +83,4 @@ public class FreighterBuilder extends StarshipBuilder {
         return freighter;
     }
 
-    @Override
-    public void print() {
-
-    }
-
-
 }

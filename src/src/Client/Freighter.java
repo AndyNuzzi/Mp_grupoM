@@ -22,4 +22,8 @@ public class Freighter extends Starship implements Serializable {
         this.defense = defense;
     }
 
+    @Override
+    public void print() {
+
+    }
 }

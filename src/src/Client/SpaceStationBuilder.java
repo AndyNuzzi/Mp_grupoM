@@ -33,11 +33,42 @@ public class SpaceStationBuilder extends StarshipBuilder {
     /**
      * Pide al usuario si desea introducir defensas y las introduce
      */
-
-    // FALTA
-
     public void defense() {
-
+        Scanner scanner = new Scanner(System.in);
+        boolean defenseCanBeAdded;
+        boolean exit = false;
+        do {
+            Defense defense = null;
+            do {
+                this.showDefenses();
+                int option = scanner.nextInt();
+                int resistance = 0;
+                if (option > 0 && option < 3) {
+                    System.out.println(" Introduce the resistance ");
+                    resistance = scanner.nextInt();
+                }
+                switch (option) {
+                    case 1:
+                        System.out.println(" Introduce the energy amount ");
+                        double energyAmount = scanner.nextDouble();
+                        defense = new Shield(resistance, energyAmount);
+                    case 2:
+                        System.out.println(" Introduce the material ");
+                        String material = scanner.nextLine().toLowerCase();
+                        System.out.println(" Introduce the weight ");
+                        int weight = scanner.nextInt();
+                        defense = new Armor(resistance, material, weight);
+                    default:
+                        System.out.println("Wrong option");
+                        break;
+                }
+            } while (defense == null);
+            defenseCanBeAdded = spaceStation.addDefense(defense);
+            if (defenseCanBeAdded) {
+                System.out.println("Introduce 1 for exit, other number for not to");
+                exit = scanner.nextInt() == 1;
+            }
+        } while (!exit && defenseCanBeAdded);
     }
 
     /**
@@ -57,34 +88,31 @@ public class SpaceStationBuilder extends StarshipBuilder {
      * @param owner
      */
     public void starship(Client owner) {
-        Scanner sc = new Scanner(System.in);
+        Director director = new Director();
+        Scanner scanner = new Scanner(System.in);
         Starship starship = null;
-        int selection;
+        int option;
         do {
-            this.showStarship();
-            selection = sc.nextInt();
-            Director director = new Director();
-            switch (selection) {
-                case 1:
-                    System.out.println("Introducing Destroyer");
-                    spaceStation.addStarShip(director.makeDestroyer(owner));
-                    break;
-                case 2:
-                    System.out.println("Introducing Fighter");
-                    spaceStation.addStarShip(director.makeFighter(owner));
-                    break;
-                case 3:
-                    System.out.println("Introducing Freighter");
-                    spaceStation.addStarShip(director.makeFreighter(owner));
-                    break;
-                case 4:
-                    System.out.println(" starships created ");
-                    break;
-                default:
-                    System.out.println(" Wrong option ");
-                    break;
-            }
-        } while (selection != 4);
+            do {
+                this.showStarship();
+                option = scanner.nextInt();
+                switch (option) {
+                    case 1:
+                        director.makeDestroyer(owner);
+                        break;
+                    case 2:
+                        director.makeFighter(owner);
+                        break;
+                    case 3:
+                        director.makeFreighter(owner);
+                        break;
+                    default:
+                        System.out.println(" Wrong option ");
+                        break;
+                }
+            } while (option < 1 && option > 4);
+        }
+        while (option != 4);
     }
 
     /**
@@ -105,17 +133,5 @@ public class SpaceStationBuilder extends StarshipBuilder {
         controller.createStarship((Starship) spaceStation);
         return spaceStation;
     }
-
-
-
-    @Override
-    public void print() {
-        System.out.println("Register number: " + spaceStation.getRegisterNumber());
-        System.out.println("Owner: " + spaceStation.getOwner());
-        System.out.println("Owner: " + spaceStation.getOwner());
-        System.out.println("Owner: " + spaceStation.getOwner());System.out.println("Owner: " + spaceStation.getOwner());
-
-    }
-
 
 }

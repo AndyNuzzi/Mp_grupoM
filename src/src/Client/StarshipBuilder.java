@@ -91,8 +91,8 @@ public abstract class StarshipBuilder {
             } while (propulsion == null);
             propulsionCanBeAdded = starship.addPropulsion(propulsion);
             if (propulsionCanBeAdded) {
-                System.out.println("Introduce y for exit, otherwise press any button");
-                exit = scanner.nextLine().toLowerCase().equals("y");
+                System.out.println("Introduce 1 for exit, other number for not to");
+                exit = scanner.nextInt() == 1;
             }
         } while (!exit  && propulsionCanBeAdded);
     }
@@ -104,18 +104,5 @@ public abstract class StarshipBuilder {
      */
     public abstract Starship getResult(Client owner);
 
-    /**
-     * Mostrara la nave espacial por pantalla
-     */
-    public abstract void print ();
-
-    /**
-     * Muestra las propulsiones por pantalla
-     */
-    public void printPropulsion (){
-        for (Propulsion propulsion : starship.getPropulsion()){
-            System.out.println("Propulsion: " + propulsion);
-        }
-    }
 
 }

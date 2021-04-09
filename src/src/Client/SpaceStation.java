@@ -42,4 +42,36 @@ public class SpaceStation extends Starship implements Serializable{
     public List<Defense> getDefenses() {
         return this.defense;
     }
+
+    /**
+     * Mostrará las naves espaciales
+     */
+    private void printStarships (){
+        for (Starship starship: this.starships){
+            starship.print();
+        }
+    }
+
+    private void printDefense (){
+        for (Defense defense: this.defense){
+            defense.getResistance();
+        }
+    }
+
+    /**
+     * Mostrara la nave espacial por pantalla
+     */
+    @Override
+    public void print() {
+        System.out.println("Register number: " + this.registerNumber);
+        System.out.println("Owner: " + this.owner);
+        super.printPropulsion();
+        System.out.println("Owner: " + this.crew);
+        System.out.println("Owner: " + this.passengers);
+        this.printStarships();
+
+
+    }
+
+
 }
