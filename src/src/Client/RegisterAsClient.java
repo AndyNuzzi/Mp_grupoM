@@ -101,7 +101,7 @@ public class RegisterAsClient extends Access {
                 System.out.println(" New User created successfully ");
                 User user = super.validate(nick, password);
                 super.openSession(user);
-                if (user.getClass().getSimpleName().equals("Client")){
+                if (user!=null&&user.getClass().getSimpleName().equals("Client")){
                     controller.actualizateClient((Client) user);
                 }
             } else {

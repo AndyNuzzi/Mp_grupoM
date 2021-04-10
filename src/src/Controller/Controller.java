@@ -20,6 +20,7 @@ public class Controller {
     //Methods
     public User validate(String nick, String password){
         //Returns a User with its information
+        deleteOfferPassedDates();
         User u =queries.openSession(nick, password);
         if (u!=null&&u.getClass().getSimpleName().equals("Client")){
             Client c = (Client) u;
@@ -194,6 +195,19 @@ public class Controller {
         Client c =queries.getClient(comment.getIdSeller());
         c.addNotification(not);
         actualizateClient(c);
+    }
+
+    public void deleteOfferPassedDates() {
+        List<Offer> l = queries.loadOffers();
+        if (l != null){
+            List<Offer> solOffersList = new LinkedList<>();
+            for (Offer o: l){
+                if (o.getDateEnd().isAfter(LocalDate.now())||o.getDateEnd().isEqual(LocalDate.now())){
+                    solOffersList.add(o);
+                }
+            }
+            adders.newOffers(solOffersList);
+        }
     }
 
 }

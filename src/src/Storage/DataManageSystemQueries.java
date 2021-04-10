@@ -1,7 +1,6 @@
 package Storage;
 
 import Client.*;
-
 import java.util.*;
 
 public class DataManageSystemQueries extends DataManageSystem{
@@ -216,22 +215,24 @@ public class DataManageSystemQueries extends DataManageSystem{
     }
 
     public List<Starship> getStarships(List<String> ids){
-        Collections.sort(ids);
         List<Starship> starshipList = loadStarshipsFile();
         List<Starship> sol = new ArrayList<Starship>();
-        if (starshipList!=null){
-            Iterator<Starship> iterator = starshipList.iterator();
-            String id = ids.get(0);
-            while (iterator.hasNext() && !ids.isEmpty()){
-                Starship next = iterator.next();
-                if (next.getRegisterNumber().equals(id)){
-                    ids.remove(0);
-                    sol.add(next);
-                    if (!ids.isEmpty())
-                        id = ids.get(0);
+        for(String id: ids) {
+            if (starshipList != null) {
+                Iterator<Starship> iterator = starshipList.iterator();
+                while (iterator.hasNext() && !ids.isEmpty()) {
+                    Starship next = iterator.next();
+                    if (next.getRegisterNumber().equals(id)) {
+                        sol.add(next);
+                    }
                 }
             }
         }
         return sol;
     }
+
+    public List<Offer> loadOffers() {
+        return loadOffersFile();
+    }
+
 }
