@@ -18,7 +18,7 @@ public class DeletePossibleSwindler extends AdministratorOperation{
 
         List<String> swindler = controller.getSwindlerList();
 
-        if (swindler!=null) {
+        if (swindler!=null && !swindler.isEmpty()) {
             System.out.println("--------------------  SWINDLER  --------------------");
             for (String swindlerInfo : swindler) {
                 System.out.println("--------------------------------------------------");

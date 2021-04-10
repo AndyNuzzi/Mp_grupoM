@@ -109,6 +109,15 @@ public class FighterBuilder extends StarshipBuilder {
     }
 
     /**
+     * Pide la crew
+     * @return
+     */
+    @Override
+    protected int crew() {
+        return 1;
+    }
+
+    /**
      * Crea la nave y le envía la nave al controller
      *
      * @param owner
@@ -117,8 +126,8 @@ public class FighterBuilder extends StarshipBuilder {
     @Override
     public Starship getResult(Client owner) {
         fighter.setRegisterNumber(super.registerNumber());
-        fighter.setCrew(super.crew());
         fighter.setOwner(owner.getIdNumber());
+        fighter.setCrew(this.crew());
         super.propulsion();
         this.defense();
         fighter.setWeapon1(this.weapon());

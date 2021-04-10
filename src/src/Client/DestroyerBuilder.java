@@ -114,7 +114,7 @@ public class DestroyerBuilder extends StarshipBuilder {
             } while (defense == null);
             defenseCanBeAdded = destroyer.addDefense(defense);
             if (defenseCanBeAdded) {
-                System.out.println("Do you want to add other weapon? y/n");
+                System.out.println("Do you want to add other defense? y/n");
                 Scanner sc= new Scanner(System.in);
                 exit = sc.nextLine().toLowerCase();
             }

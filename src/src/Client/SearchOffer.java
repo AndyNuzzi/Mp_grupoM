@@ -14,10 +14,10 @@ public class SearchOffer extends ClientOperation implements Serializable {
 
     @Override
 
+    /**
+     * doOperation de la clase SearchOffer busca las ofertas según un tipo de nave y podrá comprar una oferta
+     */
     public boolean doOperation() {
-        /**
-         * doOperation de la clase SearchOffer busca las ofertas según un tipo de nave y podrá comprar una oferta
-         */
 
         Scanner scanner = new Scanner(System.in);
         boolean askAgain = true;

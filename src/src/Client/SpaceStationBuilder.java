@@ -13,7 +13,7 @@ public class SpaceStationBuilder extends StarshipBuilder {
     /**
      * Pide u guarda el numero de pasajeros
      */
-    public void passengers() {
+    protected void passengers() {
         System.out.println(" Introduce the number of passengers ");
         Scanner scanner = new Scanner(System.in);
         this.spaceStation.setPassengers(scanner.nextInt());
