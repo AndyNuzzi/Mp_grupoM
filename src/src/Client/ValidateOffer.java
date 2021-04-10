@@ -2,6 +2,8 @@ package Client;
 
 
 import java.time.LocalDate;
+import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -21,17 +23,23 @@ public class ValidateOffer extends AdministratorOperation{
 
         if (uncheckedOffers != null && !uncheckedOffers.isEmpty()) {
             boolean validate = false;
+
             while (!validate) {
-                System.out.println("--------------------  OFFERS  --------------------");
                 Offer info = uncheckedOffers.remove(0);
+                System.out.println("--------------------  OFFERS  --------------------");
                 System.out.println("--------------------------------------------------");
-                System.out.println(info.getId());
-                /*List <Starship> l = info.getStarshipIdList();
-                Iterator <
-                System.out.println();*/
-                System.out.println(info.getDateEnd());
-                System.out.println(info.getPrice());
-                System.out.println(info.getCreator());
+                List<String> l = info.getStarshipIdList();
+                List<String> lcopy = clone(l);
+                List<Starship> starships = controller.getStarship(lcopy);
+                for (Starship s: starships){
+                    System.out.println("Starship: " + s.getName());
+                    s.print();
+                    System.out.println("--------------------------------------------------");
+                }
+                System.out.println("Offer Id: " + info.getId());
+                System.out.println("Date end: " + info.getDateEnd());
+                System.out.println("Price: " + info.getPrice());
+                System.out.println("Creator: " + info.getCreator());
                 System.out.println("--------------------------------------------------");
 
                 System.out.println("Validate offer? y/n");
@@ -70,5 +78,13 @@ public class ValidateOffer extends AdministratorOperation{
             System.out.println("There aren't new offers waiting for validation");
         }
         return true;
+    }
+
+    private List<String> clone(List<String> l) {
+        List<String> sol = new LinkedList<>();
+        for (String s: l){
+            sol.add(s);
+        }
+        return sol;
     }
 }

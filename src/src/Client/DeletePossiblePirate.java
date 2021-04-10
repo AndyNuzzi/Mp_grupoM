@@ -18,7 +18,7 @@ public class DeletePossiblePirate extends AdministratorOperation{
 
         List<String> pirate = controller.getPirateList();
 
-        if (pirate != null) {
+        if (pirate != null && !pirate.isEmpty()) {
             System.out.println("--------------------  PIRATES  --------------------");
             for (String pirateInfo : pirate) {
                 System.out.println("--------------------------------------------------");

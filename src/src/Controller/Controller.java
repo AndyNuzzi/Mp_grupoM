@@ -23,7 +23,7 @@ public class Controller {
         User u =queries.openSession(nick, password);
         if (u!=null&&u.getClass().getSimpleName().equals("Client")){
             Client c = (Client) u;
-            if (c.getBanned()!= null &&c.getBanned().compareTo(LocalDate.now()) > 0){
+            if (c.getBanned()!= null && LocalDate.now().isBefore(c.getBanned())){
                 return null;
             }
             return c;

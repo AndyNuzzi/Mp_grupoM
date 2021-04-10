@@ -3,6 +3,7 @@ package Client;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -52,14 +53,13 @@ public class SearchOffer extends ClientOperation implements Serializable {
         List<Offer> offerList = controller.getOffer(type, client.getIdNumber());
 
         if (offerList != null && offerList.size()>0) {
-            presentOffers(offerList);
-
             boolean buying = false;
+            presentOffers(offerList);
 
             while (!buying) {
                 System.out.println("Do you want to buy any Offer? y/n");
-                String buyingConfirm = scanner.nextLine();
-                if (buyingConfirm.toLowerCase().equals("y")) {
+                buying = scanner.nextLine().toLowerCase().equals("n");
+                if (!buying) {
                     System.out.println("Introduce Offer id:");
                     String idOffer = scanner.nextLine();
 
@@ -74,7 +74,7 @@ public class SearchOffer extends ClientOperation implements Serializable {
                             found = offer.getId().equals(idOffer);
                         }
                         List<String> l = offer.getType();
-                        if (found && l.size() == 1 && l.get(0).equals("Freighter")) {
+                        if (found && l.size() == 1 && isOnlyFreighter(l)) {
                             buy(offer);
                         }
                     } else {
@@ -90,11 +90,18 @@ public class SearchOffer extends ClientOperation implements Serializable {
                         }
                     }
                 }
-                System.out.println("Do you want to continue buying? y/n");
-                buying = scanner.nextLine().toLowerCase().equals("n");
+
             }
         } else{
             System.out.println("There aren't offers available right now.");
+        }
+        return true;
+    }
+
+    private boolean isOnlyFreighter(List<String> l) {
+        for (String s: l){
+            if (s != "Freighter")
+                return false;
         }
         return true;
     }
@@ -103,12 +110,18 @@ public class SearchOffer extends ClientOperation implements Serializable {
         System.out.println("--------------------  OFFERS  --------------------");
         for (Offer info: offerList){
             System.out.println("--------------------------------------------------");
-            System.out.println(info.getId());
-            System.out.println(info.getStarshipIdList());
-            printStarships(controller.getStarship(info.getStarshipIdList()));
-            System.out.println(info.getDateEnd());
-            System.out.println(info.getPrice());
-            System.out.println(info.getCreator());
+            List<String> l = info.getStarshipIdList();
+            List<String> lcopy = clone(l);
+            List<Starship> starships = controller.getStarship(lcopy);
+            for (Starship s: starships){
+                System.out.println("Starship: " + s.getName());
+                s.print();
+                System.out.println("--------------------------------------------------");
+            }
+            System.out.println("Offer Id: " + info.getId());
+            System.out.println("Date end: " + info.getDateEnd());
+            System.out.println("Price: " + info.getPrice());
+            System.out.println("Creator: " + info.getCreator());
             System.out.println("--------------------------------------------------");
         }
         /**
@@ -116,30 +129,11 @@ public class SearchOffer extends ClientOperation implements Serializable {
          */
     }
 
-    private void printStarships(List<Starship> starship) {
-        for (Starship s: starship){
-            switch (s.getClass().getSimpleName()){
-                case "SpaceStation": SpaceStation sp = (SpaceStation) s;
-                    //sp.print();
-                    break;
-                case "Destroyer": Destroyer destroyer = (Destroyer) s;
-                    //destroyer.print();
-                    break;
-                case "Freighter": Freighter freighter = (Freighter) s;
-                    //freighter.print();
-                    break;
-                case "fighter": Fighter fighter = (Fighter) s;
-                    //fighter.print();
-                    break;
-            }
-        }
-    }
 
     private boolean buy(Offer offer){
         Sale sale = new Sale();
         sale.setId(controller.getIdSale());
         sale.setBuyer(client.getIdNumber());
-        sale.setCost(offer.getPrice());
         sale.setSeller(offer.getCreator());
         sale.setDate(LocalDate.now());
         sale.setCost(offer.getPrice());
@@ -163,5 +157,13 @@ public class SearchOffer extends ClientOperation implements Serializable {
         controller.storeSale(sale.buy());
         controller.deleteOffer(offer.getId());
         return false;
+    }
+
+    private List<String> clone(List<String> l) {
+        List<String> sol = new LinkedList<>();
+        for (String s: l){
+            sol.add(s);
+        }
+        return sol;
     }
 }

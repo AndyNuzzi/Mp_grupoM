@@ -43,7 +43,6 @@ public class DeletePossibleSwindler extends AdministratorOperation{
                      */
                 }
                 System.out.println("Do you want to continue deleting? y/n");
-                String deleteContinue = scanner.nextLine();
                 delete = scanner.nextLine().toLowerCase().equals("n");
             }
         }else{

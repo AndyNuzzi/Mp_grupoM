@@ -48,7 +48,7 @@ public class SpaceStation extends Starship implements Serializable{
      */
     private void printStarships (){
         for (Starship starship: this.starships){
-            System.out.println(" Starship: " + starship.getName());
+            System.out.println(" - Starship: " + starship.getName());
             starship.print();
         }
     }
@@ -74,13 +74,13 @@ public class SpaceStation extends Starship implements Serializable{
      */
     @Override
     public void print() {
-        System.out.println("Register number: " + this.registerNumber);
+        System.out.println("Register number: " + this.registerNumber );
         System.out.println("Owner: " + this.owner);
         super.printPropulsion();
         System.out.println("Crew: " + this.crew);
         System.out.println("Passengers: " + this.passengers);
-        this.printStarships();
         this.printDefense();
+        this.printStarships();
     }
 
 
