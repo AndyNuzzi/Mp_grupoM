@@ -36,16 +36,18 @@ public class Client extends User implements Serializable{
     public void doOperation() {
         ClientOperation op1 = new CreateOffer(this);
         ClientOperation op2 = new SearchOffer(this);
-        ClientOperation op3 = new Subscribe(this);
+        ClientOperation op3 = new CheckValoration(this);
         ClientOperation op4 = new CheckNotifications(this);
         ClientOperation op5 = new CheckComments(this);
-        ClientOperation op6 = new CheckValoration(this);
+        ClientOperation op6 = new Subscribe(this);
+        ClientOperation op7 = new CancelSubscription(this);
         super.operations.add(op1);
         super.operations.add(op2);
         super.operations.add(op3);
         super.operations.add(op4);
         super.operations.add(op5);
         super.operations.add(op6);
+        super.operations.add(op7);
         super.getOperation();
     }
 

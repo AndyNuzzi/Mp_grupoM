@@ -4,6 +4,7 @@ import Client.Client;
 import Client.Notification;
 
 import java.io.Serializable;
+import java.util.Iterator;
 import java.util.List;
 
 public class Subscription implements Serializable {
@@ -29,6 +30,30 @@ public class Subscription implements Serializable {
             case "Freighter": freighterList.add(id);
             break;
             case "Fighter": fighterList.add(id);
+            break;
+        }
+        SubscriptionFile subscriptionFile = SubscriptionFile.getInstance();
+        subscriptionFile.write(this);
+        return true;
+    }
+
+    public boolean deleteSubscription(String id, String option){
+        switch (option){
+            case "SpaceStation":
+                if (spaceStationList.contains(id))
+                    spaceStationList.remove(id);
+            break;
+            case "Destroyer":
+                if (destroyerList.contains(id))
+                    destroyerList.remove(id);
+            break;
+            case "Freighter":
+                if (freighterList.contains(id))
+                    freighterList.remove(id);
+            break;
+            case "Fighter":
+                if (fighterList.contains(id))
+                    fighterList.remove(id);
             break;
         }
         SubscriptionFile subscriptionFile = SubscriptionFile.getInstance();
@@ -69,5 +94,4 @@ public class Subscription implements Serializable {
             }
         }
     }
-
 }

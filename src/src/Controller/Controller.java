@@ -210,4 +210,12 @@ public class Controller {
         }
     }
 
+    public void deleteSubscription(String id, String option){
+        Subscription sub = subscriptionFile.read();
+        if (sub==null){
+            sub = new Subscription(new LinkedList<>(), new LinkedList<>(), new LinkedList<>(), new LinkedList<>());
+        }
+        sub.deleteSubscription(id,option);
+    }
+
 }
