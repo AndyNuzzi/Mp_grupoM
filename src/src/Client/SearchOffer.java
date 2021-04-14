@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class SearchOffer extends ClientOperation implements Serializable {
+
     public SearchOffer (Client client){
         super (client);
     }
@@ -130,7 +131,7 @@ public class SearchOffer extends ClientOperation implements Serializable {
     }
 
 
-    private boolean buy(Offer offer){
+    protected boolean buy(Offer offer){
         Sale sale = new Sale();
         sale.setId(controller.getIdSale());
         sale.setBuyer(client.getIdNumber());
@@ -159,7 +160,7 @@ public class SearchOffer extends ClientOperation implements Serializable {
         return false;
     }
 
-    private List<String> clone(List<String> l) {
+    protected List<String> clone(List<String> l) {
         List<String> sol = new LinkedList<>();
         for (String s: l){
             sol.add(s);

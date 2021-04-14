@@ -51,9 +51,12 @@ public abstract class Access {
             if (user.getClass().getSimpleName().equals("Client")) {
                 Client client = (Client) user;
                 client.doOperation();
-            } else {
+            } else if (user.getClass().getSimpleName().equals("Administrator")){
                 Administrator administrator = (Administrator) user;
                 administrator.doOperation();
+            } else {
+                Kromagg kromagg = (Kromagg) user;
+                kromagg.doOperation();
             }
         } else {
             System.out.println(" Log in cancelled ");
