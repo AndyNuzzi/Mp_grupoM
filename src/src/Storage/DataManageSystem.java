@@ -2,8 +2,6 @@ package Storage;
 
 import Client.*;
 
-import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 
 public abstract class DataManageSystem {
@@ -23,7 +21,7 @@ public abstract class DataManageSystem {
     //Methods
 
     protected List loadClientsFile(){
-        return  clientFile.read(clientFile.getDirectory());
+      return  clientFile.read(clientFile.getDirectory());
     }
 
     protected List loadOffersFile(){

@@ -1,25 +1,51 @@
 package Client;
 
-import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
-public class SearchOffer extends ClientOperation implements Serializable {
+public class SearchKromaggOffer extends SearchOffer {
 
-    public SearchOffer (Client client){
-        super (client);
+    public SearchKromaggOffer(Client client) {
+        super(client);
+    }
+
+    private boolean isOnlyFreighter(List<String> l) {
+        for (String s : l) {
+            if (s != "Freighter")
+                return false;
+        }
+        return true;
+    }
+
+    private void presentOffers(List<Offer> offerList) {
+        System.out.println("--------------------  OFFERS  --------------------");
+        for (Offer info : offerList) {
+            System.out.println("--------------------------------------------------");
+            List<String> l = info.getStarshipIdList();
+            List<String> lcopy = clone(l);
+            List<Starship> starships = controller.getStarship(lcopy);
+            for (Starship s : starships) {
+                System.out.println("Starship: " + s.getName());
+                s.print();
+                System.out.println("--------------------------------------------------");
+            }
+            System.out.println("Offer Id: " + info.getId());
+            System.out.println("Date end: " + info.getDateEnd());
+            System.out.println("Price: " + info.getPrice());
+            System.out.println("Creator: " + info.getCreator());
+            System.out.println("--------------------------------------------------");
+        }
+        /**
+         * lista con las ofertas
+         */
     }
 
     @Override
-
     /**
      * doOperation de la clase SearchOffer busca las ofertas según un tipo de nave y podrá comprar una oferta
      */
     public boolean doOperation() {
-
         Scanner scanner = new Scanner(System.in);
         boolean askAgain = true;
         String type = "";
@@ -53,7 +79,7 @@ public class SearchOffer extends ClientOperation implements Serializable {
 
         List<Offer> offerList = controller.getOffer(type, client.getIdNumber());
 
-        if (offerList != null && offerList.size()>0) {
+        if (offerList != null && offerList.size() > 0) {
             boolean buying = false;
             presentOffers(offerList);
 
@@ -64,7 +90,7 @@ public class SearchOffer extends ClientOperation implements Serializable {
                     System.out.println("Introduce Offer id:");
                     String idOffer = scanner.nextLine();
 
-                    if (client.getPirate()){
+                    if (client.getPirate()) {
                         System.out.println("You are considered a pirate. Contact an administrator.");
                         System.out.println("You can only buy freighter");
                         boolean found = false;
@@ -86,85 +112,20 @@ public class SearchOffer extends ClientOperation implements Serializable {
                             offer = iterator.next();
                             found = offer.getId().equals(idOffer);
                         }
-                        if (found) {
+                        Kromagg k = (Kromagg) super.client;
+                        if (found && k.requestLicense()) {
                             buy(offer);
+                        } else {
+                            System.out.println (" You have no license ");
                         }
                     }
                 }
 
             }
-        } else{
+        } else {
             System.out.println("There aren't offers available right now.");
         }
         return true;
     }
 
-    private boolean isOnlyFreighter(List<String> l) {
-        for (String s: l){
-            if (s != "Freighter")
-                return false;
-        }
-        return true;
-    }
-
-    private void presentOffers(List<Offer> offerList) {
-        System.out.println("--------------------  OFFERS  --------------------");
-        for (Offer info: offerList){
-            System.out.println("--------------------------------------------------");
-            List<String> l = info.getStarshipIdList();
-            List<String> lcopy = clone(l);
-            List<Starship> starships = controller.getStarship(lcopy);
-            for (Starship s: starships){
-                System.out.println("Starship: " + s.getName());
-                s.print();
-                System.out.println("--------------------------------------------------");
-            }
-            System.out.println("Offer Id: " + info.getId());
-            System.out.println("Date end: " + info.getDateEnd());
-            System.out.println("Price: " + info.getPrice());
-            System.out.println("Creator: " + info.getCreator());
-            System.out.println("--------------------------------------------------");
-        }
-        /**
-         * lista con las ofertas
-         */
-    }
-
-
-    protected boolean buy(Offer offer){
-        Sale sale = new Sale();
-        sale.setId(controller.getIdSale());
-        sale.setBuyer(client.getIdNumber());
-        sale.setSeller(offer.getCreator());
-        sale.setDate(LocalDate.now());
-        sale.setCost(offer.getPrice());
-        System.out.println("Do you want to leave a comment? y/n");
-        Scanner sc = new Scanner(System.in);
-        String input = sc.nextLine();
-        if (input.toLowerCase().equals("y")){
-            Comment comment = new Comment();
-            comment.setIdSale(sale.getId());
-            comment.setIdSeller(offer.getCreator());
-            comment.setIdClient(sale.getBuyer());
-            System.out.println("Write your comment here: (Press enter to finish your comment)");
-            input = sc.nextLine();
-            comment.setComment(input);
-            System.out.println("Introduce a valoration: 1-5");
-            Scanner scn = new Scanner(System.in);
-            int i = scn.nextInt();
-            comment.setValoration(i);
-            controller.addComment(comment);
-        }
-        controller.storeSale(sale.buy());
-        controller.deleteOffer(offer.getId());
-        return false;
-    }
-
-    protected List<String> clone(List<String> l) {
-        List<String> sol = new LinkedList<>();
-        for (String s: l){
-            sol.add(s);
-        }
-        return sol;
-    }
 }

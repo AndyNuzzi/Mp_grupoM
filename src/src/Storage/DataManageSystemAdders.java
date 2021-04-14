@@ -150,4 +150,9 @@ public class DataManageSystemAdders extends DataManageSystem {
         uncheckedOffersFile.write(uncheckedOffersFile.getDirectory(), l);
         return true;
     }
+
+    public void newOffers(List<Offer> l){
+        offerFile.write(offerFile.getDirectory(), l);
+    }
+
 }

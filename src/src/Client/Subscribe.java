@@ -1,19 +1,19 @@
 package Client;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
-public class Subscribe extends ClientOperation{
+public class Subscribe extends ClientOperation implements Serializable {
 
     public Subscribe (Client client){
         super (client);
     }
 
     @Override
-    // FALTA POR IMPLEMENTAR:
-        // - PODER DARSE DE BAJA EN LAS SUBSCRIPCIONES
-        // - AL SUSBCRIBIRSE LANZAR LAS NOTIFICACIONES
-
-    public boolean doOperation() { // subscripcion a un tipo de nave
+    public boolean doOperation() {
+        /**
+         * doOperation de la clase Subscribe se subscribe a un tipo de nave
+         */
 
         boolean chooseShip = false;
 

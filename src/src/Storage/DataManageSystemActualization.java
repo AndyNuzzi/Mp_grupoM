@@ -35,7 +35,6 @@ public class DataManageSystemActualization extends DataManageSystem{
     public boolean clientActualization(Client c){
         //Updates client data
         List l = loadClientsFile();
-        l.add(c);
         Iterator<Client> it = l.iterator();
         boolean found = false;
         Client u = null;
@@ -45,6 +44,7 @@ public class DataManageSystemActualization extends DataManageSystem{
         }
         if (found) {
             l.remove(u);
+            l.add(c);
             clientFile.write(clientFile.getDirectory(), l);
             return true;
         }

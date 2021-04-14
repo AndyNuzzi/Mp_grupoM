@@ -1,15 +1,18 @@
 package Client;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class CheckComments extends ClientOperation{
+public class CheckComments extends ClientOperation implements Serializable {
     public CheckComments (Client client){
         super (client);
-        // me traigo los datos del cliente
     }
 
     @Override
-    public boolean doOperation() { //de muestra la lista con los comentarios de un cliente
+    public boolean doOperation() {
+        /**
+         * doOperation de la clase CheckComments muestra la lista con los comentarios de un cliente
+         */
 
         List<Comment> comments = controller.getCommentsList(client.getIdNumber());
 
@@ -22,7 +25,10 @@ public class CheckComments extends ClientOperation{
                 System.out.println("Valoration: " + commentInfo.getValoration());
                 System.out.println("Comment: " + commentInfo.getComment());
                 System.out.println("--------------------------------------------------");
-            } // lista con los comentarios
+            }
+            /**
+             * lista con los comentarios
+             */
         }
         else {
             System.out.println("There aren't comments available. ");

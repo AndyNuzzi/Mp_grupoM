@@ -10,7 +10,11 @@ public class AddPossiblePirate extends AdministratorOperation{
     }
 
     @Override
-    public boolean doOperation() { // añade un cliente a la lista de piratas
+
+    public boolean doOperation() {
+        /**
+         * doOperation de la clase AddPossiblePirate añade un cliente a la lista de piratas
+         */
 
         List<Client> client = controller.getClientList();
 
@@ -20,7 +24,10 @@ public class AddPossiblePirate extends AdministratorOperation{
                 System.out.println("--------------------------------------------------");
                 System.out.println("Id: " + clientInfo.getIdNumber());
                 System.out.println("--------------------------------------------------");
-            }// lista con los clientes
+            }
+            /**
+             * lista con los clientes
+             */
 
             boolean add = false;
             while (! add){
@@ -31,7 +38,9 @@ public class AddPossiblePirate extends AdministratorOperation{
                     System.out.println("Introduce Pirate id:");
                     String idPirate= scanner.nextLine();
                     controller.addPossiblePirate(idPirate);
-                    // llamar al controlador pasandole el id del pirata que se quiere añadir
+                    /**
+                     * llamar al controlador pasandole el id del pirata que se quiere añadir
+                     */
                 }
                 System.out.println("Do you want to continue adding? y/n");
                 add = scanner.nextLine().toLowerCase().equals("n");

@@ -41,8 +41,9 @@ public abstract class User implements Serializable {
     private boolean isClientOperation(Operation operation) {
         String operationClass = operation.getClass().getSimpleName();
         return operationClass.equals("CreateOffer") || operationClass.equals("SearchOffer")
-               || operationClass.equals("Subscribe") || operationClass.equals("CheckNotifications")
-               || operationClass.equals("CheckComments") || operationClass.equals("CheckValoration");
+                || operationClass.equals("Subscribe") || operationClass.equals("CheckNotifications")
+                || operationClass.equals("CheckComments") || operationClass.equals("CheckValoration")
+                || operationClass.equals("CancelSubscription")|| operationClass.equals("SearchKromaggOffer");
     }
 
     /**
@@ -62,33 +63,41 @@ public abstract class User implements Serializable {
             System.out.println(i + ". " + iterator.next().getClass().getSimpleName());
             i += 1;
         }
-        System.out.println("6. Exit ");
+        System.out.println("e. Exit ");
     }
 
     /**
      * Gestiona las operaciones
      */
     public void getOperation() {
-        int option;
+        String option;
         do {
             this.showOperationsList();
             Scanner scanner = new Scanner(System.in);
-            option = scanner.nextInt();
-            if (option < 6 && option >= 0) {
-                Operation operation = this.operations.get(option);
-                if (isClientOperation(operation)) {
-                    ClientOperation clientOperation = (ClientOperation) operation;
-                    clientOperation.doOperation();
+            option = scanner.nextLine().toLowerCase();
+            try {
+                int s;
+                if (option.equals("e")) {
+                    System.out.println(" Session closed ");
                 } else {
-                    AdministratorOperation administratorOperation = (AdministratorOperation) operation;
-                    administratorOperation.doOperation();
+                    s = Integer.parseInt(option);
+                    if (s <= operations.size() - 1 && s >= 0) {
+                        Operation operation = this.operations.get(Integer.parseInt(option));
+                        if (isClientOperation(operation)) {
+                            ClientOperation clientOperation = (ClientOperation) operation;
+                            clientOperation.doOperation();
+                        } else {
+                            AdministratorOperation administratorOperation = (AdministratorOperation) operation;
+                            administratorOperation.doOperation();
+                        }
+                    }
                 }
-            } else if (option == 6) {
-                System.out.println(" Session closed ");
-            } else {
-                System.out.println(" Wrong option ");
+            } catch (NumberFormatException e){
+               System.out.println("Wrong key");
             }
-        } while (option != 6);
+        } while (!option.equals("e"));
+        while (!operations.isEmpty())
+            operations.remove(0);
     }
 
     public String getName() {

@@ -62,7 +62,7 @@ public abstract class StarshipBuilder {
     public void propulsion() {
         Scanner scanner = new Scanner(System.in);
         boolean propulsionCanBeAdded;
-        boolean exit = false;
+        String exit=null;
         do {
             Propulsion propulsion = null;
             do {
@@ -96,10 +96,11 @@ public abstract class StarshipBuilder {
             } while (propulsion == null);
             propulsionCanBeAdded = starship.addPropulsion(propulsion);
             if (propulsionCanBeAdded) {
-                System.out.println("Introduce 1 for exit, other number for not to");
-                exit = scanner.nextInt() == 1;
+                System.out.println("Do you want to add other propulsion? y/n");
+                Scanner sc= new Scanner(System.in);
+                exit = sc.nextLine().toLowerCase();
             }
-        } while (!exit  && propulsionCanBeAdded);
+        } while (exit.equals("y") && propulsionCanBeAdded);
     }
 
     /**

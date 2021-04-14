@@ -20,10 +20,11 @@ public class Controller {
     //Methods
     public User validate(String nick, String password){
         //Returns a User with its information
+        deleteOfferPassedDates();
         User u =queries.openSession(nick, password);
         if (u!=null&&u.getClass().getSimpleName().equals("Client")){
             Client c = (Client) u;
-            if (c.getBanned()!= null &&c.getBanned().compareTo(LocalDate.now()) > 0){
+            if (c.getBanned()!= null && LocalDate.now().isBefore(c.getBanned())){
                 return null;
             }
             return c;
@@ -185,8 +186,7 @@ public class Controller {
     }
 
     public void deleteNotification(Client c){
-        c.setNotificationList(new LinkedList<Notification>());
-        actualizateClient(c);
+        c.setNotificationList();
     }
 
     public void addComment(Comment comment) {
@@ -195,6 +195,27 @@ public class Controller {
         Client c =queries.getClient(comment.getIdSeller());
         c.addNotification(not);
         actualizateClient(c);
+    }
+
+    public void deleteOfferPassedDates() {
+        List<Offer> l = queries.loadOffers();
+        if (l != null){
+            List<Offer> solOffersList = new LinkedList<>();
+            for (Offer o: l){
+                if (o.getDateEnd().isAfter(LocalDate.now())||o.getDateEnd().isEqual(LocalDate.now())){
+                    solOffersList.add(o);
+                }
+            }
+            adders.newOffers(solOffersList);
+        }
+    }
+
+    public void deleteSubscription(String id, String option){
+        Subscription sub = subscriptionFile.read();
+        if (sub==null){
+            sub = new Subscription(new LinkedList<>(), new LinkedList<>(), new LinkedList<>(), new LinkedList<>());
+        }
+        sub.deleteSubscription(id,option);
     }
 
 }

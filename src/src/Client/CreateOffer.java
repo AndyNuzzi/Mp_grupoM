@@ -1,25 +1,25 @@
 package Client;
 
+import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Scanner;
 
 
-public class CreateOffer extends ClientOperation {
+public class CreateOffer extends ClientOperation implements Serializable {
+
     public CreateOffer(Client client) {
         super(client);
     }
 
     @Override
-    // FALTA POR IMPLEMENTAR:
-            // - FECHA LIMITE DE VIGENCIA DE LA OFERTA
-            // - PRECIO DE LA OFERTA
-
-    public boolean doOperation() { //crea la oferta y se pide el tipo de nave que se quiere meter en la oferta
-
+    public boolean doOperation() {
+        /**
+         * doOperation de la clase CreateOffer crea la oferta y se pide el tipo de nave
+         * que se quiere meter en la oferta
+         */
+        Scanner scanner = new Scanner(System.in);
         Offer offer = new Offer();
-        // instanciar la oferta
-
         Director director = new Director();
-        // instanciar al director
 
         boolean addShip = false;
         Starship starship = null;
@@ -33,7 +33,6 @@ public class CreateOffer extends ClientOperation {
             System.out.println("*********** -3- freighter     ************");
             System.out.println("*********** -4- fighter       ************");
 
-            Scanner scanner = new Scanner(System.in);
             String typeOfShip = scanner.nextLine();
 
             switch (typeOfShip) {
@@ -58,13 +57,26 @@ public class CreateOffer extends ClientOperation {
             offer.addStarshipToOffer(starship);
             System.out.println("Do you want to continue adding starships? y/n");
             addShip = scanner.nextLine().toLowerCase().equals("n");
-            offer.setCreator(client.getIdNumber());
-            System.out.println("Price (in EUROS): ");
-            offer.setPrice(scanner.nextLong());
-            controller.addToUncheckedOffers(offer.finish());
-
         }
+        offer.setDateEnd(askDate());
+        offer.setCreator(client.getIdNumber());
+        System.out.println("Price (in EUROS): ");
+        offer.setPrice(scanner.nextLong());
+        controller.addToUncheckedOffers(offer.finish());
         return true;
+    }
+
+    private LocalDate askDate() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Introduce end year:");
+        int year = scanner.nextInt();
+        System.out.println("Introduce end month:");
+        int month = scanner.nextInt();
+        System.out.println("Introduce end day:");
+        int day = scanner.nextInt();
+        LocalDate date = LocalDate.of(year, month, day);
+        System.out.println("End date: " + date.toString());
+        return date;
     }
 }
 

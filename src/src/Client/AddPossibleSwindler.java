@@ -10,7 +10,10 @@ public class AddPossibleSwindler extends AdministratorOperation{
     }
 
     @Override
-    public boolean doOperation() { // añade un cliente a la lista de timadores
+    /**
+     * doOperation de la clase AddPossibleSwindler añade un cliente a la lista de timadores
+     */
+    public boolean doOperation() {
 
         List<Client> client = controller.getClientList();
 
@@ -20,7 +23,10 @@ public class AddPossibleSwindler extends AdministratorOperation{
                 System.out.println("--------------------------------------------------");
                 System.out.println("Id: " + clientInfo.getIdNumber());
                 System.out.println("--------------------------------------------------");
-            }// lista con los clientes
+            }
+            /**
+             * lista con los clientes
+             */
 
             boolean add = false;
             while (!add) {
@@ -31,8 +37,11 @@ public class AddPossibleSwindler extends AdministratorOperation{
                     System.out.println("Introduce Swindler id:");
                     String idSwindler = scanner.nextLine();
                     controller.addPossibleSwindler(idSwindler);
-                    // llamar al controlador pasandole el id del swindler que se quiere añadir
+                    /**
+                     * llamar al controlador pasandole el id del timador que se quiere añadir
+                     */
                 }
+
                 System.out.println("Do you want to continue adding? y/n");
                 add = scanner.nextLine().toLowerCase().equals("n");
             }

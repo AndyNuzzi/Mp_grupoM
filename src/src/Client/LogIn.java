@@ -20,5 +20,8 @@ public class LogIn extends Access {
             }
         }
         super.openSession(user);
+        if (user!=null && user.getClass().getSimpleName().equals("Client")){
+            controller.actualizateClient((Client) user);
+        }
     }
 }

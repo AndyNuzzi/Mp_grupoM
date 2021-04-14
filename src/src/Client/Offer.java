@@ -1,17 +1,17 @@
 package Client;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 
 public class Offer implements Serializable {
 
     private String id;
     private List<String> starshipIdList = new ArrayList<>();
-    private Date dateEnd;
+    private LocalDate dateEnd;
     private long price;
     private String creator;
     private boolean [] type = new boolean [4];
@@ -38,11 +38,11 @@ public class Offer implements Serializable {
         this.starshipIdList = starshipIdList;
     }
 
-    public Date getDateEnd() {
+    public LocalDate getDateEnd() {
         return dateEnd;
     }
 
-    public void setDateEnd(Date dateEnd) {
+    public void setDateEnd(LocalDate dateEnd) {
         this.dateEnd = dateEnd;
     }
 
