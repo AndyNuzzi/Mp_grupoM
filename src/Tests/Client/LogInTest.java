@@ -1,7 +1,9 @@
 package Client;
 
-import static org.junit.Assert.*;
+import org.junit.Test;
 
 public class LogInTest {
+    @Test
+    public static void doOperation(){}
 
 }
