@@ -20,4 +20,8 @@ public class PiratesFile extends FileOperations{
     public String getDirectory() {
         return directory;
     }
+
+    public void setDirectory(String directory) {
+        this.directory = directory;
+    }
 }

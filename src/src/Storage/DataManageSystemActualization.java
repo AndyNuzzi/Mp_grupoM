@@ -35,18 +35,20 @@ public class DataManageSystemActualization extends DataManageSystem{
     public boolean clientActualization(Client c){
         //Updates client data
         List l = loadClientsFile();
-        Iterator<Client> it = l.iterator();
-        boolean found = false;
-        Client u = null;
-        while (it.hasNext()&&!found){
-            u = it.next();
-            found = u.getIdNumber().equals(c.getIdNumber());
-        }
-        if (found) {
-            l.remove(u);
-            l.add(c);
-            clientFile.write(clientFile.getDirectory(), l);
-            return true;
+        if (l != null && l.size()!= 0) {
+            Iterator<Client> it = l.iterator();
+            boolean found = false;
+            Client u = null;
+            while (it.hasNext() && !found) {
+                u = it.next();
+                found = u.getIdNumber().equals(c.getIdNumber());
+            }
+            if (found) {
+                l.remove(u);
+                l.add(c);
+                clientFile.write(clientFile.getDirectory(), l);
+                return true;
+            }
         }
         return false;
     }

@@ -21,4 +21,7 @@ public class SwindlerFile extends FileOperations{
         return directory;
     }
 
+    public void setDirectory(String directory) {
+        this.directory = directory;
+    }
 }
