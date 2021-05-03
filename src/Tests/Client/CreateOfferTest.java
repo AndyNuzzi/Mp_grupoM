@@ -1,10 +1,7 @@
 package Client;
 
 import org.junit.Test;
-
 import java.time.LocalDate;
-
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CreateOfferTest {
@@ -52,6 +49,7 @@ public class CreateOfferTest {
             addShip = (continueAdding == "n");
 
         }
+        starship.getClass().getSimpleName();
 
         LocalDate date = LocalDate.of(year, month, day);
         offer.setDateEnd(date);
