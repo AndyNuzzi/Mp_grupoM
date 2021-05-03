@@ -41,8 +41,8 @@ public class DataManageSystemQueries extends DataManageSystem{
                 Client c = it.next();
                 chosen = nick.equals(c.getNick());
             }
-            if (!chosen) {
-                List<Administrator> lAdm = loadAdministratorsFile();
+            List<Administrator> lAdm = loadAdministratorsFile();
+            if (!chosen && lAdm != null) {
                 Iterator<Administrator> itAd = lAdm.iterator();
                 while (itAd.hasNext() && !chosen) {
                     Administrator admin = itAd.next();
