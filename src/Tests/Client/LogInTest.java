@@ -1,9 +1,9 @@
 package Client;
 
 
-import org.junit.Test;
+//import org.junit.Test;
 
 class LogInTest {
-    @Test
+    //@Test
     public static void doOperation(){}
 }

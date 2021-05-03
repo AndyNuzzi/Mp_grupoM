@@ -28,7 +28,6 @@ public class DataManageSystemQueries extends DataManageSystem{
         return dataManageSystem;
     }
 
-
     //Methods
     public boolean validateNick(String nick){
         //Checks if nick is used
