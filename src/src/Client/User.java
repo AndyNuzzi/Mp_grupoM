@@ -156,4 +156,8 @@ public abstract class User implements Serializable {
         this.nick = nick;
     }
 
+    public List<Operation> getOperations (){
+        return this.operations;
+    }
+
 }
