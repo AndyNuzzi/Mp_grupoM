@@ -4,7 +4,6 @@ import Client.*;
 import Client.User;
 import Storage.DataManageSystemAdders;
 import Storage.DataManageSystemQueries;
-import Storage.Identificators;
 import Storage.OfferFile;
 import org.junit.jupiter.api.Test;
 
