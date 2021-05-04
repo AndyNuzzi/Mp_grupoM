@@ -3,6 +3,7 @@ package Client;
 import org.junit.Test;
 import java.time.LocalDate;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CreateOfferTest {
 
@@ -22,10 +23,6 @@ public class CreateOfferTest {
         int price = 200000;
 
         String starshipT = null;
-
-        int year = 2010;
-        int month = 01;
-        int day = 10;
 
         while (!addShip) {
             switch (typeOfShip) {
@@ -51,25 +48,27 @@ public class CreateOfferTest {
         }
         starship.getClass().getSimpleName();
 
-        LocalDate date = LocalDate.of(year, month, day);
-        offer.setDateEnd(date);
-
         offer.setCreator(client.getIdNumber());
-        //    offer.setPrice(price);
-        // añadir a unchecked offers
-        // offer.addStarshipToOffer(starship);
+        offer.setPrice(price);
 
+        assertEquals(price, offer.getPrice());
         assertEquals(starship, starshipT);
-        // assertEquals(offer.getType(), starship);
-        assertEquals(starship, starshipT);
-
         assertEquals(offer.getCreator(), client.getIdNumber());
         assertTrue(addShip);
 
-       // assertEquals(offer.getDateEnd(), date.toString());
-
     }
 
-    private void assertTrue(boolean addShip) {
+    @Test
+    public void askDate() {
+
+        int year = 2010;
+        int month = 01;
+        int day = 10;
+
+        LocalDate date = LocalDate.of(year, month, day);
+        assertEquals(year, date.getYear());
+        assertEquals(month, date.getMonthValue());
+        assertEquals(day, date.getDayOfMonth());
+
     }
 }
