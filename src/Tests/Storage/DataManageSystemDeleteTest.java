@@ -64,5 +64,5 @@ class DataManageSystemDeleteTest {
         assertEquals(queries.loadSwindlers().size(),0);
     }
 
-    //Podria probarse intentar eliminar sin que haya nada
+
 }

@@ -19,7 +19,7 @@ class DataManageSystemAddersTest {
 
     @Test
     void addNewAdministrator() {
-        //Añade un adrministrador al fichero
+        //Añade un administrador al fichero
         DataManageSystemAdders add = DataManageSystemAdders.getInstance();
         AdministratorFile cl = AdministratorFile.getInstance();
         cl.setDirectory("Tests/Files/AdministratorFile");
