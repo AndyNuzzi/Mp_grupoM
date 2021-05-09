@@ -9,6 +9,8 @@ public class Notification implements Serializable {
         this.message = message;
     }
 
+    public Notification() { }
+
     public String getMessage() {
         return message;
     }
