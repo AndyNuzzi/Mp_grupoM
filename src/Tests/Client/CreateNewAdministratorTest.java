@@ -1,10 +1,7 @@
 package Client;
 
-import org.junit.Test;
-
-import java.util.Scanner;
-
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CreateNewAdministratorTest {
 
