@@ -3,13 +3,15 @@ package Storage;
 import java.io.*;
 import java.util.List;
 
-public class FileOperations implements Serializable {
+public abstract class FileOperations implements Serializable {
 
     //Properties
 
     protected String directory;
 
     //Methods
+
+    public abstract void setDirectory(String s);
 
     public List read(String directory) {
         try {
