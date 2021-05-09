@@ -1,6 +1,7 @@
 package Client;
 
 import Controller.Controller;
+
 import java.util.Scanner;
 
 public abstract class Access {
@@ -51,7 +52,7 @@ public abstract class Access {
             if (user.getClass().getSimpleName().equals("Client")) {
                 Client client = (Client) user;
                 client.doOperation();
-            } else if (user.getClass().getSimpleName().equals("Administrator")){
+            } else if (user.getClass().getSimpleName().equals("Administrator")) {
                 Administrator administrator = (Administrator) user;
                 administrator.doOperation();
             } else {
